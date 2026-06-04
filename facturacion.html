@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bold POS · Facturación electrónica Lite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #E8003D; --red-dark: #C0002E; --red-light: #FFE5ED;
+      --navy: #12122A; --blue: #121E6C;
+      --gray-bg: #F4F5F8; --gray-line: #E4E6EF; --gray-text: #7B7E96;
+      --text: #1C1C3A; --white: #FFFFFF; --green: #00C48C;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--gray-line);
+      height: 64px; display: flex; align-items: center; padding: 0 48px; gap: 40px;
+    }
+    .nav-logo { font-size: 26px; font-weight: 900; color: var(--navy); letter-spacing: -1.5px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 28px; flex: 1; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a.active { color: var(--red); font-weight: 600; }
+    .btn-nav-ghost { font-size: 14px; font-weight: 600; color: var(--text); background: none; border: none; cursor: pointer; padding: 8px 16px; border-radius: 50px; font-family: inherit; }
+    .btn-nav-ghost:hover { background: var(--gray-bg); }
+    .btn-nav-primary { font-size: 14px; font-weight: 700; color: var(--white); background: var(--red); border: none; cursor: pointer; padding: 9px 22px; border-radius: 50px; font-family: inherit; text-decoration: none; display: inline-flex; align-items: center; transition: background 0.15s; }
+    .btn-nav-primary:hover { background: var(--red-dark); }
+
+    /* HERO — coming soon */
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--navy);
+      position: relative; overflow: hidden;
+      padding: 48px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,0,61,0.12) 0%, transparent 65%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; right: -80px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(18,30,108,0.4) 0%, transparent 70%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      text-align: center; max-width: 580px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,0,61,0.15); border: 1px solid rgba(232,0,61,0.3);
+      color: #FF6B8A; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 20px; margin-bottom: 28px;
+    }
+    .hero-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--red); }
+
+    /* Animated construction icon */
+    .hero-icon {
+      width: 100px; height: 100px; border-radius: 24px;
+      background: linear-gradient(135deg, rgba(232,0,61,0.2) 0%, rgba(18,30,108,0.3) 100%);
+      border: 2px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; margin: 0 auto 32px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: var(--white);
+      letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px;
+    }
+    .hero-title .highlight { color: var(--red); }
+    .hero-subtitle {
+      font-size: 17px; color: rgba(255,255,255,0.6);
+      line-height: 1.7; margin-bottom: 40px;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      background: rgba(255,255,255,0.08);
+      border-radius: 50px; height: 8px;
+      margin-bottom: 10px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; border-radius: 50px;
+      background: linear-gradient(90deg, var(--red) 0%, #FF6B8A 100%);
+      width: 65%;
+      animation: progress-pulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes progress-pulse {
+      from { opacity: 0.8; }
+      to   { opacity: 1; width: 68%; }
+    }
+    .progress-label {
+      font-size: 12px; color: rgba(255,255,255,0.4);
+      text-align: right; margin-bottom: 40px;
+    }
+
+    /* Feature preview chips */
+    .feature-chips {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; margin-bottom: 40px;
+    }
+    .feat-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500;
+      padding: 8px 16px; border-radius: 50px;
+    }
+    .feat-chip .icon { font-size: 16px; }
+
+    /* Actions */
+    .hero-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-notify {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; background: var(--red); color: var(--white);
+      font-size: 14px; font-weight: 700; font-family: inherit;
+      border: none; border-radius: 50px; cursor: pointer; text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-notify:hover { background: var(--red-dark); }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; background: transparent; color: rgba(255,255,255,0.65);
+      font-size: 14px; font-weight: 600; font-family: inherit;
+      border: 1.5px solid rgba(255,255,255,0.2); border-radius: 50px;
+      cursor: pointer; text-decoration: none; transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-back:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+    /* Footer strip */
+    .footer-strip {
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 20px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-strip-logo { font-size: 20px; font-weight: 900; color: var(--white); letter-spacing: -1px; }
+    .footer-strip-logo span { color: var(--red); }
+    .footer-strip-text { font-size: 13px; color: rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">bol<span>d</span></a>
+  <div class="nav-links">
+    <a href="index.html">Bold POS</a>
+    <a href="restaurantes.html">POS Restaurantes</a>
+    <a href="facturacion.html" class="active">POS Facturación electrónica Lite</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="btn-nav-ghost">Iniciar sesión</button>
+    <a href="myaccount.html" class="btn-nav-primary">Quiero mi POS</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-badge">Próximamente</div>
+
+    <div class="hero-icon">🧾</div>
+
+    <h1 class="hero-title">
+      Está en diseño.<br>
+      <span class="highlight">Pronto la verás.</span>
+    </h1>
+    <p class="hero-subtitle">
+      Estamos construyendo <strong style="color:rgba(255,255,255,0.85)">POS Facturación electrónica Lite</strong> —
+      la forma más sencilla de cumplir con la DIAN sin necesidad de un sistema complejo.
+      Dale tu correo y te avisamos cuando esté lista.
+    </p>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="progress-label">65% completado · Lanzamiento estimado Q3 2026</div>
+
+    <!-- Feature previews -->
+    <div class="feature-chips">
+      <div class="feat-chip"><span class="icon">📄</span>Facturas electrónicas DIAN</div>
+      <div class="feat-chip"><span class="icon">📧</span>Envío por correo y WhatsApp</div>
+      <div class="feat-chip"><span class="icon">🔁</span>Notas crédito y débito</div>
+      <div class="feat-chip"><span class="icon">📱</span>App móvil incluida</div>
+      <div class="feat-chip"><span class="icon">⚡</span>Sin POS físico necesario</div>
+      <div class="feat-chip"><span class="icon">💰</span>Desde $149.000/trimestre</div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="mailto:ventas@bold.co" class="btn-notify">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M2 6l7 5 7-5"/></svg>
+        Avísame cuando esté lista
+      </a>
+      <a href="index.html" class="btn-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:14px;height:14px"><path d="M10 4l-4 4 4 4"/></svg>
+        Volver a Bold POS
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER STRIP -->
+<div class="footer-strip">
+  <div class="footer-strip-logo">bol<span>d</span></div>
+  <div class="footer-strip-text">© 2026 Bold Financial Technologies · Vigilada SFC</div>
+</div>
+
+</body>
+</html>
