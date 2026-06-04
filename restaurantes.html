@@ -51,9 +51,9 @@
     .plan-product-panel { display:none; }
     .plan-product-panel.active { display:block; }
     .price-trim { display:flex; }
-    .price-anual { display:none; }
-    .period-anual .price-trim { display:none; }
-    .period-anual .price-anual { display:flex; }
+    .price-anual { display:none !important; }
+    .period-anual .price-trim { display:none !important; }
+    .period-anual .price-anual { display:flex !important; }
     .plan-price-saving { font-size:11px; color:#00875A; font-weight:600; margin-top:4px; display:none; }
     .period-anual .plan-price-saving { display:block; }
     .btn-nav-primary {
@@ -397,7 +397,7 @@
 <!-- FIXED CTA -->
 <div class="fixed-cta">
   <span class="fixed-cta-label">Empieza gratis hoy · Sin tarjeta</span>
-  <a href="myaccount.html" class="fixed-cta-btn">
+  <a href="onboarding.html" class="fixed-cta-btn">
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 8h16M7 13h2M11 13h2"/></svg>
     Quiero mi POS
   </a>
@@ -415,7 +415,7 @@
   </div>
   <div style="display:flex;align-items:center;gap:12px">
     <button style="font-size:14px;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:8px 16px;border-radius:50px;font-family:inherit">Iniciar sesión</button>
-    <a href="myaccount.html" class="btn-nav-primary">Quiero mi POS</a>
+    <a href="onboarding.html" class="btn-nav-primary">Quiero mi POS</a>
   </div>
 </nav>
 
@@ -432,7 +432,7 @@
       Control de mesas, comandas a cocina, división de cuentas y cierres por turno. Todo lo que necesitas para operar sin fricciones, desde la barra hasta la mesa.
     </p>
     <div class="hero-actions">
-      <a href="myaccount.html" class="btn-hero-primary">
+      <a href="onboarding.html" class="btn-hero-primary">
         <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px"><path d="M9 2v14M2 9h14"/></svg>
         Empieza gratis 15 días
       </a>
@@ -717,9 +717,9 @@
   </div>
 
   <div class="plan-tabs-bar">
-    <button class="plan-tab-btn" onclick="switchPlanTab('boldpos', this)">Bold POS</button>
-    <button class="plan-tab-btn active" onclick="switchPlanTab('restaurantes', this)">POS Restaurantes</button>
-    <button class="plan-tab-btn" onclick="switchPlanTab('facturacion', this)">POS Facturación electrónica Lite</button>
+    <a class="plan-tab-btn" href="index.html#precios">Bold POS</a>
+    <a class="plan-tab-btn active" href="#precios">POS Restaurantes</a>
+    <a class="plan-tab-btn" href="facturacion.html">POS Facturación electrónica Lite</a>
   </div>
 
   <div class="plan-period-toggle" id="period-toggle">
@@ -727,67 +727,9 @@
     <button class="period-opt" onclick="switchPeriod('anual', this)">Anual <span class="period-save-tag">Ahorra 25%</span></button>
   </div>
 
-  <!-- Bold POS -->
-  <div class="plan-product-panel" id="panel-boldpos">
-    <div class="plans-grid">
-      <div class="plan-card">
-        <div class="plan-name">Esencial</div>
-        <div class="plan-desc">Para emprendedores que están empezando.</div>
-        <div class="price-trim plan-price"><span class="amount">$289.000</span><span class="period">/trimestre</span></div>
-        <div class="price-anual plan-price"><span class="amount">$963.000</span><span class="period">/año</span></div>
-        <div class="plan-price-saving">Ahorras $193.000 vs pago trimestral</div>
-        <div class="plan-divider"></div>
-        <div class="plan-features-list">
-          <div class="plan-feat"><span class="check">✓</span>1 Sucursal · 1 Usuario</div>
-          <div class="plan-feat"><span class="check">✓</span>Ventas, Inventarios y Reportes</div>
-          <div class="plan-feat"><span class="check">✓</span>App móvil (Android y iOS)</div>
-          <div class="plan-feat"><span class="check">✓</span>200 facturas electrónicas/mes</div>
-          <div class="plan-feat" style="color:var(--gray-text)"><span class="check" style="background:var(--gray-bg);color:var(--gray-text)">–</span>Integración datáfono</div>
-        </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
-        <div class="plan-note">15 días de prueba sin tarjeta</div>
-      </div>
-      <div class="plan-card featured">
-        <div class="plan-badge">⭐ Más popular</div>
-        <div class="plan-name">Avanzado</div>
-        <div class="plan-desc">Para empresas medianas en crecimiento.</div>
-        <div class="price-trim plan-price"><span class="amount">$429.000</span><span class="period">/trimestre</span></div>
-        <div class="price-anual plan-price"><span class="amount">$1.287.000</span><span class="period">/año</span></div>
-        <div class="plan-price-saving">Ahorras $429.000 vs pago trimestral</div>
-        <div class="plan-divider"></div>
-        <div class="plan-features-list">
-          <div class="plan-feat"><span class="check">✓</span>1 Sucursal · 2 Usuarios</div>
-          <div class="plan-feat"><span class="check">✓</span>Ventas, Inventarios y Reportes</div>
-          <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
-          <div class="plan-feat"><span class="check">✓</span>App móvil (Android y iOS)</div>
-          <div class="plan-feat"><span class="check">✓</span>Integración datáfono Bold</div>
-        </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
-        <div class="plan-note">15 días de prueba sin tarjeta</div>
-      </div>
-      <div class="plan-card">
-        <div class="plan-name">Ilimitado</div>
-        <div class="plan-desc">Para grandes negocios sin restricciones.</div>
-        <div class="price-trim plan-price"><span class="amount">$607.000</span><span class="period">/trimestre</span></div>
-        <div class="price-anual plan-price"><span class="amount">$1.821.000</span><span class="period">/año</span></div>
-        <div class="plan-price-saving">Ahorras $607.000 vs pago trimestral</div>
-        <div class="plan-divider"></div>
-        <div class="plan-features-list">
-          <div class="plan-feat"><span class="check">✓</span>1 Sucursal · Usuarios ilimitados</div>
-          <div class="plan-feat"><span class="check">✓</span>Ventas, Inventarios y Reportes</div>
-          <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
-          <div class="plan-feat"><span class="check">✓</span>App móvil (Android y iOS)</div>
-          <div class="plan-feat"><span class="check">✓</span>Integración datáfono Bold</div>
-        </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
-        <div class="plan-note">15 días de prueba sin tarjeta</div>
-      </div>
-    </div>
-  </div>
 
-  <!-- POS Restaurantes (active) -->
-  <div class="plan-product-panel active" id="panel-restaurantes">
-    <div class="plans-grid">
+
+  <div class="plans-grid">
       <div class="plan-card">
         <div class="plan-name">Esencial</div>
         <div class="plan-desc">Para restaurantes y bares que arrancan.</div>
@@ -802,7 +744,7 @@
           <div class="plan-feat"><span class="check">✓</span>200 facturas electrónicas/mes</div>
           <div class="plan-feat" style="color:var(--gray-text)"><span class="check" style="background:var(--gray-bg);color:var(--gray-text)">–</span>Pantalla de cocina (KDS)</div>
         </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
+        <a href="onboarding.html" class="plan-cta">Comenzar gratis</a>
         <div class="plan-note">15 días de prueba sin tarjeta</div>
       </div>
       <div class="plan-card featured">
@@ -820,7 +762,7 @@
           <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
           <div class="plan-feat"><span class="check">✓</span>Integración datáfono Bold</div>
         </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
+        <a href="onboarding.html" class="plan-cta">Comenzar gratis</a>
         <div class="plan-note">15 días de prueba sin tarjeta</div>
       </div>
       <div class="plan-card">
@@ -837,69 +779,12 @@
           <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
           <div class="plan-feat"><span class="check">✓</span>API e integraciones</div>
         </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
+        <a href="onboarding.html" class="plan-cta">Comenzar gratis</a>
         <div class="plan-note">15 días de prueba sin tarjeta</div>
       </div>
     </div>
   </div>
 
-  <!-- POS Facturación Lite -->
-  <div class="plan-product-panel" id="panel-facturacion">
-    <div class="plans-grid">
-      <div class="plan-card">
-        <div class="plan-name">Básico</div>
-        <div class="plan-desc">Para negocios que solo necesitan facturar.</div>
-        <div class="price-trim plan-price"><span class="amount">$149.000</span><span class="period">/trimestre</span></div>
-        <div class="price-anual plan-price"><span class="amount">$447.000</span><span class="period">/año</span></div>
-        <div class="plan-price-saving">Ahorras $149.000 vs pago trimestral</div>
-        <div class="plan-divider"></div>
-        <div class="plan-features-list">
-          <div class="plan-feat"><span class="check">✓</span>200 facturas electrónicas/mes</div>
-          <div class="plan-feat"><span class="check">✓</span>Notas crédito y débito</div>
-          <div class="plan-feat"><span class="check">✓</span>Envío por correo y WhatsApp</div>
-          <div class="plan-feat"><span class="check">✓</span>1 usuario · App móvil</div>
-          <div class="plan-feat" style="color:var(--gray-text)"><span class="check" style="background:var(--gray-bg);color:var(--gray-text)">–</span>Inventario y reportes</div>
-        </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
-        <div class="plan-note">15 días de prueba sin tarjeta</div>
-      </div>
-      <div class="plan-card featured">
-        <div class="plan-badge">⭐ Más popular</div>
-        <div class="plan-name">Avanzado</div>
-        <div class="plan-desc">Facturación + control básico del negocio.</div>
-        <div class="price-trim plan-price"><span class="amount">$229.000</span><span class="period">/trimestre</span></div>
-        <div class="price-anual plan-price"><span class="amount">$687.000</span><span class="period">/año</span></div>
-        <div class="plan-price-saving">Ahorras $229.000 vs pago trimestral</div>
-        <div class="plan-divider"></div>
-        <div class="plan-features-list">
-          <div class="plan-feat"><span class="check">✓</span>1.000 facturas electrónicas/mes</div>
-          <div class="plan-feat"><span class="check">✓</span>Notas crédito y débito</div>
-          <div class="plan-feat"><span class="check">✓</span>Envío por correo y WhatsApp</div>
-          <div class="plan-feat"><span class="check">✓</span>3 usuarios · Inventario básico</div>
-          <div class="plan-feat"><span class="check">✓</span>Reportes de ventas</div>
-        </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
-        <div class="plan-note">15 días de prueba sin tarjeta</div>
-      </div>
-      <div class="plan-card">
-        <div class="plan-name">Ilimitado</div>
-        <div class="plan-desc">Facturación sin límites para volúmenes altos.</div>
-        <div class="price-trim plan-price"><span class="amount">$319.000</span><span class="period">/trimestre</span></div>
-        <div class="price-anual plan-price"><span class="amount">$957.000</span><span class="period">/año</span></div>
-        <div class="plan-price-saving">Ahorras $319.000 vs pago trimestral</div>
-        <div class="plan-divider"></div>
-        <div class="plan-features-list">
-          <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
-          <div class="plan-feat"><span class="check">✓</span>Notas crédito y débito</div>
-          <div class="plan-feat"><span class="check">✓</span>Envío por correo y WhatsApp</div>
-          <div class="plan-feat"><span class="check">✓</span>Usuarios ilimitados</div>
-          <div class="plan-feat"><span class="check">✓</span>Inventario, reportes y API</div>
-        </div>
-        <a href="myaccount.html" class="plan-cta">Comenzar gratis</a>
-        <div class="plan-note">15 días de prueba sin tarjeta</div>
-      </div>
-    </div>
-  </div>
 
 </section>
 
@@ -969,7 +854,7 @@
   <h2 class="final-cta-title">¿Listo para llevar tu restaurante<br>al siguiente nivel?</h2>
   <p class="final-cta-subtitle">Empieza gratis hoy. Sin costos de instalación · Sin permanencia · Soporte incluido.</p>
   <div class="final-cta-actions">
-    <a href="myaccount.html" class="btn-final-white">🍽️ Quiero mi POS ahora</a>
+    <a href="onboarding.html" class="btn-final-white">🍽️ Quiero mi POS ahora</a>
     <a href="#precios" class="btn-final-outline">Ver planes y precios</a>
   </div>
 </section>
@@ -1030,13 +915,6 @@
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
-  }
-
-  function switchPlanTab(tab, btn) {
-    document.querySelectorAll('.plan-product-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.plan-tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('panel-' + tab).classList.add('active');
-    btn.classList.add('active');
   }
 
   function switchPeriod(period, btn) {

@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bold · Mi Suscripción</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #E8003D;
+      --red-light: #FFE5ED;
+      --navy:      #12122A;
+      --blue:      #121E6C;
+      --gray-bg:   #F4F5F8;
+      --gray-line: #E4E6EF;
+      --gray-text: #7B7E96;
+      --text:      #1C1C3A;
+      --white:     #FFFFFF;
+      --green:     #00C48C;
+      --green-light: #E6F9F3;
+      --orange:    #FF9500;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      background: var(--gray-bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── TOP NAV ── */
+    .topnav {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-line);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .topnav-logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -1px;
+    }
+    .topnav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .topnav-commerce {
+      text-align: right;
+    }
+    .topnav-commerce .name { font-weight: 600; font-size: 13px; }
+    .topnav-commerce .id   { font-size: 11px; color: var(--gray-text); }
+    .avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+    }
+
+    /* ── STEPPER ── */
+    .stepper-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-line);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 0;
+      white-space: nowrap;
+      color: var(--gray-text);
+      font-size: 13px;
+      font-weight: 500;
+      position: relative;
+    }
+    .step + .step::before {
+      content: '›';
+      margin: 0 12px;
+      color: var(--gray-line);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .step-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 2px solid var(--gray-line);
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .step.done .step-num {
+      background: var(--green); border-color: var(--green); color: #fff;
+    }
+    .step.active .step-num {
+      background: var(--red); border-color: var(--red); color: #fff;
+    }
+    .step.active { color: var(--text); font-weight: 600; }
+    .step.done   { color: var(--gray-text); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      margin-bottom: 28px;
+    }
+    .page-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .page-header p {
+      font-size: 14px;
+      color: var(--gray-text);
+      line-height: 1.6;
+    }
+
+    /* ── CURRENT PLAN CARD ── */
+    .current-plan-card {
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .current-plan-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .plan-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 4px;
+    }
+    .plan-name-big {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .plan-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .plan-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .plan-meta-item .lbl { font-size: 11px; color: var(--gray-text); }
+    .plan-meta-item .val { font-size: 13px; font-weight: 600; color: var(--text); }
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-chip.active { background: var(--green-light); color: #00875A; }
+    .status-chip.active::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%; background: #00875A;
+    }
+    .status-chip.warning { background: #FFF4E0; color: #B36A00; }
+    .status-chip.warning::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--orange);
+    }
+
+    /* ── ALERT BANNER ── */
+    .alert-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .alert-banner.warning {
+      background: #FFF9EC;
+      border: 1px solid #F0C040;
+      color: #7A5600;
+    }
+    .alert-banner.info {
+      background: #EEF0FF;
+      border: 1px solid #b3bcf5;
+      color: var(--blue);
+    }
+    .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .alert-text strong { font-weight: 700; display: block; margin-bottom: 2px; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    /* ── PLAN CARDS GRID ── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .plan-card {
+      background: var(--white);
+      border: 2px solid var(--gray-line);
+      border-radius: 12px;
+      padding: 22px 20px;
+      cursor: pointer;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .plan-card:hover {
+      border-color: #b3bcf5;
+      box-shadow: 0 4px 16px rgba(18,30,108,0.08);
+    }
+    .plan-card.selected {
+      border-color: var(--red);
+      box-shadow: 0 4px 20px rgba(232,0,61,0.12);
+    }
+    .plan-card.current-tag {
+      border-color: var(--green);
+    }
+    .plan-card.popular-tag {
+      border-color: var(--blue);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -10px; left: 16px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .plan-badge.current { background: var(--green); color: #fff; }
+    .plan-badge.popular { background: var(--blue); color: #fff; }
+    .plan-badge.recommended { background: var(--red); color: #fff; }
+
+    .plan-card-header { display: flex; flex-direction: column; gap: 4px; }
+    .plan-card-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .plan-card-vertical {
+      font-size: 11px;
+      color: var(--gray-text);
+      font-weight: 500;
+    }
+    .plan-card-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .price-amount {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .price-period {
+      font-size: 12px;
+      color: var(--gray-text);
+    }
+    .price-old {
+      font-size: 12px;
+      color: var(--gray-text);
+      text-decoration: line-through;
+    }
+    .plan-divider { height: 1px; background: var(--gray-line); }
+    .plan-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .plan-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text);
+    }
+    .plan-feature .check {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--green-light);
+      color: #00875A;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 9px;
+      margin-top: 1px;
+    }
+    .plan-feature.disabled { color: var(--gray-text); }
+    .plan-feature.disabled .check {
+      background: var(--gray-bg);
+      color: var(--gray-text);
+    }
+
+    .plan-select-btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 9px 0;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      border: 2px solid var(--gray-line);
+      background: var(--white);
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .plan-select-btn:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+    .plan-card.selected .plan-select-btn {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 14px; font-weight: 600; font-family: inherit;
+      cursor: pointer; border: none; transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn:hover { opacity: 0.88; }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-outline {
+      background: var(--white);
+      color: var(--text);
+      border: 1.5px solid var(--gray-line);
+    }
+    .btn-outline:hover { border-color: var(--text); opacity: 1; }
+    .btn-ghost {
+      background: none; border: none; color: var(--red);
+      font-size: 14px; font-weight: 600; font-family: inherit;
+      cursor: pointer; padding: 10px 4px;
+    }
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .actions-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .actions-row.space-between {
+      justify-content: space-between;
+    }
+
+    /* ── SUMMARY SCREEN ── */
+    .summary-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .summary-layout { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-line);
+    }
+
+    /* Payment method */
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 2px solid var(--gray-line);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .payment-option:hover { border-color: #b3bcf5; }
+    .payment-option.selected { border-color: var(--red); background: #FFF7F9; }
+    .payment-option input[type=radio] { display: none; }
+    .radio-dot {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid var(--gray-line);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.15s;
+    }
+    .payment-option.selected .radio-dot {
+      border-color: var(--red);
+    }
+    .radio-dot::after {
+      content: '';
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--red);
+      display: none;
+    }
+    .payment-option.selected .radio-dot::after { display: block; }
+    .payment-method-info { flex: 1; }
+    .payment-method-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .payment-method-desc { font-size: 12px; color: var(--gray-text); margin-top: 2px; }
+    .payment-logo {
+      font-size: 22px;
+      width: 36px; height: 36px;
+      background: var(--gray-bg);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Card input */
+    .card-form {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-line);
+    }
+    .card-form.visible { display: flex; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-size: 12px; font-weight: 600; color: var(--text); }
+    .form-field input {
+      padding: 9px 12px;
+      border: 1px solid var(--gray-line);
+      border-radius: 8px;
+      font-size: 13px; font-family: inherit;
+      color: var(--text); outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-field input:focus { border-color: var(--blue); }
+    .form-field input::placeholder { color: var(--gray-text); }
+    .form-field.full { grid-column: 1 / -1; }
+
+    /* Order summary sidebar */
+    .order-box {
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 12px;
+      padding: 22px 24px;
+      position: sticky;
+      top: 80px;
+    }
+    .order-box-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .order-plan-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--gray-line);
+    }
+    .order-plan-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .order-plan-period { font-size: 11px; color: var(--gray-text); margin-top: 2px; }
+    .order-price { font-size: 14px; font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .order-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-line);
+    }
+    .order-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+    .order-line .lbl { color: var(--gray-text); }
+    .order-line .val { font-weight: 500; color: var(--text); }
+    .order-line .val.discount { color: #00875A; }
+    .order-total-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+    }
+    .order-total-label { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .order-total-amount { font-size: 20px; font-weight: 800; color: var(--navy); }
+    .order-note {
+      font-size: 11px;
+      color: var(--gray-text);
+      margin-top: 10px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    /* Periodicity toggle */
+    .period-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--gray-bg);
+      border-radius: 50px;
+      padding: 3px;
+      gap: 2px;
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+    .period-btn {
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      background: none;
+      color: var(--gray-text);
+      transition: all 0.15s;
+    }
+    .period-btn.active {
+      background: var(--white);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .period-btn .save-tag {
+      font-size: 10px;
+      font-weight: 700;
+      background: #00875A;
+      color: #fff;
+      padding: 1px 6px;
+      border-radius: 20px;
+      margin-left: 6px;
+    }
+
+    /* ── CONFIRMATION ── */
+    .success-screen {
+      max-width: 540px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .success-icon {
+      width: 80px; height: 80px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+    }
+    .success-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .success-subtitle {
+      font-size: 14px;
+      color: var(--gray-text);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .success-detail-box {
+      background: var(--white);
+      border: 1px solid var(--gray-line);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .success-detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--gray-line);
+    }
+    .success-detail-row:last-child { border-bottom: none; }
+    .success-detail-row .lbl { color: var(--gray-text); }
+    .success-detail-row .val { font-weight: 600; color: var(--text); }
+    .success-detail-row .val.green { color: #00875A; }
+
+    /* ── MANAGE SCREEN ── */
+    .manage-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-line);
+    }
+    .manage-row:last-child { border-bottom: none; }
+    .manage-row .lbl { font-size: 13px; font-weight: 600; color: var(--text); }
+    .manage-row .desc { font-size: 12px; color: var(--gray-text); margin-top: 2px; }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--gray-text);
+      cursor: pointer;
+      margin-bottom: 20px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0;
+    }
+    .back-link:hover { color: var(--text); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* ── PROMO TAG ── */
+    .promo-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      background: #FFF9EC;
+      border: 1px solid #F0C040;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #8A5A00;
+    }
+
+    /* Chip inline */
+    .chip-inline {
+      display: inline-flex; align-items: center;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 11px; font-weight: 600;
+    }
+    .chip-blue { background: #EEF0FF; color: var(--blue); }
+    .chip-green { background: var(--green-light); color: #00875A; }
+    .chip-red { background: var(--red-light); color: var(--red); }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TOP NAV
+══════════════════════════════════════ -->
+<nav class="topnav">
+  <div class="topnav-logo">bold</div>
+  <div class="topnav-right">
+    <div class="topnav-commerce">
+      <div class="name">Restaurante Josefina</div>
+      <div class="id">ID: POS1235456</div>
+    </div>
+    <div class="avatar">RJ</div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     STEPPER
+══════════════════════════════════════ -->
+<div class="stepper-bar" id="stepper">
+  <div class="step active" id="step-1">
+    <div class="step-num">1</div>
+    Mi suscripción
+  </div>
+  <div class="step" id="step-2">
+    <div class="step-num">2</div>
+    Elegir plan
+  </div>
+  <div class="step" id="step-3">
+    <div class="step-num">3</div>
+    Resumen y pago
+  </div>
+  <div class="step" id="step-4">
+    <div class="step-num">4</div>
+    Confirmación
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 1 — MI SUSCRIPCIÓN
+══════════════════════════════════════ -->
+<div class="screen active" id="screen-1">
+  <div class="container">
+
+    <div class="page-header">
+      <h1>Mi suscripción</h1>
+      <p>Gestiona tu plan actual, revisa tu próxima renovación y actualiza tu forma de pago.</p>
+    </div>
+
+    <!-- Alert: próxima renovación -->
+    <div class="alert-banner warning">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-text">
+        <strong>Tu plan vence en 14 días</strong>
+        Renueva antes del <strong>18 de junio de 2026</strong> para evitar la interrupción del servicio.
+        Puedes cambiar de plan o mantener el mismo.
+      </div>
+    </div>
+
+    <!-- Plan actual -->
+    <div class="current-plan-card">
+      <div class="current-plan-info">
+        <div class="plan-label">Plan actual</div>
+        <div class="plan-name-big">Emprendedor 3000 Silver Pro</div>
+        <div class="plan-meta-row">
+          <div class="plan-meta-item">
+            <span class="lbl">Precio</span>
+            <span class="val">$89.000/mes</span>
+          </div>
+          <div class="plan-meta-item">
+            <span class="lbl">Vertical</span>
+            <span class="val">Restaurante</span>
+          </div>
+          <div class="plan-meta-item">
+            <span class="lbl">Inicio</span>
+            <span class="val">4 mayo 2026</span>
+          </div>
+          <div class="plan-meta-item">
+            <span class="lbl">Vencimiento</span>
+            <span class="val">18 jun 2026</span>
+          </div>
+          <div>
+            <span class="status-chip warning">Próximo a vencer</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+        <button class="btn btn-primary" onclick="goToStep(2)">Renovar o cambiar plan</button>
+        <button class="btn-ghost" style="font-size:13px" onclick="goToStep(2)">Ver todos los planes</button>
+      </div>
+    </div>
+
+    <!-- Uso del mes -->
+    <div class="section-title">Uso este período</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:32px">
+      <div class="card" style="margin-bottom:0;padding:18px 20px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-text);margin-bottom:8px">Facturas emitidas</div>
+        <div style="font-size:28px;font-weight:800;color:var(--navy)">318</div>
+        <div style="font-size:12px;color:var(--gray-text);margin-top:4px">de 500 incluidas</div>
+        <div style="margin-top:10px;height:4px;background:var(--gray-bg);border-radius:2px">
+          <div style="width:63%;height:100%;background:var(--blue);border-radius:2px"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:0;padding:18px 20px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-text);margin-bottom:8px">Comprobantes</div>
+        <div style="font-size:28px;font-weight:800;color:var(--navy)">241</div>
+        <div style="font-size:12px;color:var(--gray-text);margin-top:4px">de 300 incluidos</div>
+        <div style="margin-top:10px;height:4px;background:var(--gray-bg);border-radius:2px">
+          <div style="width:80%;height:100%;background:var(--orange);border-radius:2px"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:0;padding:18px 20px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-text);margin-bottom:8px">Usuarios activos</div>
+        <div style="font-size:28px;font-weight:800;color:var(--navy)">3</div>
+        <div style="font-size:12px;color:var(--gray-text);margin-top:4px">de 5 incluidos</div>
+        <div style="margin-top:10px;height:4px;background:var(--gray-bg);border-radius:2px">
+          <div style="width:60%;height:100%;background:var(--green);border-radius:2px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Método de pago registrado -->
+    <div class="section-title">Método de pago</div>
+    <div class="card" style="max-width:480px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="payment-logo" style="font-size:28px;background:#F4F5F8">💳</div>
+          <div>
+            <div style="font-size:13px;font-weight:600">Tarjeta terminada en 4242</div>
+            <div style="font-size:12px;color:var(--gray-text)">Visa · Vence 09/28</div>
+          </div>
+        </div>
+        <span class="chip-inline chip-green">Principal</span>
+      </div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--gray-line);display:flex;gap:10px">
+        <button class="btn btn-outline" style="font-size:12px;padding:7px 14px">Cambiar tarjeta</button>
+        <button class="btn btn-outline" style="font-size:12px;padding:7px 14px">Agregar método</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 2 — ELEGIR PLAN
+══════════════════════════════════════ -->
+<div class="screen" id="screen-2">
+  <div class="container">
+
+    <button class="back-link" onclick="goToStep(1)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 4l-4 4 4 4"/></svg>
+      Volver a mi suscripción
+    </button>
+
+    <div class="page-header">
+      <h1>Elige tu plan</h1>
+      <p>Selecciona el plan que mejor se adapte a tu negocio. Puedes cambiar en cualquier momento.</p>
+    </div>
+
+    <!-- Period toggle -->
+    <div class="period-toggle">
+      <button class="period-btn active" id="btn-monthly" onclick="setPeriod('monthly')">Mensual</button>
+      <button class="period-btn" id="btn-annual" onclick="setPeriod('annual')">
+        Anual
+        <span class="save-tag">−20%</span>
+      </button>
+    </div>
+
+    <!-- Plans grid -->
+    <div class="section-title">Planes Restaurante</div>
+    <div class="plans-grid" id="plans-grid">
+
+      <!-- Plan Básico -->
+      <div class="plan-card" id="plan-basico" onclick="selectPlan('basico')">
+        <div class="plan-card-header">
+          <div class="plan-card-name">Básico</div>
+          <div class="plan-card-vertical">Restaurante</div>
+        </div>
+        <div class="plan-card-price">
+          <span class="price-amount" id="price-basico">$49.000</span>
+          <span class="price-period">/mes</span>
+        </div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feature"><span class="check">✓</span>200 facturas/mes</div>
+          <div class="plan-feature"><span class="check">✓</span>150 comprobantes/mes</div>
+          <div class="plan-feature"><span class="check">✓</span>2 usuarios</div>
+          <div class="plan-feature"><span class="check">✓</span>Soporte por correo</div>
+          <div class="plan-feature disabled"><span class="check">–</span>Reportes avanzados</div>
+          <div class="plan-feature disabled"><span class="check">–</span>Integración POS</div>
+        </div>
+        <button class="plan-select-btn">Seleccionar</button>
+      </div>
+
+      <!-- Plan Silver Pro — actual -->
+      <div class="plan-card current-tag" id="plan-silver" onclick="selectPlan('silver')">
+        <div class="plan-badge current">Tu plan actual</div>
+        <div class="plan-card-header">
+          <div class="plan-card-name">Emprendedor Silver Pro</div>
+          <div class="plan-card-vertical">Restaurante</div>
+        </div>
+        <div class="plan-card-price">
+          <span class="price-amount" id="price-silver">$89.000</span>
+          <span class="price-period">/mes</span>
+        </div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feature"><span class="check">✓</span>500 facturas/mes</div>
+          <div class="plan-feature"><span class="check">✓</span>300 comprobantes/mes</div>
+          <div class="plan-feature"><span class="check">✓</span>5 usuarios</div>
+          <div class="plan-feature"><span class="check">✓</span>Soporte prioritario</div>
+          <div class="plan-feature"><span class="check">✓</span>Reportes avanzados</div>
+          <div class="plan-feature disabled"><span class="check">–</span>Integración POS</div>
+        </div>
+        <button class="plan-select-btn">Renovar este plan</button>
+      </div>
+
+      <!-- Plan Gold — popular -->
+      <div class="plan-card popular-tag" id="plan-gold" onclick="selectPlan('gold')">
+        <div class="plan-badge popular">Más popular</div>
+        <div class="plan-card-header">
+          <div class="plan-card-name">Gold Pro</div>
+          <div class="plan-card-vertical">Restaurante</div>
+        </div>
+        <div class="plan-card-price">
+          <span class="price-amount" id="price-gold">$149.000</span>
+          <span class="price-period">/mes</span>
+        </div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feature"><span class="check">✓</span>Facturas ilimitadas</div>
+          <div class="plan-feature"><span class="check">✓</span>Comprobantes ilimitados</div>
+          <div class="plan-feature"><span class="check">✓</span>15 usuarios</div>
+          <div class="plan-feature"><span class="check">✓</span>Soporte 24/7</div>
+          <div class="plan-feature"><span class="check">✓</span>Reportes avanzados</div>
+          <div class="plan-feature"><span class="check">✓</span>Integración POS</div>
+        </div>
+        <button class="plan-select-btn">Seleccionar</button>
+      </div>
+
+      <!-- Plan Enterprise -->
+      <div class="plan-card" id="plan-enterprise" onclick="selectPlan('enterprise')">
+        <div class="plan-card-header">
+          <div class="plan-card-name">Enterprise</div>
+          <div class="plan-card-vertical">Multi-vertical</div>
+        </div>
+        <div class="plan-card-price">
+          <span style="font-size:16px;font-weight:700;color:var(--navy)">A medida</span>
+        </div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feature"><span class="check">✓</span>Todo ilimitado</div>
+          <div class="plan-feature"><span class="check">✓</span>Usuarios ilimitados</div>
+          <div class="plan-feature"><span class="check">✓</span>SLA garantizado</div>
+          <div class="plan-feature"><span class="check">✓</span>Onboarding dedicado</div>
+          <div class="plan-feature"><span class="check">✓</span>API acceso completo</div>
+          <div class="plan-feature"><span class="check">✓</span>Facturación personalizada</div>
+        </div>
+        <button class="plan-select-btn">Contactar ventas</button>
+      </div>
+
+    </div>
+
+    <div class="actions-row" id="step2-actions">
+      <button class="btn btn-outline" onclick="goToStep(1)">Cancelar</button>
+      <button class="btn btn-primary" id="btn-continue-step2" onclick="goToStep(3)" disabled>Continuar</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 3 — RESUMEN Y PAGO
+══════════════════════════════════════ -->
+<div class="screen" id="screen-3">
+  <div class="container">
+
+    <button class="back-link" onclick="goToStep(2)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 4l-4 4 4 4"/></svg>
+      Volver a elegir plan
+    </button>
+
+    <div class="page-header">
+      <h1>Resumen y pago</h1>
+      <p>Revisa los detalles de tu suscripción y confirma tu método de pago.</p>
+    </div>
+
+    <div class="summary-layout">
+
+      <!-- Left: Details -->
+      <div>
+
+        <!-- Subscription detail -->
+        <div class="card">
+          <div class="card-title">Detalle de la suscripción</div>
+          <div class="manage-row" style="padding-top:0">
+            <div>
+              <div class="lbl" id="summary-plan-name">Gold Pro — Restaurante</div>
+              <div class="desc" id="summary-plan-period">Facturación mensual · A partir del 4 jun 2026</div>
+            </div>
+            <button class="btn-ghost" style="font-size:12px" onclick="goToStep(2)">Cambiar plan</button>
+          </div>
+          <div class="manage-row">
+            <div>
+              <div class="lbl">Datos del comercio</div>
+              <div class="desc">Restaurante Josefina · POS1235456</div>
+            </div>
+          </div>
+          <div class="manage-row" style="padding-bottom:0">
+            <div>
+              <div class="lbl">Facturación a</div>
+              <div class="desc">NIT 901.234.567-1 · Restaurante Josefina SAS</div>
+            </div>
+            <button class="btn-ghost" style="font-size:12px">Editar</button>
+          </div>
+        </div>
+
+        <!-- Payment method -->
+        <div class="card">
+          <div class="card-title">Método de pago</div>
+          <div class="payment-methods">
+
+            <label class="payment-option selected" id="pay-card" onclick="selectPayment('card')">
+              <div class="radio-dot"></div>
+              <div class="payment-logo">💳</div>
+              <div class="payment-method-info">
+                <div class="payment-method-name">Tarjeta guardada</div>
+                <div class="payment-method-desc">Visa terminada en 4242 · Vence 09/28</div>
+              </div>
+            </label>
+
+            <label class="payment-option" id="pay-new" onclick="selectPayment('new')">
+              <div class="radio-dot"></div>
+              <div class="payment-logo">✚</div>
+              <div class="payment-method-info">
+                <div class="payment-method-name">Nueva tarjeta</div>
+                <div class="payment-method-desc">Débito o crédito Visa / Mastercard</div>
+              </div>
+            </label>
+
+            <label class="payment-option" id="pay-pse" onclick="selectPayment('pse')">
+              <div class="radio-dot"></div>
+              <div class="payment-logo">🏦</div>
+              <div class="payment-method-info">
+                <div class="payment-method-name">PSE</div>
+                <div class="payment-method-desc">Débito directo desde tu cuenta bancaria</div>
+              </div>
+            </label>
+
+          </div>
+
+          <!-- New card form -->
+          <div class="card-form" id="card-form">
+            <div class="form-field full">
+              <label>Número de tarjeta</label>
+              <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" />
+            </div>
+            <div class="form-field full">
+              <label>Nombre en la tarjeta</label>
+              <input type="text" placeholder="Josefina Delgado" />
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label>Fecha de vencimiento</label>
+                <input type="text" placeholder="MM / AA" maxlength="7" />
+              </div>
+              <div class="form-field">
+                <label>CVV</label>
+                <input type="text" placeholder="···" maxlength="4" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Terms -->
+        <div style="font-size:12px;color:var(--gray-text);line-height:1.65;margin-bottom:20px;padding:0 2px">
+          Al confirmar aceptas los
+          <span style="color:var(--blue);cursor:pointer;font-weight:500">Términos y condiciones</span>
+          y la
+          <span style="color:var(--blue);cursor:pointer;font-weight:500">Política de privacidad</span>
+          de Bold. Tu suscripción se renovará automáticamente al finalizar cada período.
+        </div>
+
+        <div class="actions-row">
+          <button class="btn btn-outline" onclick="goToStep(2)">Volver</button>
+          <button class="btn btn-primary" onclick="goToStep(4)">Confirmar y pagar</button>
+        </div>
+
+      </div>
+
+      <!-- Right: Order box -->
+      <div class="order-box">
+        <div class="order-box-title">Resumen del pedido</div>
+
+        <div class="order-plan-row">
+          <div>
+            <div class="order-plan-name" id="order-plan-name">Gold Pro</div>
+            <div class="order-plan-period" id="order-period">Mensual · 1 mes</div>
+          </div>
+          <div class="order-price" id="order-base-price">$149.000</div>
+        </div>
+
+        <div class="order-lines">
+          <div class="order-line">
+            <span class="lbl">Subtotal</span>
+            <span class="val" id="order-subtotal">$149.000</span>
+          </div>
+          <div class="order-line" id="order-discount-row" style="display:none">
+            <span class="lbl">Descuento anual (20%)</span>
+            <span class="val discount" id="order-discount">−$29.800</span>
+          </div>
+          <div class="order-line">
+            <span class="lbl">IVA (19%)</span>
+            <span class="val" id="order-iva">$28.310</span>
+          </div>
+        </div>
+
+        <div class="order-total-row">
+          <span class="order-total-label">Total</span>
+          <span class="order-total-amount" id="order-total">$177.310</span>
+        </div>
+
+        <p class="order-note">
+          Se te cobrará <strong id="order-next-charge">$177.310</strong> hoy y en cada renovación mensual.
+        </p>
+
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-line)">
+          <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gray-text)">
+            <span style="font-size:14px">🔒</span>
+            Pago seguro con cifrado SSL
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 4 — CONFIRMACIÓN
+══════════════════════════════════════ -->
+<div class="screen" id="screen-4">
+  <div class="container">
+    <div class="success-screen">
+
+      <div class="success-icon">✅</div>
+      <div class="success-title">¡Suscripción activada!</div>
+      <div class="success-subtitle">
+        Tu plan <strong id="confirm-plan-name">Gold Pro</strong> fue activado exitosamente.
+        Recibirás un correo de confirmación en <strong>rest_josefina@gmail.com</strong>
+        con todos los detalles de tu suscripción.
+      </div>
+
+      <div class="success-detail-box">
+        <div class="success-detail-row">
+          <span class="lbl">Plan</span>
+          <span class="val" id="confirm-plan-detail">Gold Pro · Restaurante</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="lbl">Período</span>
+          <span class="val" id="confirm-period">Mensual</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="lbl">Inicio</span>
+          <span class="val">4 junio 2026</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="lbl">Próxima renovación</span>
+          <span class="val">4 julio 2026</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="lbl">Total cobrado</span>
+          <span class="val green" id="confirm-total">$177.310</span>
+        </div>
+        <div class="success-detail-row">
+          <span class="lbl">Método de pago</span>
+          <span class="val">Visa ···· 4242</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <button class="btn btn-primary" onclick="goToStep(1)" style="width:100%;justify-content:center">
+          Ir a mi suscripción
+        </button>
+        <button class="btn btn-outline" style="width:100%;justify-content:center">
+          Descargar comprobante
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // ── STATE ──
+  let selectedPlan = null;
+  let selectedPeriod = 'monthly';
+  let selectedPayment = 'card';
+
+  const plans = {
+    basico:     { name: 'Básico',                monthly: 49000,  annual: 39200  },
+    silver:     { name: 'Emprendedor Silver Pro', monthly: 89000,  annual: 71200  },
+    gold:       { name: 'Gold Pro',               monthly: 149000, annual: 119200 },
+    enterprise: { name: 'Enterprise',             monthly: null,   annual: null   },
+  };
+
+  // ── NAVIGATION ──
+  function goToStep(n) {
+    // Validate step 2 → 3
+    if (n === 3 && !selectedPlan) return;
+
+    // Hide all screens
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + n).classList.add('active');
+
+    // Update stepper
+    for (let i = 1; i <= 4; i++) {
+      const el = document.getElementById('step-' + i);
+      el.classList.remove('active', 'done');
+      if (i < n) el.classList.add('done');
+      if (i === n) el.classList.add('active');
+    }
+
+    // Update done step-num icons
+    document.querySelectorAll('.step.done .step-num').forEach(el => {
+      el.innerHTML = '✓';
+    });
+    document.querySelectorAll('.step:not(.done) .step-num').forEach((el, idx) => {
+      el.innerHTML = idx + 1;
+    });
+
+    // Update summary screen if going to step 3
+    if (n === 3) updateSummary();
+    if (n === 4) updateConfirm();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── PLAN SELECTION ──
+  function selectPlan(planId) {
+    if (planId === 'enterprise') {
+      alert('Para planes Enterprise, un asesor te contactará en las próximas 24 horas.');
+      return;
+    }
+
+    selectedPlan = planId;
+
+    // Update UI
+    document.querySelectorAll('.plan-card').forEach(c => {
+      c.classList.remove('selected');
+      c.querySelector('.plan-select-btn').textContent =
+        c.id === 'plan-silver' ? 'Renovar este plan' : 'Seleccionar';
+    });
+
+    const card = document.getElementById('plan-' + planId);
+    card.classList.add('selected');
+    card.querySelector('.plan-select-btn').textContent = '✓ Seleccionado';
+
+    document.getElementById('btn-continue-step2').disabled = false;
+  }
+
+  // ── PERIOD TOGGLE ──
+  function setPeriod(p) {
+    selectedPeriod = p;
+    document.getElementById('btn-monthly').classList.toggle('active', p === 'monthly');
+    document.getElementById('btn-annual').classList.toggle('active', p === 'annual');
+
+    // Update prices
+    const mult = p === 'annual' ? 0.8 : 1;
+    for (const [id, plan] of Object.entries(plans)) {
+      const el = document.getElementById('price-' + id);
+      if (el && plan.monthly) {
+        const price = Math.round(plan.monthly * mult);
+        el.textContent = '$' + price.toLocaleString('es-CO');
+      }
+    }
+  }
+
+  // ── PAYMENT SELECTION ──
+  function selectPayment(method) {
+    selectedPayment = method;
+    ['card','new','pse'].forEach(m => {
+      document.getElementById('pay-' + m).classList.toggle('selected', m === method);
+    });
+    document.getElementById('card-form').classList.toggle('visible', method === 'new');
+  }
+
+  // ── UPDATE SUMMARY ──
+  function updateSummary() {
+    if (!selectedPlan) return;
+    const plan = plans[selectedPlan];
+    const base = selectedPeriod === 'annual' ? plan.monthly * 0.8 : plan.monthly;
+    const discount = selectedPeriod === 'annual' ? plan.monthly * 0.2 : 0;
+    const subtotal = base;
+    const iva = Math.round(subtotal * 0.19);
+    const total = subtotal + iva;
+    const periodLabel = selectedPeriod === 'monthly' ? 'Mensual · 1 mes' : 'Anual · 12 meses';
+
+    document.getElementById('summary-plan-name').textContent = plan.name + ' — Restaurante';
+    document.getElementById('summary-plan-period').textContent =
+      (selectedPeriod === 'monthly' ? 'Facturación mensual' : 'Facturación anual') + ' · A partir del 4 jun 2026';
+    document.getElementById('order-plan-name').textContent = plan.name;
+    document.getElementById('order-period').textContent = periodLabel;
+    document.getElementById('order-base-price').textContent = fmt(base);
+    document.getElementById('order-subtotal').textContent = fmt(subtotal);
+    document.getElementById('order-iva').textContent = fmt(iva);
+    document.getElementById('order-total').textContent = fmt(total);
+    document.getElementById('order-next-charge').textContent = fmt(total);
+
+    const discRow = document.getElementById('order-discount-row');
+    if (selectedPeriod === 'annual') {
+      discRow.style.display = 'flex';
+      document.getElementById('order-discount').textContent = '−' + fmt(discount);
+    } else {
+      discRow.style.display = 'none';
+    }
+  }
+
+  function updateConfirm() {
+    if (!selectedPlan) return;
+    const plan = plans[selectedPlan];
+    const base = selectedPeriod === 'annual' ? plan.monthly * 0.8 : plan.monthly;
+    const total = Math.round((base + base * 0.19));
+    document.getElementById('confirm-plan-name').textContent = plan.name;
+    document.getElementById('confirm-plan-detail').textContent = plan.name + ' · Restaurante';
+    document.getElementById('confirm-period').textContent = selectedPeriod === 'monthly' ? 'Mensual' : 'Anual';
+    document.getElementById('confirm-total').textContent = fmt(total);
+  }
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('es-CO');
+  }
+
+  // Fix step nums after init
+  for (let i = 1; i <= 4; i++) {
+    document.querySelector('#step-' + i + ' .step-num').textContent = i;
+  }
+</script>
+</body>
+</html>
