@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bold POS · Empieza gratis 15 días</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:        #E8003D;
+      --red-dark:   #C0002E;
+      --red-light:  #FFE5ED;
+      --navy:       #12122A;
+      --blue:       #121E6C;
+      --gray-bg:    #F4F5F8;
+      --gray-line:  #E4E6EF;
+      --gray-text:  #7B7E96;
+      --text:       #1C1C3A;
+      --white:      #FFFFFF;
+      --green:      #00C48C;
+      --green-light:#E6F9F3;
+      --orange:     #FF9500;
+    }
+    body { font-family: 'Inter', sans-serif; font-size: 14px; background: var(--gray-bg); color: var(--text); min-height: 100vh; }
+
+    /* ── TOPNAV ── */
+    .topnav {
+      background: var(--white); border-bottom: 1px solid var(--gray-line);
+      height: 60px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 40px;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .nav-logo { font-size: 22px; font-weight: 900; color: var(--navy); letter-spacing: -1px; text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    .nav-right { font-size: 13px; color: var(--gray-text); }
+    .nav-right a { color: var(--red); font-weight: 600; text-decoration: none; }
+
+    /* ── SCREENS ── */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* ════════════════════════════════════════
+       FORM SCREEN
+    ════════════════════════════════════════ */
+    .form-screen { padding: 40px 24px 80px; }
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      max-width: 880px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    @media (max-width: 700px) { .form-layout { grid-template-columns: 1fr; } }
+
+    /* Page header */
+    .page-header { margin-bottom: 28px; }
+    .page-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .page-eyebrow::before { content:''; width:7px;height:7px;border-radius:50%;background:var(--green); }
+    .page-title { font-size: 26px; font-weight: 900; color: var(--navy); letter-spacing: -1px; margin-bottom: 6px; }
+    .page-sub   { font-size: 14px; color: var(--gray-text); line-height: 1.6; }
+
+    /* Card */
+    .card {
+      background: var(--white); border: 1px solid var(--gray-line);
+      border-radius: 14px; padding: 22px 24px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 14px; font-weight: 700; color: var(--navy);
+      margin-bottom: 16px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-line);
+    }
+
+    /* Negocio type selector */
+    .biz-selector { display: flex; gap: 10px; }
+    .biz-opt {
+      flex: 1; padding: 14px 12px;
+      border: 2px solid var(--gray-line);
+      border-radius: 12px; cursor: pointer;
+      text-align: center; font-family: inherit;
+      background: var(--white); transition: all 0.15s;
+    }
+    .biz-opt:hover { border-color: #b3bcf5; }
+    .biz-opt.selected { border-color: var(--red); background: var(--red-light); }
+    .biz-opt-icon { font-size: 24px; display: block; margin-bottom: 6px; }
+    .biz-opt-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .biz-opt.selected .biz-opt-name { color: var(--red); }
+    .biz-opt-desc { font-size: 11px; color: var(--gray-text); margin-top: 2px; }
+
+    /* Form fields */
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-field:last-child { margin-bottom: 0; }
+    .form-field label { font-size: 12px; font-weight: 600; color: var(--text); }
+    .form-field input, .form-field textarea {
+      padding: 10px 13px; border: 1px solid var(--gray-line);
+      border-radius: 9px; font-size: 13px; font-family: inherit;
+      color: var(--text); outline: none; transition: border-color 0.15s;
+      background: var(--white);
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--blue); }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: var(--gray-text); }
+    .form-field textarea { resize: none; height: 72px; }
+
+    /* Free trial banner */
+    .trial-banner {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: linear-gradient(135deg, #0f2218 0%, #163329 100%);
+      border-radius: 14px; padding: 20px 22px; margin-bottom: 16px;
+    }
+    .trial-banner-icon { font-size: 32px; flex-shrink: 0; }
+    .trial-banner-title {
+      font-size: 15px; font-weight: 800; color: var(--white);
+      margin-bottom: 4px; letter-spacing: -0.3px;
+    }
+    .trial-banner-desc {
+      font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.55;
+    }
+    .trial-banner-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(0,196,140,0.2); color: var(--green);
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; margin-top: 8px;
+    }
+    .trial-banner-badge::before { content:''; width:6px;height:6px;border-radius:50%;background:var(--green); }
+
+    /* Actions */
+    .form-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 50px;
+      background: var(--red); color: var(--white);
+      font-size: 14px; font-weight: 700; font-family: inherit;
+      border: none; cursor: pointer; transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--red-dark); }
+    .btn-outline {
+      padding: 11px 22px; border-radius: 50px;
+      background: var(--white); color: var(--text);
+      font-size: 14px; font-weight: 600; font-family: inherit;
+      border: 1.5px solid var(--gray-line); cursor: pointer;
+      transition: border-color 0.15s; text-decoration: none;
+      display: inline-flex; align-items: center;
+    }
+    .btn-outline:hover { border-color: var(--text); }
+
+    /* ── ORDER BOX ── */
+    .order-box {
+      background: var(--white); border: 1px solid var(--gray-line);
+      border-radius: 14px; padding: 20px 22px;
+      position: sticky; top: 76px;
+      align-self: start;
+    }
+    .order-box-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+
+    .order-plan-row {
+      padding: 14px 0; border-bottom: 1px solid var(--gray-line); margin-bottom: 14px;
+    }
+    .order-plan-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .order-plan-sub  { font-size: 11px; color: var(--gray-text); margin-top: 3px; }
+
+    .order-lines { display: flex; flex-direction: column; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid var(--gray-line); }
+    .order-line  { display: flex; justify-content: space-between; font-size: 12px; }
+    .order-line .lbl { color: var(--gray-text); }
+    .order-line .val { font-weight: 600; }
+    .order-line .val.green { color: #00875A; }
+    .order-line .val.strike { text-decoration: line-through; color: var(--gray-text); }
+
+    .order-total { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; }
+    .order-total-lbl  { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .order-total-amt  { font-size: 26px; font-weight: 900; color: var(--green); letter-spacing: -1px; }
+
+    .order-free-note {
+      margin-top: 12px; font-size: 11px; color: var(--gray-text);
+      text-align: center; line-height: 1.55;
+    }
+    .order-free-note strong { color: var(--text); }
+
+    .order-trust {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid var(--gray-line);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 11px; color: var(--gray-text);
+    }
+    .trust-item span { font-size: 13px; }
+
+    /* ════════════════════════════════════════
+       CONFIRM SCREEN
+    ════════════════════════════════════════ */
+    .confirm-screen {
+      min-height: calc(100vh - 60px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 48px 24px 80px;
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .confirm-screen::before {
+      content: ''; position: absolute; top: -100px; left: 50%;
+      transform: translateX(-50%); width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,196,140,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .confirm-wrap {
+      position: relative; z-index: 1;
+      max-width: 500px; width: 100%; text-align: center;
+    }
+
+    /* Celebration icon */
+    .confirm-icon {
+      font-size: 72px; line-height: 1; display: block; margin: 0 auto 28px;
+      filter: drop-shadow(0 8px 24px rgba(0,196,140,0.35));
+      animation: icon-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes icon-pop {
+      from { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+      to   { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .confirm-title {
+      font-size: 28px; font-weight: 900; color: var(--white);
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 12px;
+    }
+    .confirm-subtitle {
+      font-size: 15px; color: rgba(255,255,255,0.55);
+      line-height: 1.7; margin-bottom: 36px;
+    }
+
+    /* Email card */
+    .email-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .email-card-icon { font-size: 36px; display: block; margin-bottom: 12px; }
+    .email-card-title {
+      font-size: 16px; font-weight: 700; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .email-card-body {
+      font-size: 13px; color: rgba(255,255,255,0.55);
+      line-height: 1.65; margin-bottom: 16px;
+    }
+    .email-card-address {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 13px; font-weight: 600; color: var(--white);
+      margin-bottom: 20px;
+    }
+    .email-card-address svg { flex-shrink: 0; opacity: 0.6; }
+
+    /* Actions */
+    .confirm-actions { display: flex; flex-direction: column; gap: 10px; }
+
+    .btn-resend {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px; border-radius: 12px;
+      background: var(--green); color: var(--white);
+      font-size: 14px; font-weight: 700; font-family: inherit;
+      border: none; cursor: pointer; transition: opacity 0.15s;
+    }
+    .btn-resend:disabled {
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.35);
+      cursor: not-allowed;
+    }
+    .btn-resend:not(:disabled):hover { opacity: 0.88; }
+
+    .btn-edit-email {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px; border-radius: 12px;
+      background: transparent; color: rgba(255,255,255,0.6);
+      font-size: 13px; font-weight: 600; font-family: inherit;
+      border: 1.5px solid rgba(255,255,255,0.15); cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-edit-email:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+    /* Timer */
+    .timer-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(255,255,255,0.4);
+      margin-top: 8px; font-weight: 500;
+    }
+    .timer-count { font-weight: 700; color: rgba(255,255,255,0.65); }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(18,18,42,0.55);
+      backdrop-filter: blur(3px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: var(--white); border-radius: 18px;
+      width: 100%; max-width: 400px;
+      padding: 32px 28px 24px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+      transform: translateY(16px) scale(0.97);
+      transition: transform 0.2s;
+    }
+    .modal-backdrop.open .modal-box { transform: translateY(0) scale(1); }
+    .modal-icon { font-size: 40px; display: block; text-align: center; margin-bottom: 16px; }
+    .modal-title {
+      font-size: 17px; font-weight: 800; color: var(--navy);
+      text-align: center; letter-spacing: -0.4px; margin-bottom: 10px;
+    }
+    .modal-body {
+      font-size: 13px; color: var(--gray-text); text-align: center;
+      line-height: 1.65; margin-bottom: 22px;
+    }
+    .modal-actions { display: flex; flex-direction: column; gap: 8px; }
+    .btn-modal-primary {
+      width: 100%; padding: 11px; border-radius: 50px;
+      background: var(--navy); color: var(--white);
+      font-size: 14px; font-weight: 700; font-family: inherit;
+      border: none; cursor: pointer; transition: opacity 0.15s;
+    }
+    .btn-modal-primary:hover { opacity: 0.85; }
+    .btn-modal-ghost {
+      width: 100%; padding: 10px; border-radius: 50px;
+      background: none; color: var(--gray-text);
+      font-size: 13px; font-weight: 600; font-family: inherit;
+      border: 1.5px solid var(--gray-line); cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .btn-modal-ghost:hover { border-color: var(--text); color: var(--text); }
+  </style>
+</head>
+<body>
+
+<!-- MODAL: email ya existe -->
+<div class="modal-backdrop" id="modal-email-exists">
+  <div class="modal-box">
+    <span class="modal-icon">⚠️</span>
+    <div class="modal-title">El correo electrónico ya tiene una cuenta de Bold POS</div>
+    <div class="modal-body">Parece que ya creaste una cuenta con este correo. Puedes iniciar sesión directamente o continuar con otro correo.</div>
+    <div class="modal-actions">
+      <a href="onboarding.html" class="btn-modal-primary" style="display:block;text-align:center;text-decoration:none">Iniciar sesión</a>
+      <button class="btn-modal-ghost" onclick="closeEmailModal()">Continuar de todas formas</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOPNAV -->
+<nav class="topnav">
+  <a class="nav-logo" href="index.html">bol<span>d</span></a>
+  <div class="nav-right">¿Ya tienes cuenta? <a href="onboarding.html">Inicia sesión</a></div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     FORM SCREEN
+════════════════════════════════════════ -->
+<div class="screen active" id="screen-form">
+  <div class="form-screen">
+
+    <div style="max-width:880px;margin:0 auto">
+      <div class="page-header">
+        <div class="page-eyebrow">Prueba gratuita · Sin tarjeta</div>
+        <h1 class="page-title">Empieza gratis hoy.<br>15 días para descubrirlo todo.</h1>
+        <p class="page-sub">Sin compromisos. Sin tarjeta de crédito. Solo tú y tu negocio creciendo con Bold POS.</p>
+      </div>
+    </div>
+
+    <div class="form-layout">
+      <!-- LEFT: FORM -->
+      <div>
+
+        <!-- Free trial banner -->
+        <div class="trial-banner">
+          <span class="trial-banner-icon">🚀</span>
+          <div>
+            <div class="trial-banner-title">Prueba gratis por 15 días el POS que acelera tu crecimiento</div>
+            <div class="trial-banner-desc">Acceso completo a todas las funciones. Al terminar los 15 días decides si continúas — y si lo haces, pagas solo desde ese momento.</div>
+            <div class="trial-banner-badge">Sin tarjeta · Sin permanencia · Cancela cuando quieras</div>
+          </div>
+        </div>
+
+        <!-- Tipo de negocio -->
+        <div class="card">
+          <div class="card-title">¿Qué tipo de negocio tienes?</div>
+          <div class="biz-selector">
+            <button class="biz-opt selected" id="biz-restaurante" onclick="selectBiz('restaurante')">
+              <span class="biz-opt-icon">🍽️</span>
+              <div class="biz-opt-name">Restaurante</div>
+              <div class="biz-opt-desc">Bares, cafeterías y gastronomía</div>
+            </button>
+            <button class="biz-opt" id="biz-comercio" onclick="selectBiz('comercio')">
+              <span class="biz-opt-icon">🏪</span>
+              <div class="biz-opt-name">Comercio</div>
+              <div class="biz-opt-desc">Tiendas, servicios y más</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Datos del negocio -->
+        <div class="card">
+          <div class="card-title">Datos de tu negocio</div>
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label>Nombre completo</label>
+              <input type="text" id="f-nombre" placeholder="Ej. Josefina Delgado" oninput="checkForm()" />
+            </div>
+            <div class="form-field">
+              <label>Nombre del negocio</label>
+              <input type="text" id="f-negocio" placeholder="Ej. Restaurante Josefina" oninput="checkForm()" />
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label>Correo electrónico</label>
+              <input type="email" id="f-correo" placeholder="correo@negocio.com" oninput="checkForm()" />
+            </div>
+            <div class="form-field">
+              <label>Teléfono</label>
+              <input type="tel" id="f-telefono" placeholder="+57 300 000 0000" oninput="checkForm()" />
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label>NIT o cédula</label>
+              <input type="text" id="f-nit" placeholder="900.123.456-1" oninput="checkForm()" />
+            </div>
+            <div class="form-field">
+              <label>¿Qué vendes o haces?</label>
+              <input type="text" id="f-tipo" placeholder="Ej. Vendo ropa casual para mujer" oninput="checkForm()" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a href="javascript:history.back()" class="btn-outline">Volver</a>
+          <a href="planes.html" class="btn-outline">Ver todos los planes</a>
+          <button class="btn-primary" id="btn-submit" onclick="submitForm()" disabled>
+            Activar prueba gratuita
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><path d="M3 7h8M7 4l3 3-3 3"/></svg>
+          </button>
+        </div>
+
+      </div><!-- /left -->
+
+      <!-- RIGHT: ORDER BOX -->
+      <div class="order-box">
+        <div class="order-box-title">Resumen del pedido</div>
+        <div class="order-plan-row">
+          <div class="order-plan-name">Prueba gratuita Bold POS</div>
+          <div class="order-plan-sub" id="order-plan-sub">Restaurante · 15 días completos</div>
+        </div>
+        <div class="order-lines">
+          <div class="order-line">
+            <span class="lbl">Plan (primeros 15 días)</span>
+            <span class="val strike">$89.000/mes</span>
+          </div>
+          <div class="order-line">
+            <span class="lbl">Descuento prueba gratis</span>
+            <span class="val green">−$89.000</span>
+          </div>
+        </div>
+        <div class="order-total">
+          <span class="order-total-lbl">Total hoy</span>
+          <span class="order-total-amt">$0</span>
+        </div>
+        <div class="order-free-note">
+          <strong>Sin cobros durante 15 días.</strong><br>
+          Solo te cobraremos si decides continuar después del período de prueba.
+        </div>
+        <div class="order-trust">
+          <div class="trust-item"><span>🔒</span>Sin tarjeta de crédito requerida</div>
+        </div>
+      </div>
+
+    </div><!-- /form-layout -->
+  </div><!-- /form-screen -->
+</div><!-- /screen-form -->
+
+
+<!-- ════════════════════════════════════════
+     CONFIRM SCREEN
+════════════════════════════════════════ -->
+<div class="screen" id="screen-confirm">
+  <div class="confirm-screen">
+    <div class="confirm-wrap">
+
+      <span class="confirm-icon">🎉</span>
+
+      <div class="confirm-title">Genial, este es el inicio<br>de grandes cosas</div>
+      <div class="confirm-subtitle">
+        Con Bold POS podrás asegurar el control paso a paso de tu negocio — ventas, inventario, facturación y reportes, todo en un solo lugar.
+      </div>
+
+      <div class="email-card">
+        <span class="email-card-icon">📧</span>
+        <div class="email-card-title">Revisa tu correo electrónico</div>
+        <div class="email-card-body">
+          Hemos enviado un enlace de acceso a tu cuenta Bold POS. Úsalo para iniciar sesión y comenzar tu prueba gratuita de 15 días.
+        </div>
+        <div class="email-card-address">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:14px;height:14px"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
+          <span id="confirm-email">correo@negocio.com</span>
+        </div>
+        <div class="confirm-actions">
+          <button class="btn-resend" id="btn-resend" onclick="resendEmail()" disabled>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="width:14px;height:14px"><path d="M14 2L1 7l5 2 2 5 6-13z"/></svg>
+            Reenviar correo
+          </button>
+          <div class="timer-badge" id="timer-badge">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><circle cx="7" cy="7" r="6"/><path d="M7 4v3l2 2"/></svg>
+            Puedes reenviar en <span class="timer-count" id="timer-count">2:00</span>
+          </div>
+          <button class="btn-edit-email" onclick="editEmail()">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:13px;height:13px"><path d="M9 2l3 3-7 7H2v-3L9 2z"/></svg>
+            Modificar mi correo
+          </button>
+        </div>
+      </div>
+
+      <a href="planes.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);font-size:13px;font-weight:600;font-family:inherit;text-decoration:none;transition:all 0.15s;margin-top:4px" onmouseover="this.style.background='rgba(255,255,255,0.13)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.65)'">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="width:13px;height:13px"><path d="M1 3h12M1 7h8M1 11h10"/></svg>
+        Ver todos los planes
+      </a>
+
+    </div>
+  </div>
+</div><!-- /screen-confirm -->
+
+
+<script>
+  let selectedBiz        = 'restaurante';
+  let timerInterval      = null;
+  let timerSeconds       = 120;
+  let modalShown         = false; // first click shows modal, second proceeds
+
+  // ── BUSINESS TYPE ──
+  function selectBiz(type) {
+    selectedBiz = type;
+    document.querySelectorAll('.biz-opt').forEach(b => b.classList.remove('selected'));
+    document.getElementById('biz-' + type).classList.add('selected');
+    const sub = type === 'restaurante' ? 'Restaurante · 15 días completos' : 'Comercio · 15 días completos';
+    document.getElementById('order-plan-sub').textContent = sub;
+  }
+
+  // ── FORM VALIDATION ──
+  function checkForm() {
+    const fields = ['f-nombre','f-negocio','f-correo','f-telefono','f-nit','f-tipo'];
+    const filled = fields.every(id => document.getElementById(id).value.trim().length > 0);
+    document.getElementById('btn-submit').disabled = !filled;
+  }
+
+  // ── SUBMIT ──
+  function submitForm() {
+    if (!modalShown) {
+      // First interaction: show the "email already exists" modal
+      modalShown = true;
+      document.getElementById('modal-email-exists').classList.add('open');
+      return;
+    }
+    // Second interaction (after modal was closed): proceed to confirmation
+    goToConfirm();
+  }
+
+  function closeEmailModal() {
+    document.getElementById('modal-email-exists').classList.remove('open');
+    // Re-enable button so user can click again to proceed
+  }
+
+  function goToConfirm() {
+    const email = document.getElementById('f-correo').value.trim();
+    document.getElementById('confirm-email').textContent = email;
+    document.getElementById('screen-form').classList.remove('active');
+    document.getElementById('screen-confirm').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    startTimer();
+  }
+
+  // ── RESEND TIMER ──
+  function startTimer() {
+    timerSeconds = 120;
+    updateTimerDisplay();
+    document.getElementById('btn-resend').disabled = true;
+    document.getElementById('timer-badge').style.display = 'inline-flex';
+    timerInterval = setInterval(() => {
+      timerSeconds--;
+      updateTimerDisplay();
+      if (timerSeconds <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById('btn-resend').disabled = false;
+        document.getElementById('timer-badge').style.display = 'none';
+      }
+    }, 1000);
+  }
+  function updateTimerDisplay() {
+    const m = Math.floor(timerSeconds / 60);
+    const s = timerSeconds % 60;
+    document.getElementById('timer-count').textContent = m + ':' + String(s).padStart(2,'0');
+  }
+  function resendEmail() {
+    document.getElementById('btn-resend').disabled = true;
+    startTimer();
+    // Show brief feedback
+    const btn = document.getElementById('btn-resend');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Correo enviado';
+    setTimeout(() => { btn.innerHTML = orig; }, 2000);
+  }
+
+  // ── EDIT EMAIL ──
+  function editEmail() {
+    clearInterval(timerInterval);
+    document.getElementById('screen-confirm').classList.remove('active');
+    document.getElementById('screen-form').classList.add('active');
+    setTimeout(() => document.getElementById('f-correo').focus(), 100);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>

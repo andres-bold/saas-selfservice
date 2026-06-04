@@ -1176,7 +1176,7 @@
 ══════════════════════════════════════ -->
 <div class="fixed-cta">
   <span class="fixed-cta-label">Empieza gratis hoy · Sin tarjeta</span>
-  <a href="onboarding.html" class="fixed-cta-btn">
+  <a href="recomendar.html" class="fixed-cta-btn">
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 8h16M7 13h2M11 13h2"/>
     </svg>
@@ -1195,8 +1195,8 @@
     <a href="facturacion.html">POS Facturación electrónica Lite</a>
   </div>
   <div class="nav-actions">
-    <button class="btn-nav-ghost">Iniciar sesión</button>
-    <a href="onboarding.html" class="btn-nav-primary">Quiero mi POS</a>
+    <button class="btn-nav-ghost" onclick="window.location.href='onboarding.html'">Iniciar sesión</button>
+    <a href="recomendar.html" class="btn-nav-primary">Quiero mi POS</a>
   </div>
 </nav>
 
@@ -1213,7 +1213,7 @@
       Bold POS es el sistema de punto de venta que necesita tu negocio: facturación electrónica DIAN, inventario en tiempo real y reportes claros, todo en una sola plataforma.
     </p>
     <div class="hero-actions">
-      <a href="onboarding.html" class="btn-hero-primary">
+      <a href="recomendar.html" class="btn-hero-primary">
         <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px"><path d="M9 2v14M2 9h14"/></svg>
         Empieza gratis 15 días
       </a>
@@ -1493,9 +1493,9 @@
 
   <!-- Product tabs -->
   <div class="plan-tabs-bar">
-    <a class="plan-tab-btn active" href="#precios">Bold POS</a>
-    <a class="plan-tab-btn" href="restaurantes.html#precios">POS Restaurantes</a>
-    <a class="plan-tab-btn" href="facturacion.html">POS Facturación electrónica Lite</a>
+    <button class="plan-tab-btn active" onclick="switchPlanTab('boldpos',this)">Bold POS</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('restaurantes',this)">POS Restaurantes</button>
+    <button class="plan-tab-btn" onclick="switchPlanTab('facturacion',this)">POS Facturación electrónica Lite</button>
   </div>
 
   <!-- Period toggle -->
@@ -1506,7 +1506,7 @@
     </button>
   </div>
 
-  <div class="plans-grid">
+  <div class="plan-product-panel active" id="panel-boldpos"><div class="plans-grid">
       <div class="plan-card">
         <div class="plan-name">Esencial</div>
         <div class="plan-desc">Para emprendedores que están empezando.</div>
@@ -1522,7 +1522,7 @@
           <div class="plan-feat"><span class="check">✓</span>200 facturas electrónicas/mes</div>
           <div class="plan-feat" style="color:var(--gray-text)"><span class="check" style="background:var(--gray-bg);color:var(--gray-text)">–</span>Integración datáfono</div>
         </div>
-        <a href="onboarding.html" class="plan-cta">Comenzar gratis</a>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
         <div class="plan-note">15 días de prueba sin tarjeta</div>
       </div>
 
@@ -1542,7 +1542,7 @@
           <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
           <div class="plan-feat"><span class="check">✓</span>Integración datáfono Bold</div>
         </div>
-        <a href="onboarding.html" class="plan-cta">Comenzar gratis</a>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
         <div class="plan-note">15 días de prueba sin tarjeta</div>
       </div>
 
@@ -1561,12 +1561,122 @@
           <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
           <div class="plan-feat"><span class="check">✓</span>Integración datáfono Bold</div>
         </div>
-        <a href="onboarding.html" class="plan-cta">Comenzar gratis</a>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
         <div class="plan-note">15 días de prueba sin tarjeta</div>
       </div>
-    </div>
-  </div>
+    </div></div><!-- /panel-boldpos -->
 
+  <!-- POS Restaurantes plans -->
+  <div class="plan-product-panel" id="panel-restaurantes"><div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Esencial</div>
+        <div class="plan-desc">Para restaurantes y bares que arrancan.</div>
+        <div class="price-trim plan-price"><span class="amount">$319.000</span><span class="period">/trimestre</span></div>
+        <div class="price-anual plan-price"><span class="amount">$957.000</span><span class="period">/año</span></div>
+        <div class="plan-price-saving">Ahorras $319.000 vs pago trimestral</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="check">✓</span>Hasta 10 mesas · 1 usuario</div>
+          <div class="plan-feat"><span class="check">✓</span>Gestión de comandas</div>
+          <div class="plan-feat"><span class="check">✓</span>Cierre de turno automático</div>
+          <div class="plan-feat"><span class="check">✓</span>200 facturas electrónicas/mes</div>
+          <div class="plan-feat" style="color:var(--gray-text)"><span class="check" style="background:var(--gray-bg);color:var(--gray-text)">–</span>Pantalla de cocina (KDS)</div>
+        </div>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
+        <div class="plan-note">15 días de prueba sin tarjeta</div>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">⭐ Más popular</div>
+        <div class="plan-name">Avanzado</div>
+        <div class="plan-desc">Para restaurantes en pleno crecimiento.</div>
+        <div class="price-trim plan-price"><span class="amount">$469.000</span><span class="period">/trimestre</span></div>
+        <div class="price-anual plan-price"><span class="amount">$1.407.000</span><span class="period">/año</span></div>
+        <div class="plan-price-saving">Ahorras $469.000 vs pago trimestral</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="check">✓</span>Mesas ilimitadas · 5 usuarios</div>
+          <div class="plan-feat"><span class="check">✓</span>Pantalla de cocina (KDS)</div>
+          <div class="plan-feat"><span class="check">✓</span>División de cuentas</div>
+          <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
+          <div class="plan-feat"><span class="check">✓</span>Integración datáfono Bold</div>
+        </div>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
+        <div class="plan-note">15 días de prueba sin tarjeta</div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Ilimitado</div>
+        <div class="plan-desc">Para cadenas y grupos de restaurantes.</div>
+        <div class="price-trim plan-price"><span class="amount">$657.000</span><span class="period">/trimestre</span></div>
+        <div class="price-anual plan-price"><span class="amount">$1.971.000</span><span class="period">/año</span></div>
+        <div class="plan-price-saving">Ahorras $657.000 vs pago trimestral</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="check">✓</span>Multi-sede · Usuarios ilimitados</div>
+          <div class="plan-feat"><span class="check">✓</span>Pantalla de cocina (KDS)</div>
+          <div class="plan-feat"><span class="check">✓</span>Integración domicilios</div>
+          <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
+          <div class="plan-feat"><span class="check">✓</span>API e integraciones</div>
+        </div>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
+        <div class="plan-note">15 días de prueba sin tarjeta</div>
+      </div>
+    </div></div><!-- /panel-restaurantes -->
+
+  <!-- POS Facturación Lite plans -->
+  <div class="plan-product-panel" id="panel-facturacion"><div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Básico</div>
+        <div class="plan-desc">Para negocios que solo necesitan facturar.</div>
+        <div class="price-trim plan-price"><span class="amount">$149.000</span><span class="period">/trimestre</span></div>
+        <div class="price-anual plan-price"><span class="amount">$447.000</span><span class="period">/año</span></div>
+        <div class="plan-price-saving">Ahorras $149.000 vs pago trimestral</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="check">✓</span>200 facturas electrónicas/mes</div>
+          <div class="plan-feat"><span class="check">✓</span>Notas crédito y débito</div>
+          <div class="plan-feat"><span class="check">✓</span>Envío por correo y WhatsApp</div>
+          <div class="plan-feat"><span class="check">✓</span>1 usuario · App móvil</div>
+          <div class="plan-feat" style="color:var(--gray-text)"><span class="check" style="background:var(--gray-bg);color:var(--gray-text)">–</span>Inventario y reportes</div>
+        </div>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
+        <div class="plan-note">15 días de prueba sin tarjeta</div>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">⭐ Más popular</div>
+        <div class="plan-name">Avanzado</div>
+        <div class="plan-desc">Facturación + control básico del negocio.</div>
+        <div class="price-trim plan-price"><span class="amount">$229.000</span><span class="period">/trimestre</span></div>
+        <div class="price-anual plan-price"><span class="amount">$687.000</span><span class="period">/año</span></div>
+        <div class="plan-price-saving">Ahorras $229.000 vs pago trimestral</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="check">✓</span>1.000 facturas electrónicas/mes</div>
+          <div class="plan-feat"><span class="check">✓</span>Notas crédito y débito</div>
+          <div class="plan-feat"><span class="check">✓</span>Envío por correo y WhatsApp</div>
+          <div class="plan-feat"><span class="check">✓</span>3 usuarios · Inventario básico</div>
+          <div class="plan-feat"><span class="check">✓</span>Reportes de ventas</div>
+        </div>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
+        <div class="plan-note">15 días de prueba sin tarjeta</div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Ilimitado</div>
+        <div class="plan-desc">Facturación sin límites para volúmenes altos.</div>
+        <div class="price-trim plan-price"><span class="amount">$319.000</span><span class="period">/trimestre</span></div>
+        <div class="price-anual plan-price"><span class="amount">$957.000</span><span class="period">/año</span></div>
+        <div class="plan-price-saving">Ahorras $319.000 vs pago trimestral</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features-list">
+          <div class="plan-feat"><span class="check">✓</span>Facturas electrónicas ilimitadas</div>
+          <div class="plan-feat"><span class="check">✓</span>Notas crédito y débito</div>
+          <div class="plan-feat"><span class="check">✓</span>Envío por correo y WhatsApp</div>
+          <div class="plan-feat"><span class="check">✓</span>Usuarios ilimitados</div>
+          <div class="plan-feat"><span class="check">✓</span>Inventario, reportes y API</div>
+        </div>
+        <a href="recomendar.html" class="plan-cta">Comenzar gratis</a>
+        <div class="plan-note">15 días de prueba sin tarjeta</div>
+      </div>
+    </div></div><!-- /panel-facturacion -->
 
 </section>
 
@@ -1640,7 +1750,7 @@
   <h2 class="final-cta-title">¿Listo para hacer crecer<br>tu negocio?</h2>
   <p class="final-cta-subtitle">Únete a más de 50.000 negocios que ya venden más con Bold POS.<br>Sin costos de instalación · Sin permanencia · Empieza hoy.</p>
   <div class="final-cta-actions">
-    <a href="onboarding.html" class="btn-final-white">🚀 Quiero mi POS ahora</a>
+    <a href="recomendar.html" class="btn-final-white">🚀 Quiero mi POS ahora</a>
     <a href="#precios" class="btn-final-outline">Ver planes y precios</a>
   </div>
 </section>
@@ -1701,6 +1811,13 @@
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
+  }
+
+  function switchPlanTab(tab, btn) {
+    document.querySelectorAll('#precios .plan-product-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('#precios .plan-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + tab).classList.add('active');
+    btn.classList.add('active');
   }
 
   function switchPeriod(period, btn) {
