@@ -193,12 +193,48 @@
     }
     .trust-item span { font-size: 13px; }
 
+    /* ── SCHEDULE MINI CARD ── */
+    .schedule-mini { background: var(--white); border: 1px solid var(--gray-line); border-radius: 14px; overflow: hidden; }
+    .schedule-mini-inner { padding: 16px 18px; }
+    .schedule-mini-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .schedule-mini-desc { font-size: 12px; color: var(--gray-text); line-height: 1.55; margin-bottom: 12px; }
+    .sched-done-box { background: var(--navy); border-radius: 8px; padding: 10px 14px; color: #fff; margin-bottom: 10px; }
+    .sched-done-box .dt-date { font-size: 13px; font-weight: 800; }
+    .sched-done-box .dt-time { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .btn-cancel-sched { background: none; border: none; font-size: 11px; color: var(--gray-text); cursor: pointer; font-family: inherit; text-decoration: underline; padding: 0; }
+
+    /* ── SCHEDULE MODAL ── */
+    .sched-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(18,18,42,0.6); z-index: 400; align-items: center; justify-content: center; padding: 24px; }
+    .sched-modal-overlay.open { display: flex; }
+    .sched-modal-box { background: var(--white); border-radius: 18px; width: 100%; max-width: 480px; padding: 28px 28px 24px; box-shadow: 0 24px 64px rgba(0,0,0,0.2); }
+    .sched-modal-title { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.4px; }
+    .sched-modal-sub { font-size: 12px; color: var(--gray-text); margin-bottom: 20px; }
+    .sched-section-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-text); display: block; margin-bottom: 8px; }
+    .dc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 18px; }
+    .dc { padding: 7px 4px; border-radius: 8px; font-size: 11px; font-weight: 600; font-family: inherit; border: 1.5px solid var(--gray-line); background: var(--white); color: var(--text); cursor: pointer; text-align: center; line-height: 1.4; transition: all 0.15s; }
+    .dc-day { font-size: 9px; font-weight: 700; color: var(--gray-text); display: block; text-transform: capitalize; }
+    .dc.sel { border-color: var(--blue); background: #EEF0FF; color: var(--blue); }
+    .dc.sel .dc-day { color: var(--blue); }
+    .ts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 20px; }
+    .ts { padding: 9px 4px; border-radius: 8px; font-size: 12px; font-weight: 600; font-family: inherit; border: 1.5px solid var(--gray-line); background: var(--white); color: var(--text); cursor: pointer; text-align: center; transition: all 0.15s; }
+    .ts.sel { border-color: var(--blue); background: #EEF0FF; color: var(--blue); }
+    .sched-modal-actions { display: flex; gap: 10px; }
+
+    /* Confirm screen schedule card (dark bg) */
+    .sched-confirm-card { background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 20px 24px; margin-top: 16px; text-align: left; }
+    .sched-confirm-card .sc-title { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .sched-confirm-card .sc-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55; margin-bottom: 14px; }
+    .sched-confirm-done { background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 20px 24px; margin-top: 16px; }
+    .sched-confirm-done .sc-done-label { font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 6px; }
+    .sched-confirm-done .sc-done-dt { font-size: 15px; font-weight: 800; color: var(--white); margin-bottom: 2px; }
+    .sched-confirm-done .sc-done-time { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+    .btn-cancel-sched-dark { background: none; border: none; font-size: 12px; color: rgba(255,255,255,0.5); cursor: pointer; font-family: inherit; text-decoration: underline; padding: 0; }
+
     /* ════════════════════════════════════════
        CONFIRM SCREEN
     ════════════════════════════════════════ */
     .confirm-screen {
       min-height: calc(100vh - 60px);
-      display: flex; align-items: center; justify-content: center;
       padding: 48px 24px 80px;
       background: var(--navy);
       position: relative; overflow: hidden;
@@ -210,10 +246,19 @@
       background: radial-gradient(circle, rgba(0,196,140,0.1) 0%, transparent 65%);
       pointer-events: none;
     }
-    .confirm-wrap {
+    .confirm-layout {
       position: relative; z-index: 1;
-      max-width: 500px; width: 100%; text-align: center;
+      max-width: 880px; margin: 0 auto;
     }
+    .confirm-header {
+      text-align: center; margin-bottom: 32px;
+    }
+    .confirm-columns {
+      display: grid; grid-template-columns: 1fr 300px;
+      gap: 24px; align-items: start;
+    }
+    .confirm-wrap { width: 100%; }
+    .confirm-sidebar { }
 
     /* Celebration icon */
     .confirm-icon {
@@ -241,6 +286,7 @@
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 16px; padding: 24px 28px;
       margin-bottom: 20px;
+      text-align: center;
     }
     .email-card-icon { font-size: 36px; display: block; margin-bottom: 12px; }
     .email-card-title {
@@ -342,6 +388,29 @@
   </style>
 </head>
 <body>
+
+<!-- MODAL: calendario de agenda -->
+<div class="sched-modal-overlay" id="sched-modal" onclick="if(event.target===this)closeSchedModal()">
+  <div class="sched-modal-box">
+    <div class="sched-modal-title">Agenda tu sesión demo</div>
+    <div class="sched-modal-sub">Un experto Bold te muestra el sistema en 30 minutos — gratis.</div>
+    <span class="sched-section-lbl">Elige una fecha</span>
+    <div class="dc-grid" id="sched-modal-dates"></div>
+    <span class="sched-section-lbl">Elige un horario</span>
+    <div class="ts-grid" id="sched-modal-times">
+      <button class="ts" onclick="modalSelTime(this)">9:00 am</button>
+      <button class="ts" onclick="modalSelTime(this)">10:00 am</button>
+      <button class="ts" onclick="modalSelTime(this)">11:00 am</button>
+      <button class="ts" onclick="modalSelTime(this)">2:00 pm</button>
+      <button class="ts" onclick="modalSelTime(this)">3:00 pm</button>
+      <button class="ts" onclick="modalSelTime(this)">4:00 pm</button>
+    </div>
+    <div class="sched-modal-actions">
+      <button class="btn-primary" id="sched-modal-confirm" onclick="confirmSchedModal()" disabled style="flex:1;justify-content:center">Confirmar sesión</button>
+      <button class="btn-outline" onclick="closeSchedModal()" style="padding:11px 20px">Cancelar</button>
+    </div>
+  </div>
+</div>
 
 <!-- MODAL: email ya existe -->
 <div class="modal-backdrop" id="modal-email-exists">
@@ -445,7 +514,7 @@
         <div class="form-actions">
           <a href="javascript:history.back()" class="btn-outline">Volver</a>
           <a href="planes.html" class="btn-outline">Ver todos los planes</a>
-          <button class="btn-primary" id="btn-submit" onclick="submitForm()" disabled>
+          <button class="btn-primary" id="btn-submit" onclick="submitForm()">
             Activar prueba gratuita
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><path d="M3 7h8M7 4l3 3-3 3"/></svg>
           </button>
@@ -453,34 +522,59 @@
 
       </div><!-- /left -->
 
-      <!-- RIGHT: ORDER BOX -->
-      <div class="order-box">
-        <div class="order-box-title">Resumen del pedido</div>
-        <div class="order-plan-row">
-          <div class="order-plan-name">Prueba gratuita Bold POS</div>
-          <div class="order-plan-sub" id="order-plan-sub">Restaurante · 15 días completos</div>
-        </div>
-        <div class="order-lines">
-          <div class="order-line">
-            <span class="lbl">Plan (primeros 15 días)</span>
-            <span class="val strike">$89.000/mes</span>
+      <!-- RIGHT: AGENDA + ORDER BOX (sticky juntos, agenda primero) -->
+      <div style="position:sticky;top:76px;align-self:start;display:flex;flex-direction:column;gap:12px">
+
+        <!-- Agenda con experto -->
+        <div class="schedule-mini">
+          <!-- Estado: botón agendar -->
+          <div class="schedule-mini-inner" id="sched-form-teaser">
+            <div class="schedule-mini-title">¿Quieres ver el sistema en vivo?</div>
+            <div class="schedule-mini-desc">Un experto Bold te muestra todo en 30 min — sin costo.</div>
+            <button class="btn-primary" style="width:100%;justify-content:center;font-size:13px;padding:10px" onclick="openSchedModal('form')">
+              Agendar sesión demo
+            </button>
           </div>
-          <div class="order-line">
-            <span class="lbl">Descuento prueba gratis</span>
-            <span class="val green">−$89.000</span>
+          <!-- Estado: agendado -->
+          <div class="schedule-mini-inner" id="sched-form-done" style="display:none">
+            <div class="schedule-mini-title" style="margin-bottom:8px">Sesión agendada</div>
+            <div class="sched-done-box">
+              <div class="dt-date" id="sched-form-date">—</div>
+              <div class="dt-time" id="sched-form-time">—</div>
+            </div>
+            <button class="btn-cancel-sched" onclick="cancelSchedForm()">Cancelar cita</button>
           </div>
         </div>
-        <div class="order-total">
-          <span class="order-total-lbl">Total hoy</span>
-          <span class="order-total-amt">$0</span>
+
+        <div class="order-box" style="position:static">
+          <div class="order-box-title">Resumen del pedido</div>
+          <div class="order-plan-row">
+            <div class="order-plan-name">Prueba gratuita Bold POS</div>
+            <div class="order-plan-sub" id="order-plan-sub">Restaurante · 15 días completos</div>
+          </div>
+          <div class="order-lines">
+            <div class="order-line">
+              <span class="lbl">Plan (primeros 15 días)</span>
+              <span class="val strike">$89.000/mes</span>
+            </div>
+            <div class="order-line">
+              <span class="lbl">Descuento prueba gratis</span>
+              <span class="val green">−$89.000</span>
+            </div>
+          </div>
+          <div class="order-total">
+            <span class="order-total-lbl">Total hoy</span>
+            <span class="order-total-amt">$0</span>
+          </div>
+          <div class="order-free-note">
+            <strong>Sin cobros durante 15 días.</strong><br>
+            Solo te cobraremos si decides continuar después del período de prueba.
+          </div>
+          <div class="order-trust">
+            <div class="trust-item"><span>🔒</span>Sin tarjeta de crédito requerida</div>
+          </div>
         </div>
-        <div class="order-free-note">
-          <strong>Sin cobros durante 15 días.</strong><br>
-          Solo te cobraremos si decides continuar después del período de prueba.
-        </div>
-        <div class="order-trust">
-          <div class="trust-item"><span>🔒</span>Sin tarjeta de crédito requerida</div>
-        </div>
+
       </div>
 
     </div><!-- /form-layout -->
@@ -493,48 +587,75 @@
 ════════════════════════════════════════ -->
 <div class="screen" id="screen-confirm">
   <div class="confirm-screen">
-    <div class="confirm-wrap">
+    <div class="confirm-layout">
 
-      <span class="confirm-icon">🎉</span>
-
-      <div class="confirm-title">Genial, este es el inicio<br>de grandes cosas</div>
-      <div class="confirm-subtitle">
-        Con Bold POS podrás asegurar el control paso a paso de tu negocio — ventas, inventario, facturación y reportes, todo en un solo lugar.
+      <!-- Título centrado ancho completo -->
+      <div class="confirm-header">
+        <span class="confirm-icon">🎉</span>
+        <div class="confirm-title">Genial, este es el inicio<br>de grandes cosas</div>
+        <div class="confirm-subtitle">
+          Con Bold POS podrás asegurar el control paso a paso de tu negocio:<br>ventas, inventario, facturación y reportes, todo en un solo lugar.
+        </div>
       </div>
 
-      <div class="email-card">
-        <span class="email-card-icon">📧</span>
-        <div class="email-card-title">Revisa tu correo electrónico</div>
-        <div class="email-card-body">
-          Hemos enviado un enlace de acceso a tu cuenta Bold POS. Úsalo para iniciar sesión y comenzar tu prueba gratuita de 15 días.
-        </div>
-        <div class="email-card-address">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:14px;height:14px"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
-          <span id="confirm-email">correo@negocio.com</span>
-        </div>
-        <div class="confirm-actions">
-          <button class="btn-resend" id="btn-resend" onclick="resendEmail()" disabled>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="width:14px;height:14px"><path d="M14 2L1 7l5 2 2 5 6-13z"/></svg>
-            Reenviar correo
-          </button>
-          <div class="timer-badge" id="timer-badge">
-            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><circle cx="7" cy="7" r="6"/><path d="M7 4v3l2 2"/></svg>
-            Puedes reenviar en <span class="timer-count" id="timer-count">2:00</span>
+      <!-- Dos columnas -->
+      <div class="confirm-columns">
+
+      <!-- Columna izquierda: email -->
+      <div class="confirm-wrap">
+        <div class="email-card">
+          <span class="email-card-icon">📧</span>
+          <div class="email-card-title">Revisa tu correo electrónico</div>
+          <div class="email-card-body">
+            Hemos enviado un enlace de acceso a tu cuenta Bold POS. Úsalo para iniciar sesión y comenzar tu prueba gratuita de 15 días.
           </div>
-          <button class="btn-edit-email" onclick="editEmail()">
-            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:13px;height:13px"><path d="M9 2l3 3-7 7H2v-3L9 2z"/></svg>
-            Modificar mi correo
+          <div class="email-card-address">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:14px;height:14px"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
+            <span id="confirm-email">correo@negocio.com</span>
+          </div>
+          <div class="confirm-actions">
+            <button class="btn-resend" id="btn-resend" onclick="resendEmail()" disabled>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="width:14px;height:14px"><path d="M14 2L1 7l5 2 2 5 6-13z"/></svg>
+              Reenviar correo
+            </button>
+            <div class="timer-badge" id="timer-badge">
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px"><circle cx="7" cy="7" r="6"/><path d="M7 4v3l2 2"/></svg>
+              Puedes reenviar en <span class="timer-count" id="timer-count">2:00</span>
+            </div>
+            <button class="btn-edit-email" onclick="editEmail()">
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="width:13px;height:13px"><path d="M9 2l3 3-7 7H2v-3L9 2z"/></svg>
+              Modificar mi correo
+            </button>
+          </div>
+        </div>
+        <a href="planes.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);font-size:13px;font-weight:600;font-family:inherit;text-decoration:none;transition:all 0.15s;margin-top:4px" onmouseover="this.style.background='rgba(255,255,255,0.13)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.65)'">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="width:13px;height:13px"><path d="M1 3h12M1 7h8M1 11h10"/></svg>
+          Ver todos los planes
+        </a>
+      </div>
+
+      <!-- Columna derecha: agenda -->
+      <div class="confirm-sidebar">
+        <!-- Estado: botón agendar -->
+        <div class="sched-confirm-card" id="sched-confirm-teaser">
+          <div class="sc-title">¿Quieres ver el sistema en vivo?</div>
+          <div class="sc-desc">Un experto Bold te muestra todo lo que puedes hacer con tu POS en 30 minutos — sin costo adicional.</div>
+          <button class="btn-primary" style="width:100%;justify-content:center;font-size:13px" onclick="openSchedModal('confirm')">
+            Agendar sesión demo
           </button>
+        </div>
+        <!-- Estado: agendado -->
+        <div class="sched-confirm-done" id="sched-confirm-done" style="display:none">
+          <div class="sc-done-label">Sesión agendada</div>
+          <div class="sc-done-dt" id="sched-confirm-date">—</div>
+          <div class="sc-done-time" id="sched-confirm-time">—</div>
+          <button class="btn-cancel-sched-dark" onclick="cancelSchedConfirm()">Cancelar cita</button>
         </div>
       </div>
 
-      <a href="planes.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);font-size:13px;font-weight:600;font-family:inherit;text-decoration:none;transition:all 0.15s;margin-top:4px" onmouseover="this.style.background='rgba(255,255,255,0.13)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.65)'">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="width:13px;height:13px"><path d="M1 3h12M1 7h8M1 11h10"/></svg>
-        Ver todos los planes
-      </a>
-
-    </div>
-  </div>
+      </div><!-- /confirm-columns -->
+    </div><!-- /confirm-layout -->
+  </div><!-- /confirm-screen -->
 </div><!-- /screen-confirm -->
 
 
@@ -578,7 +699,7 @@
   }
 
   function goToConfirm() {
-    const email = document.getElementById('f-correo').value.trim();
+    const email = document.getElementById('f-correo').value.trim() || 'correo@cliente.com';
     document.getElementById('confirm-email').textContent = email;
     document.getElementById('screen-form').classList.remove('active');
     document.getElementById('screen-confirm').classList.add('active');
@@ -624,6 +745,93 @@
     document.getElementById('screen-form').classList.add('active');
     setTimeout(() => document.getElementById('f-correo').focus(), 100);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── SCHEDULE MODAL ──
+  let schedModalSource = null; // 'form' | 'confirm'
+  let modalSelDateEl = null;
+  let modalSelTimeEl = null;
+
+  const daysFull   = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const monthsSh   = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const monthsFull = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+  function openSchedModal(source) {
+    schedModalSource = source;
+    modalSelDateEl = null;
+    modalSelTimeEl = null;
+    document.querySelectorAll('#sched-modal-times .ts').forEach(t => t.classList.remove('sel'));
+    document.getElementById('sched-modal-confirm').disabled = true;
+    buildModalDates();
+    document.getElementById('sched-modal').classList.add('open');
+  }
+
+  function buildModalDates() {
+    const container = document.getElementById('sched-modal-dates');
+    container.innerHTML = '';
+    const today = new Date();
+    let added = 0, offset = 1;
+    while (added < 8) {
+      const d = new Date(today);
+      d.setDate(today.getDate() + offset++);
+      if (d.getDay() === 0 || d.getDay() === 6) continue;
+      const chip = document.createElement('button');
+      chip.className = 'dc';
+      chip.innerHTML = `<span class="dc-day">${daysFull[d.getDay()]}</span>${d.getDate()} ${monthsSh[d.getMonth()]}`;
+      chip.dataset.full = `${daysFull[d.getDay()]}, ${d.getDate()} de ${monthsFull[d.getMonth()]} de ${d.getFullYear()}`;
+      chip.onclick = () => modalSelDateFn(chip);
+      container.appendChild(chip);
+      added++;
+    }
+  }
+
+  function modalSelDateFn(el) {
+    if (modalSelDateEl) modalSelDateEl.classList.remove('sel');
+    modalSelDateEl = el;
+    el.classList.add('sel');
+    checkModalReady();
+  }
+
+  function modalSelTime(el) {
+    if (modalSelTimeEl) modalSelTimeEl.classList.remove('sel');
+    modalSelTimeEl = el;
+    el.classList.add('sel');
+    checkModalReady();
+  }
+
+  function checkModalReady() {
+    document.getElementById('sched-modal-confirm').disabled = !(modalSelDateEl && modalSelTimeEl);
+  }
+
+  function confirmSchedModal() {
+    const dateStr = modalSelDateEl.dataset.full;
+    const timeStr = modalSelTimeEl.textContent + ' · Sesión demo Bold';
+    closeSchedModal();
+    if (schedModalSource === 'form') {
+      document.getElementById('sched-form-date').textContent = dateStr;
+      document.getElementById('sched-form-time').textContent = timeStr;
+      document.getElementById('sched-form-teaser').style.display = 'none';
+      document.getElementById('sched-form-done').style.display   = 'block';
+    } else {
+      document.getElementById('sched-confirm-date').textContent = dateStr;
+      document.getElementById('sched-confirm-time').textContent = timeStr;
+      document.getElementById('sched-confirm-teaser').style.display = 'none';
+      document.getElementById('sched-confirm-done').style.display   = 'block';
+    }
+  }
+
+  function closeSchedModal() {
+    document.getElementById('sched-modal').classList.remove('open');
+  }
+
+  function cancelSchedForm() {
+    document.getElementById('sched-form-done').style.display   = 'none';
+    document.getElementById('sched-form-teaser').style.display = 'block';
+  }
+
+  function cancelSchedConfirm() {
+    document.getElementById('sched-confirm-done').style.display   = 'none';
+    document.getElementById('sched-confirm-teaser').style.display = 'block';
   }
 </script>
 </body>

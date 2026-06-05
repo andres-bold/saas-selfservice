@@ -648,6 +648,90 @@
     .success-detail-row .val { font-weight: 600; color: var(--text); }
     .success-detail-row .val.green { color: #00875A; }
 
+    /* ── PLAN SELECTOR (screen-2) ── */
+    .product-tabs { display:flex;align-items:center;gap:4px;background:var(--white);border-radius:50px;padding:4px;width:fit-content;margin:0 auto 32px;box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+    .product-tab { padding:10px 24px;border-radius:50px;font-size:14px;font-weight:600;font-family:inherit;border:none;cursor:pointer;background:none;color:var(--gray-text);transition:all 0.18s;white-space:nowrap; }
+    .product-tab.active { background:var(--navy);color:var(--white);box-shadow:0 2px 8px rgba(18,18,42,0.2); }
+
+    .vertical-desc { display:none;flex-direction:row;align-items:center;gap:24px;margin-bottom:28px; }
+    .vertical-desc.active { display:flex; }
+    .vertical-desc-icon { font-size:72px;line-height:1;flex-shrink:0;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.16)); }
+    .vertical-desc.active .vertical-desc-icon { animation:icon-float 3.5s ease-in-out infinite; }
+    @keyframes icon-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    .vertical-desc-body { flex:1; }
+    .vertical-desc-name { font-size:16px;font-weight:800;color:var(--navy);margin-bottom:5px;letter-spacing:-0.3px; }
+    .vertical-desc-text { font-size:13px;color:var(--gray-text);line-height:1.65;margin-bottom:12px; }
+    .vertical-desc-chips { display:flex;flex-wrap:wrap;gap:6px; }
+    .vchip { display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:var(--gray-bg);color:var(--text); }
+    .vchip.blue { background:#EEF0FF;color:var(--blue); }
+    .vchip.orange { background:#FFF4E0;color:#B36A00; }
+    .vchip.red { background:var(--red-light,#FFE5ED);color:var(--red); }
+
+    .plan-product { display:none; }
+    .plan-product.active { display:block; }
+    .ob-plans-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start; }
+
+    .ob-plan-card { background:var(--white);border:2px solid var(--gray-line);border-radius:16px;padding:22px 18px 18px;display:flex;flex-direction:column;gap:0;transition:border-color 0.18s,box-shadow 0.18s;position:relative;cursor:pointer; }
+    .ob-plan-card:hover { border-color:#b3bcf5;box-shadow:0 6px 24px rgba(18,30,108,0.08); }
+    .ob-plan-card.selected { border-color:var(--red);box-shadow:0 6px 28px rgba(232,0,61,0.14); }
+    .ob-plan-card.featured { border-color:var(--blue);background:var(--navy); }
+    .ob-plan-card.featured.selected { border-color:var(--red); }
+    .ob-plan-card .badge-top { position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:10px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;padding:3px 12px;border-radius:20px;white-space:nowrap; }
+    .ob-plan-card.selected .badge-top { background:var(--red); }
+    .ob-plan-card .p-name { font-size:15px;font-weight:800;color:var(--navy);margin-bottom:2px; }
+    .ob-plan-card.featured .p-name { color:#fff; }
+    .ob-plan-card .p-target { font-size:11px;color:var(--gray-text);margin-bottom:12px; }
+    .ob-plan-card.featured .p-target { color:rgba(255,255,255,0.5); }
+    .ob-plan-card .p-suc { font-size:12px;font-weight:600;color:var(--gray-text);margin-bottom:10px;display:flex;align-items:center;gap:5px; }
+    .ob-plan-card.featured .p-suc { color:rgba(255,255,255,0.4); }
+    .ob-plan-card .p-price-row { display:flex;align-items:baseline;gap:4px;margin-bottom:4px; }
+    .ob-plan-card .p-amount { font-size:26px;font-weight:900;color:var(--navy);letter-spacing:-1px; }
+    .ob-plan-card.featured .p-amount { color:#fff; }
+    .ob-plan-card .p-period { font-size:12px;color:var(--gray-text); }
+    .ob-plan-card.featured .p-period { color:rgba(255,255,255,0.45); }
+    .ob-plan-card .p-note { font-size:11px;color:var(--gray-text);min-height:15px;margin-bottom:14px; }
+    .ob-plan-card.featured .p-note { color:rgba(255,255,255,0.35); }
+    .ob-plan-card .p-divider { height:1px;background:var(--gray-line);margin-bottom:14px; }
+    .ob-plan-card.featured .p-divider { background:rgba(255,255,255,0.12); }
+
+    .feat-section-lbl { font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-text);padding:8px 0 4px;display:block; }
+    .ob-plan-card.featured .feat-section-lbl { color:rgba(255,255,255,0.3); }
+    .feat-fixed { display:flex;align-items:center;gap:7px;padding:5px 0;font-size:12px;color:var(--gray-text); }
+    .ob-plan-card.featured .feat-fixed { color:rgba(255,255,255,0.45); }
+    .fcheck { width:15px;height:15px;border-radius:50%;background:var(--gray-bg);color:var(--gray-text);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0; }
+    .ob-plan-card.featured .fcheck { background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4); }
+
+    .feat-config { display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 9px;margin:3px 0;background:#EEF0FF;border-radius:7px;border:1px solid #d0d7fc; }
+    .ob-plan-card.featured .feat-config { background:rgba(100,120,255,0.15);border-color:rgba(100,120,255,0.3); }
+    .feat-config-lbl { display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--blue);flex:1; }
+    .ob-plan-card.featured .feat-config-lbl { color:#9bb4ff; }
+    .feat-config select { padding:3px 22px 3px 7px;border:1px solid #b3bcf5;border-radius:6px;font-size:11px;font-weight:600;font-family:inherit;color:var(--blue);background:var(--white);cursor:pointer;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23121E6C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;min-width:100px;flex-shrink:0; }
+    .ob-plan-card.featured .feat-config select { background-color:rgba(255,255,255,0.12);border-color:rgba(100,120,255,0.5);color:#9bb4ff; }
+
+    .feat-addon { display:flex;align-items:center;justify-content:space-between;gap:6px;padding:5px 9px;margin:3px 0;background:var(--green-light);border-radius:7px;border:1px solid #a8e8d4; }
+    .feat-addon.off { background:var(--gray-bg);border-color:var(--gray-line); }
+    .ob-plan-card.featured .feat-addon { background:rgba(0,196,140,0.12);border-color:rgba(0,196,140,0.25); }
+    .ob-plan-card.featured .feat-addon.off { background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1); }
+    .feat-addon-lbl { display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#00875A;flex:1;cursor:pointer; }
+    .feat-addon.off .feat-addon-lbl { color:var(--gray-text); }
+    .ob-plan-card.featured .feat-addon-lbl { color:#5de0c0; }
+    .ob-plan-card.featured .feat-addon.off .feat-addon-lbl { color:rgba(255,255,255,0.3); }
+    .addon-tag { font-size:10px;font-weight:700;color:#00875A;background:rgba(0,196,140,0.15);padding:2px 6px;border-radius:10px;white-space:nowrap;flex-shrink:0; }
+    .feat-addon.off .addon-tag { color:var(--gray-text);background:var(--gray-line); }
+    .ob-plan-card.featured .feat-addon .addon-tag { color:#5de0c0;background:rgba(0,196,140,0.2); }
+    .ob-addon-toggle { width:30px;height:17px;border-radius:9px;background:var(--gray-line);border:none;cursor:pointer;position:relative;flex-shrink:0;transition:background 0.18s; }
+    .ob-addon-toggle::after { content:'';position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.2);transition:left 0.18s; }
+    .ob-addon-toggle.on { background:var(--green); }
+    .ob-addon-toggle.on::after { left:15px; }
+
+    .ob-plan-cta { width:100%;padding:10px 0;border-radius:50px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;border:2px solid var(--gray-line);background:var(--white);color:var(--text);transition:all 0.15s;margin-top:auto; }
+    .ob-plan-cta:hover { border-color:var(--red);color:var(--red); }
+    .ob-plan-card.selected .ob-plan-cta { background:var(--red);border-color:var(--red);color:#fff; }
+    .ob-plan-card.featured .ob-plan-cta { background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);color:#fff; }
+    .ob-plan-card.featured.selected .ob-plan-cta { background:var(--red);border-color:var(--red); }
+    .ob-plan-card.current-badge .ob-plan-cta { border-color:var(--green);color:var(--green); }
+    .ob-plan-card.current-badge.selected .ob-plan-cta { background:var(--red);border-color:var(--red);color:#fff; }
+
     /* ── MANAGE SCREEN ── */
     .manage-row {
       display: flex;
@@ -693,6 +777,80 @@
       color: #8A5A00;
     }
 
+    /* ── RENEW MODAL ── */
+    .renew-modal-overlay { display:none;position:fixed;inset:0;background:rgba(18,18,42,0.55);z-index:300;align-items:center;justify-content:center;padding:24px; }
+    .renew-modal-overlay.open { display:flex; }
+    .renew-modal-box { background:var(--white);border-radius:18px;width:100%;max-width:480px;padding:32px 28px 24px;box-shadow:0 24px 64px rgba(0,0,0,0.18); }
+    .renew-modal-title { font-size:18px;font-weight:900;color:var(--navy);letter-spacing:-0.5px;margin-bottom:6px; }
+    .renew-modal-sub { font-size:13px;color:var(--gray-text);margin-bottom:24px;line-height:1.55; }
+    .renew-option { border:2px solid var(--gray-line);border-radius:12px;padding:18px 20px;cursor:pointer;transition:border-color 0.15s,background 0.15s;margin-bottom:12px;display:flex;align-items:flex-start;gap:14px; }
+    .renew-option:hover { border-color:#b3bcf5;background:#FAFBFF; }
+    .renew-option-icon { font-size:26px;flex-shrink:0;margin-top:2px; }
+    .renew-option-title { font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px; }
+    .renew-option-desc { font-size:12px;color:var(--gray-text);line-height:1.55; }
+    .renew-option.highlight { border-color:var(--blue);background:#F5F6FF; }
+    .renew-modal-cancel { width:100%;text-align:center;margin-top:8px;font-size:13px;color:var(--gray-text);cursor:pointer;background:none;border:none;font-family:inherit;padding:6px; }
+    .renew-modal-cancel:hover { color:var(--text); }
+
+    /* ── FAB AYUDA ── */
+    .help-fab { position: fixed; bottom: 28px; right: 28px; z-index: 150; display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; font-family: inherit; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 16px rgba(232,0,61,0.35); transition: background 0.15s; }
+    .help-fab:hover { background: #C0002E; }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(18,18,42,0.55); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: var(--white); border-radius: 16px; padding: 28px 28px 24px; max-width: 380px; width: 90%; text-align: center; }
+    .modal-icon { font-size: 36px; margin-bottom: 12px; }
+    .modal-title { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .modal-body { font-size: 13px; color: var(--gray-text); line-height: 1.65; margin-bottom: 22px; }
+    .modal-actions { display: flex; flex-direction: column; gap: 8px; }
+
+    /* ── PAYMENT CARDS LIST ── */
+    .pay-card-item { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--gray-line); }
+    .pay-card-item:last-child { border-bottom: none; }
+    .pay-card-logo { width: 38px; height: 38px; background: var(--gray-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .pay-card-info { flex: 1; }
+    .pay-card-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .pay-card-sub { font-size: 11px; color: var(--gray-text); margin-top: 2px; }
+    .pay-card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .btn-xs { font-size: 11px; font-weight: 600; font-family: inherit; padding: 4px 10px; border-radius: 20px; cursor: pointer; border: 1.5px solid var(--gray-line); background: var(--white); color: var(--gray-text); transition: all 0.15s; }
+    .btn-xs:hover { border-color: var(--text); color: var(--text); }
+    .btn-xs.danger:hover { border-color: var(--red); color: var(--red); }
+    .btn-xs.primary-action { border-color: var(--blue); color: var(--blue); }
+
+    /* Add card form inline */
+    .add-card-form { background: var(--gray-bg); border-radius: 10px; padding: 16px; margin-top: 12px; display: none; flex-direction: column; gap: 12px; }
+    .add-card-form.visible { display: flex; }
+
+    /* ── STEPPER: hidden steps on step 1 ── */
+    .step.hidden-on-1 { display: none; }
+
+    /* ── SESSION CARD ── */
+    .session-card { background: linear-gradient(135deg, #12122A 0%, #1a1a40 100%); border-radius: 12px; padding: 22px 28px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .session-card-body .label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+    .session-card-body .title { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: -0.3px; margin-bottom: 6px; }
+    .session-card-body .sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+    .session-done-box { background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 16px; min-width: 200px; }
+    .session-done-box .dt-label { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 6px; }
+    .session-done-box .dt-date { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 2px; }
+    .session-done-box .dt-time { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+    .btn-cancel-dark { background: none; border: none; font-size: 11px; color: rgba(255,255,255,0.45); cursor: pointer; font-family: inherit; text-decoration: underline; padding: 0; }
+
+    /* ── SCHEDULE MODAL (calendar) ── */
+    .sched-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(18,18,42,0.6); z-index: 400; align-items: center; justify-content: center; padding: 24px; }
+    .sched-modal-overlay.open { display: flex; }
+    .sched-modal-box { background: var(--white); border-radius: 18px; width: 100%; max-width: 480px; padding: 28px 28px 24px; box-shadow: 0 24px 64px rgba(0,0,0,0.2); }
+    .sched-modal-title { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.4px; }
+    .sched-modal-sub { font-size: 12px; color: var(--gray-text); margin-bottom: 20px; }
+    .sched-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-text); display: block; margin-bottom: 8px; }
+    .dc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 18px; }
+    .dc { padding: 7px 4px; border-radius: 8px; font-size: 11px; font-weight: 600; font-family: inherit; border: 1.5px solid var(--gray-line); background: var(--white); color: var(--text); cursor: pointer; text-align: center; line-height: 1.4; transition: all 0.15s; }
+    .dc-day { font-size: 9px; font-weight: 700; color: var(--gray-text); display: block; }
+    .dc.sel { border-color: var(--blue); background: #EEF0FF; color: var(--blue); }
+    .dc.sel .dc-day { color: var(--blue); }
+    .ts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 20px; }
+    .ts { padding: 9px 4px; border-radius: 8px; font-size: 12px; font-weight: 600; font-family: inherit; border: 1.5px solid var(--gray-line); background: var(--white); color: var(--text); cursor: pointer; text-align: center; transition: all 0.15s; }
+    .ts.sel { border-color: var(--blue); background: #EEF0FF; color: var(--blue); }
+    .sched-modal-actions { display: flex; gap: 10px; }
+
     /* Chip inline */
     .chip-inline {
       display: inline-flex; align-items: center;
@@ -725,20 +883,20 @@
 <!-- ══════════════════════════════════════
      STEPPER
 ══════════════════════════════════════ -->
-<div class="stepper-bar" id="stepper">
+<div class="stepper-bar" id="stepper" style="display:none!important;visibility:hidden;height:0;overflow:hidden">
   <div class="step active" id="step-1">
     <div class="step-num">1</div>
     Mi suscripción
   </div>
-  <div class="step" id="step-2">
+  <div class="step hidden-on-1" id="step-2">
     <div class="step-num">2</div>
     Elegir plan
   </div>
-  <div class="step" id="step-3">
+  <div class="step hidden-on-1" id="step-3">
     <div class="step-num">3</div>
     Resumen y pago
   </div>
-  <div class="step" id="step-4">
+  <div class="step hidden-on-1" id="step-4">
     <div class="step-num">4</div>
     Confirmación
   </div>
@@ -751,7 +909,8 @@
   <div class="container">
 
     <div class="page-header">
-      <h1>Mi suscripción</h1>
+      <div style="font-size:13px;color:var(--gray-text);margin-bottom:4px">Bienvenido de nuevo</div>
+      <h1 style="font-size:26px;font-weight:900;letter-spacing:-0.8px">Hola, Restaurante Josefina 👋</h1>
       <p>Gestiona tu plan actual, revisa tu próxima renovación y actualiza tu forma de pago.</p>
     </div>
 
@@ -760,8 +919,7 @@
       <div class="alert-icon">⚠️</div>
       <div class="alert-text">
         <strong>Tu plan vence en 14 días</strong>
-        Renueva antes del <strong>18 de junio de 2026</strong> para evitar la interrupción del servicio.
-        Puedes cambiar de plan o mantener el mismo.
+        Renueva antes del <span style="white-space:nowrap;font-weight:700">18 de junio de 2026</span> para evitar la interrupción del servicio. Puedes cambiar de plan o mantener el mismo.
       </div>
     </div>
 
@@ -772,12 +930,8 @@
         <div class="plan-name-big">Emprendedor 3000 Silver Pro</div>
         <div class="plan-meta-row">
           <div class="plan-meta-item">
-            <span class="lbl">Precio</span>
-            <span class="val">$89.000/mes</span>
-          </div>
-          <div class="plan-meta-item">
-            <span class="lbl">Vertical</span>
-            <span class="val">Restaurante</span>
+            <span class="lbl">Precio anual</span>
+            <span class="val">$1.068.000/año</span>
           </div>
           <div class="plan-meta-item">
             <span class="lbl">Inicio</span>
@@ -793,8 +947,31 @@
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
-        <button class="btn btn-primary" onclick="goToStep(2)">Renovar o cambiar plan</button>
-        <button class="btn-ghost" style="font-size:13px" onclick="goToStep(2)">Ver todos los planes</button>
+        <button class="btn btn-primary" onclick="openRenewModal()">Renovar o cambiar plan</button>
+      </div>
+    </div>
+
+    <!-- Sesión de implementación -->
+    <div class="session-card" id="session-teaser">
+      <div class="session-card-body">
+        <div class="label">Sesión de implementación</div>
+        <div class="title">Aún no has tenido tu sesión con un experto</div>
+        <div class="sub">No esperes más — agenda ahora y un especialista Bold te ayuda a<br>configurar tu POS, importar productos y capacitar a tu equipo.</div>
+      </div>
+      <button class="btn btn-primary" style="white-space:nowrap;flex-shrink:0" onclick="openSessionModal()">Agendar ahora</button>
+    </div>
+
+    <div class="session-card" id="session-done" style="display:none">
+      <div class="session-card-body">
+        <div class="label">Sesión de implementación</div>
+        <div class="title">¡Tu sesión está confirmada!</div>
+        <div class="sub">Recibirás el enlace de la reunión por correo. Tu experto Bold te estará esperando.</div>
+      </div>
+      <div class="session-done-box">
+        <div class="dt-label">Fecha y hora</div>
+        <div class="dt-date" id="session-date">—</div>
+        <div class="dt-time" id="session-time">—</div>
+        <button class="btn-cancel-dark" onclick="cancelSession()">Cancelar cita</button>
       </div>
     </div>
 
@@ -827,22 +1004,58 @@
       </div>
     </div>
 
-    <!-- Método de pago registrado -->
-    <div class="section-title">Método de pago</div>
-    <div class="card" style="max-width:480px">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-        <div style="display:flex;align-items:center;gap:14px">
-          <div class="payment-logo" style="font-size:28px;background:#F4F5F8">💳</div>
-          <div>
-            <div style="font-size:13px;font-weight:600">Tarjeta terminada en 4242</div>
-            <div style="font-size:12px;color:var(--gray-text)">Visa · Vence 09/28</div>
+    <!-- Métodos de pago -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div class="section-title" style="margin-bottom:0">Métodos de pago</div>
+      <button class="btn btn-outline" style="font-size:12px;padding:7px 14px" onclick="toggleAddCard()">+ Agregar tarjeta</button>
+    </div>
+    <div class="card" style="max-width:520px;margin-bottom:0">
+      <div id="cards-list">
+        <!-- Tarjeta 1: principal -->
+        <div class="pay-card-item" id="card-item-1">
+          <div class="pay-card-logo">💳</div>
+          <div class="pay-card-info">
+            <div class="pay-card-name">Visa ···· 4242</div>
+            <div class="pay-card-sub">Vence 09/28</div>
+          </div>
+          <div class="pay-card-actions">
+            <span class="chip-inline chip-green">Principal</span>
+            <button class="btn-xs danger" onclick="deleteCard(1)">Eliminar</button>
           </div>
         </div>
-        <span class="chip-inline chip-green">Principal</span>
+        <!-- Tarjeta 2 -->
+        <div class="pay-card-item" id="card-item-2">
+          <div class="pay-card-logo">💳</div>
+          <div class="pay-card-info">
+            <div class="pay-card-name">Mastercard ···· 7890</div>
+            <div class="pay-card-sub">Vence 12/27</div>
+          </div>
+          <div class="pay-card-actions">
+            <button class="btn-xs primary-action" onclick="setPrimary(2)">Hacer principal</button>
+            <button class="btn-xs danger" onclick="deleteCard(2)">Eliminar</button>
+          </div>
+        </div>
       </div>
-      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--gray-line);display:flex;gap:10px">
-        <button class="btn btn-outline" style="font-size:12px;padding:7px 14px">Cambiar tarjeta</button>
-        <button class="btn btn-outline" style="font-size:12px;padding:7px 14px">Agregar método</button>
+
+      <!-- Formulario agregar tarjeta -->
+      <div class="add-card-form" id="add-card-form">
+        <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Nueva tarjeta</div>
+        <div class="form-field">
+          <label>Número de tarjeta</label>
+          <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" />
+        </div>
+        <div class="form-field">
+          <label>Nombre en la tarjeta</label>
+          <input type="text" placeholder="Como aparece en la tarjeta" />
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label>Vencimiento</label><input type="text" placeholder="MM / AA" maxlength="7" /></div>
+          <div class="form-field"><label>CVV</label><input type="text" placeholder="···" maxlength="4" /></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px">
+          <button class="btn btn-primary" style="font-size:13px;padding:9px 20px" onclick="saveNewCard()">Guardar tarjeta</button>
+          <button class="btn btn-outline" style="font-size:13px;padding:9px 20px" onclick="toggleAddCard()">Cancelar</button>
+        </div>
       </div>
     </div>
 
@@ -860,118 +1073,483 @@
       Volver a mi suscripción
     </button>
 
-    <div class="page-header">
-      <h1>Elige tu plan</h1>
-      <p>Selecciona el plan que mejor se adapte a tu negocio. Puedes cambiar en cualquier momento.</p>
+    <div style="text-align:center;margin-bottom:28px">
+      <h1 style="font-size:24px;font-weight:900;color:var(--navy);letter-spacing:-0.8px;margin-bottom:6px">Elige tu plan</h1>
+      <p style="font-size:14px;color:var(--gray-text)">Personaliza las cantidades y funcionalidades. El precio se actualiza en tiempo real.</p>
     </div>
 
-    <!-- Period toggle -->
-    <div class="period-toggle">
-      <button class="period-btn active" id="btn-monthly" onclick="setPeriod('monthly')">Mensual</button>
-      <button class="period-btn" id="btn-annual" onclick="setPeriod('annual')">
-        Anual
-        <span class="save-tag">−20%</span>
-      </button>
+    <!-- Product tabs -->
+    <div class="product-tabs">
+      <button class="product-tab active" onclick="obSwitchProduct('rest',this)">POS Restaurantes</button>
+      <button class="product-tab" onclick="obSwitchProduct('boldpos',this)">Bold POS</button>
+      <button class="product-tab" onclick="obSwitchProduct('fact',this)">POS Facturación Lite</button>
     </div>
 
-    <!-- Plans grid -->
-    <div class="section-title">Planes Restaurante</div>
-    <div class="plans-grid" id="plans-grid">
-
-      <!-- Plan Básico -->
-      <div class="plan-card" id="plan-basico" onclick="selectPlan('basico')">
-        <div class="plan-card-header">
-          <div class="plan-card-name">Básico</div>
-          <div class="plan-card-vertical">Restaurante</div>
+    <!-- Vertical descriptions -->
+    <div class="vertical-desc active" id="ob-desc-rest">
+      <span class="vertical-desc-icon">🍽️</span>
+      <div class="vertical-desc-body">
+        <div class="vertical-desc-name">POS Restaurantes — Tu vertical actual</div>
+        <div class="vertical-desc-text">Gestión de mesas, cocina y servicio. Plano del salón, comandas a cocina, división de cuentas y cierre de turno automático.</div>
+        <div class="vertical-desc-chips">
+          <span class="vchip orange">Control de mesas</span>
+          <span class="vchip orange">Pantalla KDS</span>
+          <span class="vchip orange">Comandas sin papel</span>
+          <span class="vchip orange">División de cuentas</span>
         </div>
-        <div class="plan-card-price">
-          <span class="price-amount" id="price-basico">$49.000</span>
-          <span class="price-period">/mes</span>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-features">
-          <div class="plan-feature"><span class="check">✓</span>200 facturas/mes</div>
-          <div class="plan-feature"><span class="check">✓</span>150 comprobantes/mes</div>
-          <div class="plan-feature"><span class="check">✓</span>2 usuarios</div>
-          <div class="plan-feature"><span class="check">✓</span>Soporte por correo</div>
-          <div class="plan-feature disabled"><span class="check">–</span>Reportes avanzados</div>
-          <div class="plan-feature disabled"><span class="check">–</span>Integración POS</div>
-        </div>
-        <button class="plan-select-btn">Seleccionar</button>
       </div>
-
-      <!-- Plan Silver Pro — actual -->
-      <div class="plan-card current-tag" id="plan-silver" onclick="selectPlan('silver')">
-        <div class="plan-badge current">Tu plan actual</div>
-        <div class="plan-card-header">
-          <div class="plan-card-name">Emprendedor Silver Pro</div>
-          <div class="plan-card-vertical">Restaurante</div>
+    </div>
+    <div class="vertical-desc" id="ob-desc-boldpos">
+      <span class="vertical-desc-icon">🖥️</span>
+      <div class="vertical-desc-body">
+        <div class="vertical-desc-name">Bold POS — Sistema de punto de venta general</div>
+        <div class="vertical-desc-text">Para tiendas, boutiques, ferreterías y servicios. Centraliza ventas, inventario y facturación desde celular, tablet o computador.</div>
+        <div class="vertical-desc-chips">
+          <span class="vchip blue">Inventario en tiempo real</span>
+          <span class="vchip blue">Facturación DIAN</span>
+          <span class="vchip blue">Reportes y cierres</span>
         </div>
-        <div class="plan-card-price">
-          <span class="price-amount" id="price-silver">$89.000</span>
-          <span class="price-period">/mes</span>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-features">
-          <div class="plan-feature"><span class="check">✓</span>500 facturas/mes</div>
-          <div class="plan-feature"><span class="check">✓</span>300 comprobantes/mes</div>
-          <div class="plan-feature"><span class="check">✓</span>5 usuarios</div>
-          <div class="plan-feature"><span class="check">✓</span>Soporte prioritario</div>
-          <div class="plan-feature"><span class="check">✓</span>Reportes avanzados</div>
-          <div class="plan-feature disabled"><span class="check">–</span>Integración POS</div>
-        </div>
-        <button class="plan-select-btn">Renovar este plan</button>
       </div>
-
-      <!-- Plan Gold — popular -->
-      <div class="plan-card popular-tag" id="plan-gold" onclick="selectPlan('gold')">
-        <div class="plan-badge popular">Más popular</div>
-        <div class="plan-card-header">
-          <div class="plan-card-name">Gold Pro</div>
-          <div class="plan-card-vertical">Restaurante</div>
+    </div>
+    <div class="vertical-desc" id="ob-desc-fact">
+      <span class="vertical-desc-icon">🧾</span>
+      <div class="vertical-desc-body">
+        <div class="vertical-desc-name">POS Facturación Lite — Solo lo esencial para facturar</div>
+        <div class="vertical-desc-text">Para negocios que solo necesitan cumplir con la DIAN. Emite facturas, notas crédito y débito desde el celular.</div>
+        <div class="vertical-desc-chips">
+          <span class="vchip red">Facturas DIAN</span>
+          <span class="vchip red">Notas crédito/débito</span>
+          <span class="vchip red">Sin hardware adicional</span>
         </div>
-        <div class="plan-card-price">
-          <span class="price-amount" id="price-gold">$149.000</span>
-          <span class="price-period">/mes</span>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-features">
-          <div class="plan-feature"><span class="check">✓</span>Facturas ilimitadas</div>
-          <div class="plan-feature"><span class="check">✓</span>Comprobantes ilimitados</div>
-          <div class="plan-feature"><span class="check">✓</span>15 usuarios</div>
-          <div class="plan-feature"><span class="check">✓</span>Soporte 24/7</div>
-          <div class="plan-feature"><span class="check">✓</span>Reportes avanzados</div>
-          <div class="plan-feature"><span class="check">✓</span>Integración POS</div>
-        </div>
-        <button class="plan-select-btn">Seleccionar</button>
       </div>
-
-      <!-- Plan Enterprise -->
-      <div class="plan-card" id="plan-enterprise" onclick="selectPlan('enterprise')">
-        <div class="plan-card-header">
-          <div class="plan-card-name">Enterprise</div>
-          <div class="plan-card-vertical">Multi-vertical</div>
-        </div>
-        <div class="plan-card-price">
-          <span style="font-size:16px;font-weight:700;color:var(--navy)">A medida</span>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-features">
-          <div class="plan-feature"><span class="check">✓</span>Todo ilimitado</div>
-          <div class="plan-feature"><span class="check">✓</span>Usuarios ilimitados</div>
-          <div class="plan-feature"><span class="check">✓</span>SLA garantizado</div>
-          <div class="plan-feature"><span class="check">✓</span>Onboarding dedicado</div>
-          <div class="plan-feature"><span class="check">✓</span>API acceso completo</div>
-          <div class="plan-feature"><span class="check">✓</span>Facturación personalizada</div>
-        </div>
-        <button class="plan-select-btn">Contactar ventas</button>
-      </div>
-
     </div>
 
-    <div class="actions-row" id="step2-actions">
+    <!-- ── POS RESTAURANTES ── -->
+    <div class="plan-product active" id="ob-product-rest">
+      <div class="ob-plans-grid">
+
+        <!-- Esencial -->
+        <div class="ob-plan-card" id="ob-card-rest-esencial" data-base="99000" onclick="obSelectPlan('rest-esencial')">
+          <div class="p-name">Esencial</div>
+          <div class="p-suc">1 Sucursal</div>
+          <div class="p-target">Para restaurantes que arrancan</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-rest-esencial">$99.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-rest-esencial"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Hasta 10 mesas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Gestión de comandas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Cierre de turno diario</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>App móvil Android e iOS</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>100 comprobantes/mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte por correo</div>
+          <span class="feat-section-lbl">Personalizable</span>
+          <div class="feat-config">
+            <div class="feat-config-lbl">👤 Meseros / usuarios</div>
+            <select onchange="obUpdatePrice('rest-esencial')" onclick="event.stopPropagation()">
+              <option value="0">1 usuario</option>
+              <option value="15000">2 usuarios +$15k</option>
+              <option value="40000">5 usuarios +$40k</option>
+              <option value="80000">Ilimitados +$80k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">🍽️ Mesas</div>
+            <select onchange="obUpdatePrice('rest-esencial')" onclick="event.stopPropagation()">
+              <option value="0">Hasta 10</option>
+              <option value="20000">Hasta 20 +$20k</option>
+              <option value="40000">Ilimitadas +$40k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">🧾 Comprobantes</div>
+            <select onchange="obUpdatePrice('rest-esencial')" onclick="event.stopPropagation()">
+              <option value="0">100/mes</option>
+              <option value="10000">200 +$10k</option>
+              <option value="25000">500 +$25k</option>
+              <option value="50000">Ilimitados +$50k</option>
+            </select>
+          </div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-rest-esencial-kds">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('rest-esencial','kds',25000);event.stopPropagation()">👨‍🍳 Pantalla cocina (KDS)</div>
+            <span class="addon-tag">+$25k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-rest-esencial-kds" onclick="obToggleAddon('rest-esencial','kds',25000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-rest-esencial-reportes">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('rest-esencial','reportes',20000);event.stopPropagation()">📊 Reportes avanzados</div>
+            <span class="addon-tag">+$20k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-rest-esencial-reportes" onclick="obToggleAddon('rest-esencial','reportes',20000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+        <!-- Avanzado (actual) -->
+        <div class="ob-plan-card featured current-badge" id="ob-card-rest-avanzado" data-base="169000" onclick="obSelectPlan('rest-avanzado')">
+          <div class="badge-top" style="background:var(--green);color:#fff">Tu plan actual</div>
+          <div class="p-name">Avanzado</div>
+          <div class="p-suc">2 Sucursales</div>
+          <div class="p-target">Para restaurantes en crecimiento</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-rest-avanzado">$169.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-rest-avanzado"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Mesas ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Comandas y división de cuentas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Pantalla de cocina KDS</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Cierre de turno automático</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>500 comprobantes/mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Reportes de ventas por turno</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte prioritario</div>
+          <span class="feat-section-lbl">Personalizable</span>
+          <div class="feat-config">
+            <div class="feat-config-lbl">👤 Meseros / usuarios</div>
+            <select onchange="obUpdatePrice('rest-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">2 usuarios</option>
+              <option value="25000">5 usuarios +$25k</option>
+              <option value="50000">10 usuarios +$50k</option>
+              <option value="70000">Ilimitados +$70k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">🧾 Comprobantes</div>
+            <select onchange="obUpdatePrice('rest-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">500/mes</option>
+              <option value="25000">Ilimitados +$25k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">📄 Facturas elect.</div>
+            <select onchange="obUpdatePrice('rest-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">500/mes</option>
+              <option value="20000">Ilimitadas +$20k</option>
+            </select>
+          </div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-rest-avanzado-domicilios">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('rest-avanzado','domicilios',30000);event.stopPropagation()">🛵 Integración domicilios</div>
+            <span class="addon-tag">+$30k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-rest-avanzado-domicilios" onclick="obToggleAddon('rest-avanzado','domicilios',30000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-rest-avanzado-sucursal">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('rest-avanzado','sucursal',35000);event.stopPropagation()">🏪 Sucursal adicional</div>
+            <span class="addon-tag">+$35k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-rest-avanzado-sucursal" onclick="obToggleAddon('rest-avanzado','sucursal',35000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Renovar este plan</button>
+        </div>
+
+        <!-- Ilimitado -->
+        <div class="ob-plan-card" id="ob-card-rest-ilimitado" data-base="279000" onclick="obSelectPlan('rest-ilimitado')">
+          <div class="badge-top" style="background:var(--blue)">⭐ Más popular</div>
+          <div class="p-name">Ilimitado</div>
+          <div class="p-suc">3+ Sucursales</div>
+          <div class="p-target">Para cadenas y grupos</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-rest-ilimitado">$279.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-rest-ilimitado"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Todo incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Sucursales ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Usuarios ilimitados</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Mesas y comandas ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>KDS en todas las sedes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Comprobantes ilimitados</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Facturas elect. ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Reportes consolidados multi-sede</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Integración domicilios</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte 24/7</div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-rest-ilimitado-onboarding">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('rest-ilimitado','onboarding',50000);event.stopPropagation()">🎓 Onboarding dedicado</div>
+            <span class="addon-tag">+$50k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-rest-ilimitado-onboarding" onclick="obToggleAddon('rest-ilimitado','onboarding',50000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-rest-ilimitado-api">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('rest-ilimitado','api',40000);event.stopPropagation()">⚙️ API de integración</div>
+            <span class="addon-tag">+$40k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-rest-ilimitado-api" onclick="obToggleAddon('rest-ilimitado','api',40000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── BOLD POS ── -->
+    <div class="plan-product" id="ob-product-boldpos">
+      <div class="ob-plans-grid">
+
+        <!-- Esencial -->
+        <div class="ob-plan-card" id="ob-card-boldpos-esencial" data-base="89000" onclick="obSelectPlan('boldpos-esencial')">
+          <div class="p-name">Esencial</div>
+          <div class="p-suc">1 Sucursal</div>
+          <div class="p-target">Para emprendedores</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-boldpos-esencial">$89.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-boldpos-esencial"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>App móvil Android e iOS</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Ventas e inventario básico</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>100 comprobantes/mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>200 facturas elect./mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte por correo</div>
+          <span class="feat-section-lbl">Personalizable</span>
+          <div class="feat-config">
+            <div class="feat-config-lbl">👤 Usuarios</div>
+            <select onchange="obUpdatePrice('boldpos-esencial')" onclick="event.stopPropagation()">
+              <option value="0">1 usuario</option>
+              <option value="15000">2 usuarios +$15k</option>
+              <option value="40000">5 usuarios +$40k</option>
+              <option value="80000">Ilimitados +$80k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">🧾 Comprobantes</div>
+            <select onchange="obUpdatePrice('boldpos-esencial')" onclick="event.stopPropagation()">
+              <option value="0">100/mes</option>
+              <option value="10000">200 +$10k</option>
+              <option value="25000">500 +$25k</option>
+              <option value="50000">Ilimitados +$50k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">📄 Facturas elect.</div>
+            <select onchange="obUpdatePrice('boldpos-esencial')" onclick="event.stopPropagation()">
+              <option value="0">200/mes</option>
+              <option value="15000">500 +$15k</option>
+              <option value="35000">Ilimitadas +$35k</option>
+            </select>
+          </div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-boldpos-esencial-reportes">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('boldpos-esencial','reportes',20000);event.stopPropagation()">📊 Reportes avanzados</div>
+            <span class="addon-tag">+$20k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-boldpos-esencial-reportes" onclick="obToggleAddon('boldpos-esencial','reportes',20000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-boldpos-esencial-datafono">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('boldpos-esencial','datafono',15000);event.stopPropagation()">💳 Integración datáfono</div>
+            <span class="addon-tag">+$15k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-boldpos-esencial-datafono" onclick="obToggleAddon('boldpos-esencial','datafono',15000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+        <!-- Avanzado -->
+        <div class="ob-plan-card featured" id="ob-card-boldpos-avanzado" data-base="149000" onclick="obSelectPlan('boldpos-avanzado')">
+          <div class="badge-top">⭐ Más popular</div>
+          <div class="p-name">Avanzado</div>
+          <div class="p-suc">2 Sucursales</div>
+          <div class="p-target">Para empresas medianas</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-boldpos-avanzado">$149.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-boldpos-avanzado"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Ventas, inventario y reportes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Integración datáfono Bold</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>500 comprobantes/mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>1.000 facturas elect./mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte prioritario</div>
+          <span class="feat-section-lbl">Personalizable</span>
+          <div class="feat-config">
+            <div class="feat-config-lbl">👤 Usuarios</div>
+            <select onchange="obUpdatePrice('boldpos-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">2 usuarios</option>
+              <option value="25000">5 usuarios +$25k</option>
+              <option value="50000">10 usuarios +$50k</option>
+              <option value="70000">Ilimitados +$70k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">🧾 Comprobantes</div>
+            <select onchange="obUpdatePrice('boldpos-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">500/mes</option>
+              <option value="25000">Ilimitados +$25k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">📄 Facturas elect.</div>
+            <select onchange="obUpdatePrice('boldpos-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">1.000/mes</option>
+              <option value="20000">Ilimitadas +$20k</option>
+            </select>
+          </div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-boldpos-avanzado-sucursal">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('boldpos-avanzado','sucursal',30000);event.stopPropagation()">🏪 Sucursal adicional</div>
+            <span class="addon-tag">+$30k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-boldpos-avanzado-sucursal" onclick="obToggleAddon('boldpos-avanzado','sucursal',30000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-boldpos-avanzado-inventario">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('boldpos-avanzado','inventario',25000);event.stopPropagation()">📦 Inventario avanzado</div>
+            <span class="addon-tag">+$25k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-boldpos-avanzado-inventario" onclick="obToggleAddon('boldpos-avanzado','inventario',25000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+        <!-- Ilimitado -->
+        <div class="ob-plan-card" id="ob-card-boldpos-ilimitado" data-base="249000" onclick="obSelectPlan('boldpos-ilimitado')">
+          <div class="p-name">Ilimitado</div>
+          <div class="p-suc">3+ Sucursales</div>
+          <div class="p-target">Para grandes negocios</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-boldpos-ilimitado">$249.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-boldpos-ilimitado"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Todo incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Sucursales ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Usuarios ilimitados</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Comprobantes ilimitados</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Facturas elect. ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Inventario avanzado</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Todos los reportes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Datáfono Bold incluido</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte 24/7</div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-boldpos-ilimitado-onboarding">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('boldpos-ilimitado','onboarding',50000);event.stopPropagation()">🎓 Onboarding dedicado</div>
+            <span class="addon-tag">+$50k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-boldpos-ilimitado-onboarding" onclick="obToggleAddon('boldpos-ilimitado','onboarding',50000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-boldpos-ilimitado-api">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('boldpos-ilimitado','api',40000);event.stopPropagation()">⚙️ API de integración</div>
+            <span class="addon-tag">+$40k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-boldpos-ilimitado-api" onclick="obToggleAddon('boldpos-ilimitado','api',40000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── FACTURACIÓN LITE ── -->
+    <div class="plan-product" id="ob-product-fact">
+      <div class="ob-plans-grid">
+
+        <!-- Básico -->
+        <div class="ob-plan-card" id="ob-card-fact-basico" data-base="49000" onclick="obSelectPlan('fact-basico')">
+          <div class="p-name">Básico</div>
+          <div class="p-suc">1 Sucursal</div>
+          <div class="p-target">Solo facturación electrónica</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-fact-basico">$49.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-fact-basico"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>App móvil Android e iOS</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>200 facturas elect./mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Notas crédito y débito</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Envío por correo y WhatsApp</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte por correo</div>
+          <span class="feat-section-lbl">Personalizable</span>
+          <div class="feat-config">
+            <div class="feat-config-lbl">📄 Facturas elect.</div>
+            <select onchange="obUpdatePrice('fact-basico')" onclick="event.stopPropagation()">
+              <option value="0">200/mes</option>
+              <option value="10000">500 +$10k</option>
+              <option value="20000">1.000 +$20k</option>
+              <option value="40000">Ilimitadas +$40k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">👤 Usuarios</div>
+            <select onchange="obUpdatePrice('fact-basico')" onclick="event.stopPropagation()">
+              <option value="0">1 usuario</option>
+              <option value="10000">2 usuarios +$10k</option>
+              <option value="20000">3 usuarios +$20k</option>
+            </select>
+          </div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-fact-basico-inventario">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('fact-basico','inventario',15000);event.stopPropagation()">📦 Inventario básico</div>
+            <span class="addon-tag">+$15k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-fact-basico-inventario" onclick="obToggleAddon('fact-basico','inventario',15000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+        <!-- Avanzado -->
+        <div class="ob-plan-card featured" id="ob-card-fact-avanzado" data-base="89000" onclick="obSelectPlan('fact-avanzado')">
+          <div class="badge-top">⭐ Más popular</div>
+          <div class="p-name">Avanzado</div>
+          <div class="p-suc">2 Sucursales</div>
+          <div class="p-target">Facturación + control del negocio</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-fact-avanzado">$89.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-fact-avanzado"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>App móvil Android e iOS</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>1.000 facturas elect./mes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Inventario y reportes básicos</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Notas crédito y débito</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Envío correo y WhatsApp</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte prioritario</div>
+          <span class="feat-section-lbl">Personalizable</span>
+          <div class="feat-config">
+            <div class="feat-config-lbl">📄 Facturas elect.</div>
+            <select onchange="obUpdatePrice('fact-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">1.000/mes</option>
+              <option value="20000">Ilimitadas +$20k</option>
+            </select>
+          </div>
+          <div class="feat-config">
+            <div class="feat-config-lbl">👤 Usuarios</div>
+            <select onchange="obUpdatePrice('fact-avanzado')" onclick="event.stopPropagation()">
+              <option value="0">3 usuarios</option>
+              <option value="30000">Ilimitados +$30k</option>
+            </select>
+          </div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-fact-avanzado-reportes">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('fact-avanzado','reportes',15000);event.stopPropagation()">📊 Reportes avanzados</div>
+            <span class="addon-tag">+$15k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-fact-avanzado-reportes" onclick="obToggleAddon('fact-avanzado','reportes',15000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-fact-avanzado-sucursal">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('fact-avanzado','sucursal',25000);event.stopPropagation()">🏪 Sucursal adicional</div>
+            <span class="addon-tag">+$25k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-fact-avanzado-sucursal" onclick="obToggleAddon('fact-avanzado','sucursal',25000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+        <!-- Ilimitado -->
+        <div class="ob-plan-card" id="ob-card-fact-ilimitado" data-base="129000" onclick="obSelectPlan('fact-ilimitado')">
+          <div class="p-name">Ilimitado</div>
+          <div class="p-suc">3+ Sucursales</div>
+          <div class="p-target">Para altos volúmenes de facturación</div>
+          <div class="p-price-row"><span class="p-amount" id="ob-price-fact-ilimitado">$129.000</span><span class="p-period">/mes</span></div>
+          <div class="p-note" id="ob-note-fact-ilimitado"></div>
+          <div class="p-divider"></div>
+          <span class="feat-section-lbl">Todo incluido</span>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Facturas elect. ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Usuarios ilimitados</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Sucursales ilimitadas</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Inventario y todos los reportes</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Notas crédito y débito</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Envío masivo por correo</div>
+          <div class="feat-fixed"><span class="fcheck">✓</span>Soporte 24/7</div>
+          <span class="feat-section-lbl">Agregar</span>
+          <div class="feat-addon off" id="ob-addon-fact-ilimitado-api">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('fact-ilimitado','api',25000);event.stopPropagation()">⚙️ API de facturación</div>
+            <span class="addon-tag">+$25k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-fact-ilimitado-api" onclick="obToggleAddon('fact-ilimitado','api',25000);event.stopPropagation()"></button>
+          </div>
+          <div class="feat-addon off" id="ob-addon-fact-ilimitado-onboarding">
+            <div class="feat-addon-lbl" onclick="obToggleAddon('fact-ilimitado','onboarding',50000);event.stopPropagation()">🎓 Onboarding dedicado</div>
+            <span class="addon-tag">+$50k</span>
+            <button class="ob-addon-toggle" id="ob-toggle-fact-ilimitado-onboarding" onclick="obToggleAddon('fact-ilimitado','onboarding',50000);event.stopPropagation()"></button>
+          </div>
+          <button class="ob-plan-cta" style="margin-top:14px">Seleccionar</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:28px">
       <button class="btn btn-outline" onclick="goToStep(1)">Cancelar</button>
-      <button class="btn btn-primary" id="btn-continue-step2" onclick="goToStep(3)" disabled>Continuar</button>
+      <button class="btn btn-primary" id="btn-continue-step2" onclick="goToStep(3)" disabled>
+        Continuar
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M4 8h8M9 5l3 3-3 3"/></svg>
+      </button>
     </div>
 
   </div>
@@ -1102,42 +1680,38 @@
         <div class="order-box-title">Resumen del pedido</div>
 
         <div class="order-plan-row">
-          <div>
-            <div class="order-plan-name" id="order-plan-name">Gold Pro</div>
-            <div class="order-plan-period" id="order-period">Mensual · 1 mes</div>
-          </div>
-          <div class="order-price" id="order-base-price">$149.000</div>
+          <div class="order-plan-name" id="order-plan-name">—</div>
         </div>
 
         <div class="order-lines">
           <div class="order-line">
-            <span class="lbl">Subtotal</span>
-            <span class="val" id="order-subtotal">$149.000</span>
+            <span class="lbl">Plan base</span>
+            <span class="val" id="order-base-price">—</span>
           </div>
-          <div class="order-line" id="order-discount-row" style="display:none">
-            <span class="lbl">Descuento anual (20%)</span>
-            <span class="val discount" id="order-discount">−$29.800</span>
-          </div>
-          <div class="order-line">
-            <span class="lbl">IVA (19%)</span>
-            <span class="val" id="order-iva">$28.310</span>
+          <div class="order-line" id="order-extras-row" style="display:none">
+            <span class="lbl">Opciones extra</span>
+            <span class="val" id="order-extras">—</span>
           </div>
         </div>
 
-        <div class="order-total-row">
-          <span class="order-total-label">Total</span>
-          <span class="order-total-amount" id="order-total">$177.310</span>
+        <!-- Tabs período -->
+        <div style="display:flex;border:1.5px solid var(--gray-line);border-radius:8px;overflow:hidden;margin-bottom:14px">
+          <button id="ob-tab-trim" onclick="obSetPeriod('trim')" style="flex:1;padding:7px 4px;font-size:12px;font-weight:700;font-family:inherit;border:none;cursor:pointer;background:var(--navy);color:#fff;transition:all 0.15s">Trimestral</button>
+          <button id="ob-tab-anual" onclick="obSetPeriod('anual')" style="flex:1;padding:7px 4px;font-size:12px;font-weight:600;font-family:inherit;border:none;cursor:pointer;background:var(--white);color:var(--gray-text);transition:all 0.15s">Anual <span style="font-size:10px;font-weight:700;color:var(--green)">−20%</span></button>
         </div>
 
-        <p class="order-note">
-          Se te cobrará <strong id="order-next-charge">$177.310</strong> hoy y en cada renovación mensual.
-        </p>
-
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-line)">
-          <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gray-text)">
-            <span style="font-size:14px">🔒</span>
-            Pago seguro con cifrado SSL
+        <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:10px">
+          <span style="font-size:12px;font-weight:700;color:var(--gray-text)" id="ob-total-label">Total trimestral</span>
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span style="font-size:22px;font-weight:900;color:var(--navy)" id="ob-order-total">—</span>
+            <span style="font-size:12px;color:var(--gray-text)" id="ob-monthly-equiv"></span>
           </div>
+        </div>
+
+        <p class="order-note" id="ob-billing-note" style="text-align:left;margin-bottom:14px">—</p>
+
+        <div style="padding-top:12px;border-top:1px solid var(--gray-line);display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gray-text)">
+          <span style="font-size:14px">🔒</span>Pago seguro · Cifrado SSL
         </div>
       </div>
 
@@ -1152,12 +1726,10 @@
   <div class="container">
     <div class="success-screen">
 
-      <div class="success-icon">✅</div>
-      <div class="success-title">¡Suscripción activada!</div>
+      <div class="success-icon">🎉</div>
+      <div class="success-title">Tu suscripción se ha renovado</div>
       <div class="success-subtitle">
-        Tu plan <strong id="confirm-plan-name">Gold Pro</strong> fue activado exitosamente.
-        Recibirás un correo de confirmación en <strong>rest_josefina@gmail.com</strong>
-        con todos los detalles de tu suscripción.
+        El plan <strong id="confirm-plan-name">Gold Pro</strong> está activo. Puedes seguir operando tu negocio sin interrupciones.
       </div>
 
       <div class="success-detail-box">
@@ -1201,6 +1773,71 @@
 </div>
 
 
+<!-- Modal: renovar o ajustar plan -->
+<div class="renew-modal-overlay" id="renew-modal" onclick="if(event.target===this)closeRenewModal()">
+  <div class="renew-modal-box">
+    <div class="renew-modal-title">¿Cómo quieres continuar?</div>
+    <div class="renew-modal-sub">Tu plan actual es <strong>Emprendedor 3000 Silver Pro</strong>. Elige cómo quieres renovarlo.</div>
+
+    <div class="renew-option" onclick="renewSamePlan()">
+      <div class="renew-option-icon">🔄</div>
+      <div>
+        <div class="renew-option-title">Renovar mi plan tal como está</div>
+        <div class="renew-option-desc">Continúas con exactamente las mismas condiciones, funcionalidades y precio de tu plan actual. Pasas directo al pago.</div>
+      </div>
+    </div>
+
+    <div class="renew-option highlight" onclick="adjustPlan()">
+      <div class="renew-option-icon">⚙️</div>
+      <div>
+        <div class="renew-option-title">Ajustar las condiciones de mi plan</div>
+        <div class="renew-option-desc">Puedes cambiar el número de usuarios, comprobantes, facturas electrónicas, agregar funcionalidades como KDS o domicilios, o cambiar a un plan diferente.</div>
+      </div>
+    </div>
+
+    <button class="renew-modal-cancel" onclick="closeRenewModal()">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal calendario de sesión -->
+<div class="sched-modal-overlay" id="session-modal" onclick="if(event.target===this)closeSessionModal()">
+  <div class="sched-modal-box">
+    <div class="sched-modal-title">Agenda tu sesión de implementación</div>
+    <div class="sched-modal-sub">Un especialista Bold te acompaña en la configuración de tu POS — sin costo.</div>
+    <span class="sched-lbl">Elige una fecha</span>
+    <div class="dc-grid" id="session-modal-dates"></div>
+    <span class="sched-lbl">Elige un horario</span>
+    <div class="ts-grid" id="session-modal-times">
+      <button class="ts" onclick="sessionSelTime(this)">9:00 am</button>
+      <button class="ts" onclick="sessionSelTime(this)">10:00 am</button>
+      <button class="ts" onclick="sessionSelTime(this)">11:00 am</button>
+      <button class="ts" onclick="sessionSelTime(this)">2:00 pm</button>
+      <button class="ts" onclick="sessionSelTime(this)">3:00 pm</button>
+      <button class="ts" onclick="sessionSelTime(this)">4:00 pm</button>
+    </div>
+    <div class="sched-modal-actions">
+      <button class="btn btn-primary" id="session-confirm-btn" onclick="confirmSession()" disabled style="flex:1;justify-content:center">Confirmar sesión</button>
+      <button class="btn btn-outline" onclick="closeSessionModal()" style="padding:10px 20px">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAB Necesito ayuda -->
+<button class="help-fab" onclick="openHelpModal()">💬 Necesito ayuda</button>
+
+<!-- Modal ayuda -->
+<div class="modal-overlay" id="help-modal" onclick="if(event.target===this)closeHelpModal()">
+  <div class="modal-box">
+    <div class="modal-icon">💬</div>
+    <div class="modal-title">¿Necesitas ayuda?</div>
+    <div class="modal-body">Te conectaremos con un asesor Bold por <strong>WhatsApp</strong>. Podrás resolver tus dudas sobre tu plan, facturación o configuración en tiempo real.</div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" style="justify-content:center;background:#25D366;width:100%" onclick="closeHelpModal()">Abrir WhatsApp</button>
+      <button class="btn btn-outline" style="justify-content:center;width:100%" onclick="closeHelpModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
 <script>
   // ── STATE ──
   let selectedPlan = null;
@@ -1216,74 +1853,209 @@
 
   // ── NAVIGATION ──
   function goToStep(n) {
-    // Validate step 2 → 3
     if (n === 3 && !selectedPlan) return;
 
-    // Hide all screens
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-' + n).classList.add('active');
 
-    // Update stepper
+
+    // Update stepper states and numbers
     for (let i = 1; i <= 4; i++) {
       const el = document.getElementById('step-' + i);
       el.classList.remove('active', 'done');
       if (i < n) el.classList.add('done');
       if (i === n) el.classList.add('active');
+      el.querySelector('.step-num').textContent = el.classList.contains('done') ? '✓' : i;
     }
 
-    // Update done step-num icons
-    document.querySelectorAll('.step.done .step-num').forEach(el => {
-      el.innerHTML = '✓';
-    });
-    document.querySelectorAll('.step:not(.done) .step-num').forEach((el, idx) => {
-      el.innerHTML = idx + 1;
-    });
-
-    // Update summary screen if going to step 3
     if (n === 3) updateSummary();
     if (n === 4) updateConfirm();
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // ── PLAN SELECTION ──
-  function selectPlan(planId) {
-    if (planId === 'enterprise') {
-      alert('Para planes Enterprise, un asesor te contactará en las próximas 24 horas.');
-      return;
+  // ── PAYMENT CARD MANAGEMENT ──
+  let cardCount = 2;
+  let primaryCard = 1;
+
+  function toggleAddCard() {
+    const form = document.getElementById('add-card-form');
+    form.classList.toggle('visible');
+  }
+
+  function saveNewCard() {
+    cardCount++;
+    const list = document.getElementById('cards-list');
+    const div = document.createElement('div');
+    div.className = 'pay-card-item';
+    div.id = 'card-item-' + cardCount;
+    div.innerHTML = `
+      <div class="pay-card-logo">💳</div>
+      <div class="pay-card-info">
+        <div class="pay-card-name">Nueva tarjeta ···· ${Math.floor(1000+Math.random()*9000)}</div>
+        <div class="pay-card-sub">Recién agregada</div>
+      </div>
+      <div class="pay-card-actions">
+        <button class="btn-xs primary-action" onclick="setPrimary(${cardCount})">Hacer principal</button>
+        <button class="btn-xs danger" onclick="deleteCard(${cardCount})">Eliminar</button>
+      </div>`;
+    list.appendChild(div);
+    document.getElementById('add-card-form').classList.remove('visible');
+  }
+
+  function deleteCard(id) {
+    const el = document.getElementById('card-item-' + id);
+    if (!el) return;
+    if (primaryCard === id) { alert('No puedes eliminar la tarjeta principal. Primero asigna otra como principal.'); return; }
+    el.remove();
+  }
+
+  function setPrimary(id) {
+    const prev = document.getElementById('card-item-' + primaryCard);
+    if (prev) {
+      const actions = prev.querySelector('.pay-card-actions');
+      actions.innerHTML = `<button class="btn-xs primary-action" onclick="setPrimary(${primaryCard})">Hacer principal</button><button class="btn-xs danger" onclick="deleteCard(${primaryCard})">Eliminar</button>`;
     }
+    primaryCard = id;
+    const curr = document.getElementById('card-item-' + id);
+    if (curr) {
+      const actions = curr.querySelector('.pay-card-actions');
+      actions.innerHTML = `<span class="chip-inline chip-green">Principal</span><button class="btn-xs danger" onclick="deleteCard(${id})">Eliminar</button>`;
+    }
+  }
 
-    selectedPlan = planId;
+  // ── SESSION MODAL ──
+  let sessionSelDateEl = null;
+  let sessionSelTimeEl = null;
+  const _days   = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const _monthS = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const _monthF = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
-    // Update UI
-    document.querySelectorAll('.plan-card').forEach(c => {
+  function openSessionModal() {
+    sessionSelDateEl = null;
+    sessionSelTimeEl = null;
+    document.querySelectorAll('#session-modal-times .ts').forEach(t => t.classList.remove('sel'));
+    document.getElementById('session-confirm-btn').disabled = true;
+    const container = document.getElementById('session-modal-dates');
+    container.innerHTML = '';
+    const today = new Date();
+    let added = 0, offset = 1;
+    while (added < 8) {
+      const d = new Date(today);
+      d.setDate(today.getDate() + offset++);
+      if (d.getDay() === 0 || d.getDay() === 6) continue;
+      const chip = document.createElement('button');
+      chip.className = 'dc';
+      chip.innerHTML = `<span class="dc-day">${_days[d.getDay()]}</span>${d.getDate()} ${_monthS[d.getMonth()]}`;
+      chip.dataset.full = `${_days[d.getDay()]}, ${d.getDate()} de ${_monthF[d.getMonth()]} de ${d.getFullYear()}`;
+      chip.onclick = () => {
+        if (sessionSelDateEl) sessionSelDateEl.classList.remove('sel');
+        sessionSelDateEl = chip; chip.classList.add('sel');
+        document.getElementById('session-confirm-btn').disabled = !(sessionSelDateEl && sessionSelTimeEl);
+      };
+      container.appendChild(chip);
+      added++;
+    }
+    document.getElementById('session-modal').classList.add('open');
+  }
+
+  function sessionSelTime(el) {
+    if (sessionSelTimeEl) sessionSelTimeEl.classList.remove('sel');
+    sessionSelTimeEl = el; el.classList.add('sel');
+    document.getElementById('session-confirm-btn').disabled = !(sessionSelDateEl && sessionSelTimeEl);
+  }
+
+  function confirmSession() {
+    document.getElementById('session-date').textContent = sessionSelDateEl.dataset.full;
+    document.getElementById('session-time').textContent = sessionSelTimeEl.textContent + ' · Con un experto Bold';
+    closeSessionModal();
+    document.getElementById('session-teaser').style.display = 'none';
+    document.getElementById('session-done').style.display   = 'flex';
+  }
+
+  function cancelSession() {
+    document.getElementById('session-done').style.display   = 'none';
+    document.getElementById('session-teaser').style.display = 'flex';
+  }
+
+  function closeSessionModal() { document.getElementById('session-modal').classList.remove('open'); }
+
+  // ── RENEW MODAL ──
+  function openRenewModal()  { document.getElementById('renew-modal').classList.add('open'); }
+  function closeRenewModal() { document.getElementById('renew-modal').classList.remove('open'); }
+
+  function renewSamePlan() {
+    closeRenewModal();
+    // Pre-select current plan and skip to payment
+    selectedPlan = 'rest-avanzado';
+    goToStep(3);
+  }
+
+  function adjustPlan() {
+    closeRenewModal();
+    goToStep(2);
+  }
+
+  // ── HELP MODAL ──
+  function openHelpModal()  { document.getElementById('help-modal').classList.add('open'); }
+  function closeHelpModal() { document.getElementById('help-modal').classList.remove('open'); }
+
+  // ── PLAN SELECTOR (screen-2 new) ──
+  let obSelectedProduct = 'rest';
+
+  function obSwitchProduct(product, btn) {
+    obSelectedProduct = product;
+    document.querySelectorAll('.plan-product').forEach(p => p.classList.remove('active'));
+    document.getElementById('ob-product-' + product).classList.add('active');
+    document.querySelectorAll('.product-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.vertical-desc').forEach(d => d.classList.remove('active'));
+    document.getElementById('ob-desc-' + product).classList.add('active');
+    // deselect if switching away
+    if (selectedPlan && !selectedPlan.startsWith(product === 'rest' ? 'rest' : product === 'boldpos' ? 'boldpos' : 'fact')) {
+      selectedPlan = null;
+      document.getElementById('btn-continue-step2').disabled = true;
+    }
+  }
+
+  function obSelectPlan(planId) {
+    document.querySelectorAll('.ob-plan-card').forEach(c => {
       c.classList.remove('selected');
-      c.querySelector('.plan-select-btn').textContent =
-        c.id === 'plan-silver' ? 'Renovar este plan' : 'Seleccionar';
+      const btn = c.querySelector('.ob-plan-cta');
+      if (btn) btn.textContent = c.classList.contains('current-badge') ? 'Renovar este plan' : 'Seleccionar';
     });
-
-    const card = document.getElementById('plan-' + planId);
+    const card = document.getElementById('ob-card-' + planId);
     card.classList.add('selected');
-    card.querySelector('.plan-select-btn').textContent = '✓ Seleccionado';
-
+    card.querySelector('.ob-plan-cta').textContent = '✓ Seleccionado';
+    selectedPlan = planId;
     document.getElementById('btn-continue-step2').disabled = false;
   }
 
-  // ── PERIOD TOGGLE ──
-  function setPeriod(p) {
-    selectedPeriod = p;
-    document.getElementById('btn-monthly').classList.toggle('active', p === 'monthly');
-    document.getElementById('btn-annual').classList.toggle('active', p === 'annual');
+  function obUpdatePrice(planId) {
+    const card = document.getElementById('ob-card-' + planId);
+    if (!card) return;
+    const base = parseInt(card.dataset.base);
+    let extras = 0;
+    card.querySelectorAll('select').forEach(s => extras += parseInt(s.value) || 0);
+    const total = base + extras;
+    document.getElementById('ob-price-' + planId).textContent = '$' + fmt(total);
+    document.getElementById('ob-note-' + planId).textContent = extras > 0 ? 'Base $' + fmt(base) + ' + $' + fmt(extras) : '';
+  }
 
-    // Update prices
-    const mult = p === 'annual' ? 0.8 : 1;
-    for (const [id, plan] of Object.entries(plans)) {
-      const el = document.getElementById('price-' + id);
-      if (el && plan.monthly) {
-        const price = Math.round(plan.monthly * mult);
-        el.textContent = '$' + price.toLocaleString('es-CO');
-      }
-    }
+  function obToggleAddon(planId, addonId, price) {
+    const addonEl  = document.getElementById('ob-addon-' + planId + '-' + addonId);
+    const toggleEl = document.getElementById('ob-toggle-' + planId + '-' + addonId);
+    const isOn = toggleEl.classList.contains('on');
+    toggleEl.classList.toggle('on', !isOn);
+    addonEl.classList.toggle('off', isOn);
+    addonEl.dataset.active = isOn ? '0' : price;
+    const card = document.getElementById('ob-card-' + planId);
+    const base = parseInt(card.dataset.base);
+    let extras = 0;
+    card.querySelectorAll('select').forEach(s => extras += parseInt(s.value) || 0);
+    card.querySelectorAll('[id^="ob-addon-' + planId + '"]').forEach(el => extras += parseInt(el.dataset.active || 0));
+    document.getElementById('ob-price-' + planId).textContent = '$' + fmt(base + extras);
+    document.getElementById('ob-note-' + planId).textContent = extras > 0 ? 'Base $' + fmt(base) + ' + $' + fmt(extras) : '';
   }
 
   // ── PAYMENT SELECTION ──
@@ -1295,46 +2067,79 @@
     document.getElementById('card-form').classList.toggle('visible', method === 'new');
   }
 
+  // ── BILLING PERIOD (order box) ──
+  let obBillingPeriod = 'trim';
+  let obCurrentMonthly = 0;
+
+  function obSetPeriod(p) {
+    obBillingPeriod = p;
+    document.getElementById('ob-tab-trim').style.background  = p === 'trim'  ? 'var(--navy)' : 'var(--white)';
+    document.getElementById('ob-tab-trim').style.color       = p === 'trim'  ? '#fff' : 'var(--gray-text)';
+    document.getElementById('ob-tab-anual').style.background = p === 'anual' ? 'var(--navy)' : 'var(--white)';
+    document.getElementById('ob-tab-anual').style.color      = p === 'anual' ? '#fff' : 'var(--gray-text)';
+    obRenderTotals(obCurrentMonthly);
+  }
+
+  function obRenderTotals(monthly) {
+    obCurrentMonthly = monthly;
+    const trimTotal    = monthly * 3;
+    const anualTotal   = Math.round(monthly * 12 * 0.8);
+    const anualMonthly = Math.round(monthly * 0.8);
+
+    if (obBillingPeriod === 'trim') {
+      document.getElementById('ob-total-label').textContent  = 'Total trimestral';
+      document.getElementById('ob-order-total').textContent  = fmt(trimTotal);
+      document.getElementById('ob-monthly-equiv').textContent = '(' + fmt(monthly) + '/mes)';
+      document.getElementById('ob-billing-note').innerHTML   = 'Se te cobrarán ' + fmt(trimTotal) + ' cada 3 meses.<br>Cancela cuando quieras.';
+    } else {
+      document.getElementById('ob-total-label').textContent  = 'Total anual';
+      document.getElementById('ob-order-total').textContent  = fmt(anualTotal);
+      document.getElementById('ob-monthly-equiv').textContent = '(' + fmt(anualMonthly) + '/mes)';
+      document.getElementById('ob-billing-note').innerHTML   = 'Se te cobrarán ' + fmt(anualTotal) + ' una vez al año.<br>Cancela cuando quieras.';
+    }
+  }
+
   // ── UPDATE SUMMARY ──
   function updateSummary() {
     if (!selectedPlan) return;
-    const plan = plans[selectedPlan];
-    const base = selectedPeriod === 'annual' ? plan.monthly * 0.8 : plan.monthly;
-    const discount = selectedPeriod === 'annual' ? plan.monthly * 0.2 : 0;
-    const subtotal = base;
-    const iva = Math.round(subtotal * 0.19);
-    const total = subtotal + iva;
-    const periodLabel = selectedPeriod === 'monthly' ? 'Mensual · 1 mes' : 'Anual · 12 meses';
+    const card = document.getElementById('ob-card-' + selectedPlan);
+    const planName = card.querySelector('.p-name').textContent;
+    const base = parseInt(card.dataset.base);
+    let extras = 0;
+    card.querySelectorAll('select').forEach(s => extras += parseInt(s.value) || 0);
+    card.querySelectorAll('[id^="ob-addon-' + selectedPlan + '"]').forEach(el => extras += parseInt(el.dataset.active || 0));
+    const monthly = base + extras;
 
-    document.getElementById('summary-plan-name').textContent = plan.name + ' — Restaurante';
-    document.getElementById('summary-plan-period').textContent =
-      (selectedPeriod === 'monthly' ? 'Facturación mensual' : 'Facturación anual') + ' · A partir del 4 jun 2026';
-    document.getElementById('order-plan-name').textContent = plan.name;
-    document.getElementById('order-period').textContent = periodLabel;
+    document.getElementById('summary-plan-name').textContent = planName;
+    document.getElementById('summary-plan-period').textContent = 'A partir del 4 jun 2026';
+    document.getElementById('order-plan-name').textContent = planName;
     document.getElementById('order-base-price').textContent = fmt(base);
-    document.getElementById('order-subtotal').textContent = fmt(subtotal);
-    document.getElementById('order-iva').textContent = fmt(iva);
-    document.getElementById('order-total').textContent = fmt(total);
-    document.getElementById('order-next-charge').textContent = fmt(total);
 
-    const discRow = document.getElementById('order-discount-row');
-    if (selectedPeriod === 'annual') {
-      discRow.style.display = 'flex';
-      document.getElementById('order-discount').textContent = '−' + fmt(discount);
+    const extrasRow = document.getElementById('order-extras-row');
+    if (extras > 0) {
+      extrasRow.style.display = 'flex';
+      document.getElementById('order-extras').textContent = fmt(extras);
     } else {
-      discRow.style.display = 'none';
+      extrasRow.style.display = 'none';
     }
+
+    obRenderTotals(monthly);
   }
 
   function updateConfirm() {
     if (!selectedPlan) return;
-    const plan = plans[selectedPlan];
-    const base = selectedPeriod === 'annual' ? plan.monthly * 0.8 : plan.monthly;
-    const total = Math.round((base + base * 0.19));
-    document.getElementById('confirm-plan-name').textContent = plan.name;
-    document.getElementById('confirm-plan-detail').textContent = plan.name + ' · Restaurante';
-    document.getElementById('confirm-period').textContent = selectedPeriod === 'monthly' ? 'Mensual' : 'Anual';
-    document.getElementById('confirm-total').textContent = fmt(total);
+    const card = document.getElementById('ob-card-' + selectedPlan);
+    const planName = card.querySelector('.p-name').textContent;
+    const base = parseInt(card.dataset.base);
+    let extras = 0;
+    card.querySelectorAll('select').forEach(s => extras += parseInt(s.value) || 0);
+    const monthly = base + extras;
+    const total = obBillingPeriod === 'trim' ? monthly * 3 : Math.round(monthly * 12 * 0.8);
+    const period = obBillingPeriod === 'trim' ? 'Trimestral' : 'Anual';
+    document.getElementById('confirm-plan-name').textContent  = planName;
+    document.getElementById('confirm-plan-detail').textContent = planName;
+    document.getElementById('confirm-period').textContent     = period;
+    document.getElementById('confirm-total').textContent      = fmt(total);
   }
 
   function fmt(n) {

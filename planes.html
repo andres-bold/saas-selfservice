@@ -452,6 +452,70 @@
       background: #00a876;
       box-shadow: 0 6px 20px rgba(0,196,140,0.5);
     }
+
+    /* ── STEP 3 NEW LAYOUT ── */
+    .confirm-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 28px;
+      align-items: start;
+      padding: 36px 0;
+    }
+    .confirm-left { display: flex; flex-direction: column; gap: 16px; }
+    .confirm-header { text-align: center; padding: 28px 24px 20px; background: var(--white); border: 1px solid var(--gray-line); border-radius: 12px; }
+    .confirm-icon { font-size: 44px; margin-bottom: 12px; }
+    .confirm-title { font-size: 24px; font-weight: 900; color: var(--navy); letter-spacing: -0.8px; margin-bottom: 8px; }
+    .confirm-sub { font-size: 14px; color: var(--gray-text); line-height: 1.65; }
+
+    .email-sent-box { background: var(--white); border: 1px solid var(--gray-line); border-radius: 12px; padding: 18px 20px; }
+    .email-sent-box .email-addr { font-size: 14px; font-weight: 700; color: var(--navy); background: var(--gray-bg); border-radius: 8px; padding: 8px 14px; text-align: center; margin: 10px 0 14px; }
+    .email-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .resend-btn { font-size: 13px; font-weight: 600; color: var(--blue); background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; }
+    .resend-btn:disabled { color: var(--gray-text); cursor: not-allowed; }
+    .edit-email-link { font-size: 13px; color: var(--gray-text); cursor: pointer; text-decoration: underline; }
+
+    /* Scheduling card */
+    .schedule-card { background: var(--white); border: 1px solid var(--gray-line); border-radius: 12px; overflow: hidden; position: sticky; top: 80px; }
+    .schedule-card-head { background: var(--navy); padding: 20px 22px; }
+    .schedule-card-head-title { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: -0.3px; margin-bottom: 4px; }
+    .schedule-card-head-sub { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .schedule-card-body { padding: 20px 22px; }
+    .schedule-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-text); margin-bottom: 10px; display: block; }
+    .date-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 18px; }
+    .date-chip { padding: 7px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; font-family: inherit; border: 1.5px solid var(--gray-line); background: var(--white); color: var(--text); cursor: pointer; transition: all 0.15s; text-align: center; line-height: 1.4; }
+    .date-chip-day { font-size: 10px; font-weight: 700; color: var(--gray-text); text-transform: capitalize; white-space: nowrap; overflow: hidden; letter-spacing: -0.2px; }
+    .date-chip.selected .date-chip-day { color: var(--blue); }
+    .date-chip-date { font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .date-chip:hover { border-color: var(--blue); color: var(--blue); }
+    .date-chip.selected { border-color: var(--blue); background: #EEF0FF; color: var(--blue); }
+    .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 20px; }
+    .time-slot { padding: 8px 4px; border-radius: 8px; font-size: 12px; font-weight: 600; font-family: inherit; border: 1.5px solid var(--gray-line); background: var(--white); color: var(--text); cursor: pointer; text-align: center; transition: all 0.15s; }
+    .time-slot:hover { border-color: var(--blue); color: var(--blue); }
+    .time-slot.selected { border-color: var(--blue); background: #EEF0FF; color: var(--blue); }
+    .schedule-actions { display: flex; flex-direction: column; gap: 8px; }
+    .btn-skip { background: none; border: none; font-size: 12px; color: var(--gray-text); cursor: pointer; font-family: inherit; text-align: center; padding: 4px; text-decoration: underline; }
+
+    /* Scheduled state */
+    .scheduled-state { padding: 20px 22px; text-align: center; }
+    .scheduled-emoji { font-size: 36px; margin-bottom: 12px; }
+    .scheduled-title { font-size: 17px; font-weight: 800; color: var(--navy); letter-spacing: -0.4px; margin-bottom: 6px; }
+    .scheduled-sub { font-size: 12px; color: var(--gray-text); margin-bottom: 16px; }
+    .scheduled-datetime { background: var(--navy); border-radius: 10px; padding: 14px 18px; color: #fff; }
+    .scheduled-datetime-date { font-size: 18px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 2px; }
+    .scheduled-datetime-time { font-size: 13px; color: rgba(255,255,255,0.65); }
+
+    /* Help modal */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(18,18,42,0.55); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: var(--white); border-radius: 16px; padding: 28px 28px 24px; max-width: 380px; width: 90%; text-align: center; }
+    .modal-icon { font-size: 36px; margin-bottom: 12px; }
+    .modal-title { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .modal-body { font-size: 13px; color: var(--gray-text); line-height: 1.65; margin-bottom: 22px; }
+    .modal-actions { display: flex; flex-direction: column; gap: 8px; }
+
+    /* "Necesito ayuda" floating btn */
+    .help-fab { position: fixed; bottom: 28px; right: 28px; z-index: 150; display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; font-family: inherit; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 16px rgba(232,0,61,0.35); transition: background 0.15s; }
+    .help-fab:hover { background: var(--red-dark); }
   </style>
 </head>
 <body>
@@ -999,7 +1063,7 @@
             <button class="btn btn-outline" style="font-size:12px;padding:7px 14px" onclick="goStep(1)">Cambiar plan</button>
           </div>
           <!-- Selected options summary -->
-          <div id="s2-options-summary" style="background:var(--gray-bg);border-radius:8px;padding:12px;font-size:12px;color:var(--gray-text);line-height:1.8"></div>
+          <div id="s2-options-summary" style="background:var(--gray-bg);border-radius:8px;padding:12px;font-size:12px;color:var(--gray-text);display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;line-height:1.7"></div>
         </div>
 
         <!-- Personal data -->
@@ -1013,7 +1077,10 @@
             <div class="form-field"><label>Correo electrónico</label><input type="email" placeholder="correo@negocio.com" /></div>
             <div class="form-field"><label>Teléfono</label><input type="tel" placeholder="+57 300 000 0000" /></div>
           </div>
-          <div class="form-field"><label>NIT o cédula</label><input type="text" placeholder="900.123.456-1" /></div>
+          <div class="form-row">
+            <div class="form-field"><label>NIT o cédula</label><input type="text" placeholder="900.123.456-1" /></div>
+            <div class="form-field"><label>¿Qué vendes o qué haces?</label><input type="text" id="biz-type-input" placeholder="Ej. Ropa, restaurante, servicios..." /></div>
+          </div>
         </div>
 
         <!-- Payment method -->
@@ -1037,6 +1104,34 @@
             <div class="pay-logo">🏦</div>
             <div><div class="pay-name">PSE</div><div class="pay-desc">Débito directo desde tu banco</div></div>
           </div>
+          <div class="card-form" id="pse-form" style="gap:10px">
+            <div class="form-field">
+              <label>Banco</label>
+              <select style="padding:9px 12px;border:1px solid var(--gray-line);border-radius:8px;font-size:13px;font-family:inherit;outline:none;width:100%;color:var(--text)">
+                <option value="">Selecciona tu banco</option>
+                <option>Bancolombia</option>
+                <option>Banco de Bogotá</option>
+                <option>Davivienda</option>
+                <option>BBVA Colombia</option>
+                <option>Banco Popular</option>
+                <option>Nequi</option>
+                <option>Daviplata</option>
+                <option>Scotiabank Colpatria</option>
+                <option>Banco de Occidente</option>
+                <option>Banco Caja Social</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+                <span>Correo electrónico</span>
+                <label style="display:flex;align-items:center;gap:5px;font-weight:400;color:var(--gray-text);cursor:pointer;white-space:nowrap">
+                  <input type="checkbox" id="pse-copy-email" onchange="pseCopyEmail(this)" style="accent-color:var(--blue);width:13px;height:13px" />
+                  Completar con datos del negocio
+                </label>
+              </label>
+              <input type="email" id="pse-email-input" placeholder="correo@negocio.com" />
+            </div>
+          </div>
         </div>
 
         <div style="font-size:12px;color:var(--gray-text);line-height:1.65;margin-bottom:20px">
@@ -1048,27 +1143,54 @@
         </div>
       </div>
 
-      <!-- Order box -->
-      <div class="order-box">
-        <div class="order-box-title">Resumen del pedido</div>
-        <div class="order-plan-row">
-          <div class="order-plan-name" id="order-plan-name">—</div>
-          <div class="order-plan-sub" id="order-plan-sub">Facturación mensual</div>
+      <!-- Right sticky column -->
+      <div style="position:sticky;top:80px;align-self:start;display:flex;flex-direction:column;gap:12px">
+
+        <div class="order-box" style="position:static">
+          <div class="order-box-title">Resumen del pedido</div>
+          <div class="order-plan-row">
+            <div class="order-plan-name" id="order-plan-name">—</div>
+          </div>
+          <div class="order-lines">
+            <div class="order-line"><span class="lbl">Plan base</span><span class="val" id="order-base">—</span></div>
+            <div class="order-line" id="order-extras-row" style="display:none"><span class="lbl">Opciones extra</span><span class="val" id="order-extras">—</span></div>
+          </div>
+          <!-- Billing period tabs -->
+          <div style="display:flex;border:1.5px solid var(--gray-line);border-radius:8px;overflow:hidden;margin-bottom:14px">
+            <button id="tab-trim" onclick="setBillingPeriod('trim')" style="flex:1;padding:7px 4px;font-size:12px;font-weight:700;font-family:inherit;border:none;cursor:pointer;background:var(--navy);color:#fff;transition:all 0.15s">Trimestral</button>
+            <button id="tab-anual" onclick="setBillingPeriod('anual')" style="flex:1;padding:7px 4px;font-size:12px;font-weight:600;font-family:inherit;border:none;cursor:pointer;background:var(--white);color:var(--gray-text);transition:all 0.15s">Anual&nbsp;<span style="font-size:10px;font-weight:700;color:var(--green)">−20%</span></button>
+          </div>
+          <div class="order-total" style="flex-direction:column;align-items:flex-start;gap:2px">
+            <span class="order-total-label" id="order-total-label">Total trimestral</span>
+            <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap">
+              <span class="order-total-amount" id="order-total">—</span>
+              <span style="font-size:13px;color:var(--gray-text)" id="order-monthly-equiv"></span>
+            </div>
+          </div>
+          <p class="order-note" id="order-billing-note" style="margin-top:10px">Se te cobrarán $747.000 cada 3 meses.<br>Cancela cuando quieras.</p>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--gray-line);display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gray-text)">
+            <span style="font-size:14px">🔒</span>Pago seguro · Cifrado SSL
+          </div>
         </div>
-        <div class="order-lines">
-          <div class="order-line"><span class="lbl">Plan base</span><span class="val" id="order-base">—</span></div>
-          <div class="order-line" id="order-extras-row" style="display:none"><span class="lbl">Opciones extra</span><span class="val" id="order-extras">—</span></div>
-          <div class="order-line"><span class="lbl">IVA (19%)</span><span class="val" id="order-iva">—</span></div>
+
+        <!-- Cupón -->
+        <div style="background:var(--white);border:1px solid var(--gray-line);border-radius:12px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">¿Tienes un cupón?</div>
+          <div style="display:flex;gap:8px">
+            <input type="text" id="coupon-input" placeholder="Ej. BOLD20" style="flex:1;padding:8px 12px;border:1.5px solid var(--gray-line);border-radius:8px;font-size:13px;font-family:inherit;outline:none;transition:border-color 0.15s" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--gray-line)'" />
+            <button onclick="verifyCoupon()" style="padding:8px 14px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap">Verificar</button>
+          </div>
+          <div id="coupon-msg" style="font-size:11px;margin-top:6px;display:none"></div>
         </div>
-        <div class="order-total">
-          <span class="order-total-label">Total/mes</span>
-          <span class="order-total-amount" id="order-total">—</span>
+
+        <!-- Experto -->
+        <div style="background:var(--white);border:1px solid var(--gray-line);border-radius:12px;padding:16px 18px">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">¿Un experto te apoyó?</div>
+          <div style="font-size:12px;color:var(--gray-text);margin-bottom:10px">Escribe su nombre para reconocer su gestión.</div>
+          <input type="text" placeholder="Nombre del asesor" style="width:100%;padding:8px 12px;border:1.5px solid var(--gray-line);border-radius:8px;font-size:13px;font-family:inherit;outline:none;transition:border-color 0.15s" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--gray-line)'" />
         </div>
-        <p class="order-note">Se te cobrará este valor mensualmente. Cancela cuando quieras.</p>
-        <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--gray-line);display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gray-text)">
-          <span style="font-size:14px">🔒</span>Pago seguro · Cifrado SSL
-        </div>
-      </div>
+
+      </div><!-- /right sticky column -->
     </div>
 
   </div>
@@ -1079,30 +1201,126 @@
 ══════════════════════════════════════ -->
 <div class="screen" id="screen-3">
   <div class="container">
-    <div class="success-wrap">
-      <div class="success-icon">✅</div>
-      <div class="success-title">¡Suscripción activada!</div>
-      <div class="success-sub">
-        Tu plan <strong id="confirm-plan-name">—</strong> fue activado. Recibirás un correo de confirmación con todos los detalles.
+    <div class="confirm-layout">
+
+      <!-- Columna izquierda -->
+      <div class="confirm-left">
+        <div class="confirm-header">
+          <div class="confirm-icon">🎉</div>
+          <div class="confirm-title">¡Suscripción activada!</div>
+          <div class="confirm-sub">Tu plan <strong id="confirm-plan-name">—</strong> está listo.<br>Te enviamos un correo para que inicies sesión y empieces a usar Bold POS.</div>
+        </div>
+
+        <!-- Detalles del plan -->
+        <div class="success-box" style="margin-bottom:0">
+          <div class="success-row"><span class="lbl">Plan</span><span class="val" id="c-plan">—</span></div>
+          <div class="success-row"><span class="lbl" id="c-price-label">Precio</span><span class="val green" id="c-price">—</span></div>
+          <div class="success-row"><span class="lbl">Próximo cobro</span><span class="val" id="c-next">—</span></div>
+          <div class="success-row"><span class="lbl">Método de pago</span><span class="val">Tarjeta ingresada</span></div>
+        </div>
+
+        <!-- Email enviado -->
+        <div class="email-sent-box">
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">Revisa tu correo electrónico</div>
+          <div style="font-size:12px;color:var(--gray-text)">Enviamos el enlace de acceso a:</div>
+          <div class="email-addr" id="c-email">tucorreo@negocio.com</div>
+          <div class="email-actions">
+            <div>
+              <button class="resend-btn" id="resend-btn" disabled onclick="resendEmail()">Reenviar correo</button>
+              <span id="resend-timer" style="font-size:12px;color:var(--gray-text);margin-left:6px">2:00</span>
+            </div>
+            <span class="edit-email-link" onclick="showEditEmail()">Modificar mi correo</span>
+          </div>
+          <!-- Editar correo inline -->
+          <div id="edit-email-row" style="display:none;margin-top:12px;display:none">
+            <div style="display:flex;gap:8px;align-items:center">
+              <input type="email" id="edit-email-input" placeholder="nuevo@correo.com" style="flex:1;padding:8px 12px;border:1.5px solid var(--blue);border-radius:8px;font-size:13px;font-family:inherit;outline:none" />
+              <button class="btn btn-primary" style="padding:8px 16px;font-size:13px;white-space:nowrap" onclick="confirmNewEmail()">Confirmar</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="window.print()">Descargar comprobante</button>
       </div>
-      <div class="success-box">
-        <div class="success-row"><span class="lbl">Plan</span><span class="val" id="c-plan">—</span></div>
-        <div class="success-row"><span class="lbl">Precio mensual</span><span class="val green" id="c-price">—</span></div>
-        <div class="success-row"><span class="lbl">Próximo cobro</span><span class="val" id="c-next">—</span></div>
-        <div class="success-row"><span class="lbl">Método de pago</span><span class="val">Tarjeta ingresada</span></div>
+
+      <!-- Columna derecha: agenda -->
+      <div class="schedule-card" id="schedule-card">
+        <div class="schedule-card-head">
+          <div class="schedule-card-head-title">Agenda con un experto</div>
+          <div class="schedule-card-head-sub">Un especialista Bold te ayuda a configurar tu POS, importar productos y capacitar a tu equipo — sin costo adicional.</div>
+        </div>
+
+        <!-- Estado: elegir fecha/hora -->
+        <div class="schedule-card-body" id="schedule-picker">
+          <span class="schedule-section-label">Elige una fecha</span>
+          <div class="date-chips" id="date-chips"></div>
+          <span class="schedule-section-label">Elige un horario</span>
+          <div class="time-slots">
+            <button class="time-slot" onclick="selectTime(this)">9:00 am</button>
+            <button class="time-slot" onclick="selectTime(this)">10:00 am</button>
+            <button class="time-slot" onclick="selectTime(this)">11:00 am</button>
+            <button class="time-slot" onclick="selectTime(this)">2:00 pm</button>
+            <button class="time-slot" onclick="selectTime(this)">3:00 pm</button>
+            <button class="time-slot" onclick="selectTime(this)">4:00 pm</button>
+          </div>
+          <div class="schedule-actions">
+            <button class="btn btn-primary" id="btn-schedule" onclick="confirmSchedule()" disabled style="justify-content:center">Agendar sesión</button>
+            <button class="btn-skip" onclick="skipSchedule()">Recuérdame después</button>
+          </div>
+        </div>
+
+        <!-- Estado: agendado -->
+        <div class="scheduled-state" id="schedule-done" style="display:none">
+          <div class="scheduled-emoji">🚀</div>
+          <div class="scheduled-title">¡Estamos listos para tu negocio!</div>
+          <div class="scheduled-sub">Tu sesión de implementación está confirmada. Te enviaremos un recordatorio por correo.</div>
+          <div class="scheduled-datetime" style="margin-bottom:14px">
+            <div class="scheduled-datetime-date" id="scheduled-date-text">—</div>
+            <div class="scheduled-datetime-time" id="scheduled-time-text">—</div>
+          </div>
+          <button class="btn-skip" onclick="cancelSchedule()">Cancelar cita</button>
+        </div>
+
+        <!-- Estado: pospuesto -->
+        <div class="scheduled-state" id="schedule-skipped" style="display:none">
+          <div class="scheduled-emoji">👍</div>
+          <div class="scheduled-title">Sin problema</div>
+          <div class="scheduled-sub">Cuando estés listo puedes agendar con un experto Bold. Estaremos aquí para ayudarte.</div>
+          <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="showSchedulePicker()">Agendar</button>
+        </div>
       </div>
-      <div class="success-btns">
-        <a href="onboarding.html" class="btn btn-primary">Ir a mi cuenta</a>
-        <button class="btn btn-outline" onclick="window.print()">Descargar comprobante</button>
-      </div>
+
     </div>
   </div>
 </div>
 
+<!-- Modal "Necesito ayuda" -->
+<div class="modal-overlay" id="help-modal" onclick="if(event.target===this)closeHelpModal()">
+  <div class="modal-box">
+    <div class="modal-icon">💬</div>
+    <div class="modal-title">¿Necesitas ayuda?</div>
+    <div class="modal-body">Te conectaremos con un asesor Bold por <strong>WhatsApp</strong>. Podrás resolver tus dudas sobre planes, configuración o facturación en tiempo real.</div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" style="justify-content:center;background:#25D366" onclick="closeHelpModal()">Abrir WhatsApp</button>
+      <button class="btn btn-outline" style="justify-content:center" onclick="closeHelpModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAB Necesito ayuda (visible en pasos 1, 2 y 3) -->
+<button class="help-fab" id="help-fab" onclick="openHelpModal()">
+  💬 Necesito ayuda
+</button>
+
 <script>
   // ── STATE ──
-  let selectedPlanId  = null;
-  let selectedProduct = 'boldpos';
+  let selectedPlanId   = null;
+  let selectedProduct  = 'boldpos';
+  let billingPeriod    = 'trim'; // 'trim' | 'anual'
+  let currentMonthly   = 0;
+  let resendInterval   = null;
+  let selectedDateEl   = null;
+  let selectedTimeEl   = null;
 
   // ── PRODUCT TABS ──
   function switchProduct(product, btn) {
@@ -1113,7 +1331,6 @@
     btn.classList.add('active');
     document.querySelectorAll('.vertical-desc').forEach(d => d.classList.remove('active'));
     document.getElementById('desc-' + product).classList.add('active');
-    // deselect plan when switching product
     if (selectedPlanId && !selectedPlanId.startsWith(product === 'boldpos' ? 'boldpos' : product === 'restaurantes' ? 'rest' : 'fact')) {
       selectedPlanId = null;
       document.getElementById('btn-continue-1').disabled = true;
@@ -1122,13 +1339,11 @@
 
   // ── PLAN SELECTION ──
   function selectPlan(planId) {
-    // deselect all
     document.querySelectorAll('.plan-card').forEach(c => {
       c.classList.remove('selected');
       const btn = c.querySelector('.plan-cta-btn');
       if (btn) btn.textContent = 'Seleccionar';
     });
-    // select clicked
     const card = document.getElementById('card-' + planId);
     card.classList.add('selected');
     card.querySelector('.plan-cta-btn').textContent = '✓ Seleccionado';
@@ -1142,14 +1357,9 @@
     if (!card) return;
     const base = parseInt(card.dataset.base);
     let extras = 0;
-
-    card.querySelectorAll('select').forEach(sel => {
-      extras += parseInt(sel.value) || 0;
-    });
-
+    card.querySelectorAll('select').forEach(sel => extras += parseInt(sel.value) || 0);
     const total = base + extras;
     const note  = extras > 0 ? 'Base $' + fmt(base) + ' + $' + fmt(extras) + ' extras' : '';
-
     document.getElementById('price-' + planId).textContent = '$' + fmt(total);
     document.getElementById('note-'  + planId).textContent = note;
   }
@@ -1159,7 +1369,6 @@
     const addonEl  = document.getElementById('addon-'  + planId + '-' + addonId);
     const toggleEl = document.getElementById('toggle-' + planId + '-' + addonId);
     const isOn = toggleEl.classList.contains('on');
-
     if (isOn) {
       toggleEl.classList.remove('on');
       addonEl.classList.add('off');
@@ -1169,7 +1378,6 @@
       addonEl.classList.remove('off');
       addonEl.dataset.active = price;
     }
-    // recalculate price
     const card = document.getElementById('card-' + planId);
     const base = parseInt(card.dataset.base);
     let extras = 0;
@@ -1185,55 +1393,105 @@
   function selectPayment(method) {
     document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
     event.currentTarget.classList.add('selected');
-    const form = document.getElementById('card-form');
-    form.classList.toggle('visible', method === 'card');
+    document.getElementById('card-form').classList.toggle('visible', method === 'card');
+    const pseForm = document.getElementById('pse-form');
+    if (pseForm) pseForm.classList.toggle('visible', method === 'pse');
+  }
+
+  // ── PSE copy email ──
+  function pseCopyEmail(checkbox) {
+    if (checkbox.checked) {
+      const bizEmail = document.querySelector('#screen-2 input[type="email"]');
+      const pseEmailInput = document.getElementById('pse-email-input');
+      if (bizEmail && pseEmailInput) pseEmailInput.value = bizEmail.value;
+    }
+  }
+
+  // ── BILLING PERIOD ──
+  function setBillingPeriod(period) {
+    billingPeriod = period;
+    const trimBtn  = document.getElementById('tab-trim');
+    const anualBtn = document.getElementById('tab-anual');
+    const active   = 'background:var(--navy);color:#fff;font-weight:700';
+    const inactive = 'background:var(--white);color:var(--gray-text);font-weight:600';
+    trimBtn.style.cssText  += period === 'trim'  ? ';background:var(--navy);color:#fff'  : ';background:var(--white);color:var(--gray-text)';
+    anualBtn.style.cssText += period === 'anual' ? ';background:var(--navy);color:#fff'  : ';background:var(--white);color:var(--gray-text)';
+    renderOrderTotals(currentMonthly);
+  }
+
+  function renderOrderTotals(monthly) {
+    currentMonthly = monthly;
+    const trimTotal    = monthly * 3;
+    const anualTotal   = Math.round(monthly * 12 * 0.8);
+    const anualMonthly = Math.round(monthly * 0.8);
+
+    if (billingPeriod === 'trim') {
+      document.getElementById('order-total-label').textContent   = 'Total trimestral';
+      document.getElementById('order-total').textContent         = '$' + fmt(trimTotal);
+      document.getElementById('order-monthly-equiv').textContent = '($' + fmt(monthly) + '/mes)';
+      document.getElementById('order-billing-note').innerHTML    = 'Se te cobrarán $' + fmt(trimTotal) + ' cada 3 meses.<br>Cancela cuando quieras.';
+    } else {
+      document.getElementById('order-total-label').textContent   = 'Total anual';
+      document.getElementById('order-total').textContent         = '$' + fmt(anualTotal);
+      document.getElementById('order-monthly-equiv').textContent = '($' + fmt(anualMonthly) + '/mes)';
+      document.getElementById('order-billing-note').innerHTML    = 'Se te cobrarán $' + fmt(anualTotal) + ' una vez al año.<br>Cancela cuando quieras.';
+    }
+  }
+
+  // ── COUPON ──
+  function verifyCoupon() {
+    const val = document.getElementById('coupon-input').value.trim();
+    const msg = document.getElementById('coupon-msg');
+    msg.style.display = 'block';
+    if (!val) {
+      msg.style.color = 'var(--gray-text)';
+      msg.textContent = 'Ingresa un código de cupón.';
+      return;
+    }
+    if (val.toUpperCase() === 'BOLD20') {
+      msg.style.color = '#00875A';
+      msg.textContent = '✓ Cupón aplicado — 20% de descuento';
+    } else {
+      msg.style.color = 'var(--red)';
+      msg.textContent = 'Código no válido o ya utilizado.';
+    }
   }
 
   // ── NAVIGATION ──
   function goStep(n) {
     if (n === 2) populateStep2();
     if (n === 3) populateStep3();
-
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-' + n).classList.add('active');
-
-    // update stepper
+    document.querySelector('.fixed-top-cta').style.display = n === 3 ? 'none' : '';
     for (let i = 1; i <= 3; i++) {
       const el = document.getElementById('step-' + i);
       el.classList.remove('active', 'done');
       if (i < n) el.classList.add('done');
       if (i === n) el.classList.add('active');
     }
-    // fix step nums after done
-    document.querySelectorAll('.step.done .step-num').forEach(el => el.textContent = '✓');
-    document.querySelectorAll('.step:not(.done) .step-num').forEach((el, idx) => el.textContent = idx + 1);
-
+    for (let i = 1; i <= 3; i++) {
+      const stepEl = document.getElementById('step-' + i);
+      stepEl.querySelector('.step-num').textContent = stepEl.classList.contains('done') ? '✓' : i;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function populateStep2() {
     if (!selectedPlanId) return;
     const card = document.getElementById('card-' + selectedPlanId);
-    const planName = card.querySelector('.plan-card-name').textContent;
+    const planName   = card.querySelector('.plan-card-name').textContent;
     const planTarget = card.querySelector('.plan-card-target').textContent;
-    const priceText = document.getElementById('price-' + selectedPlanId).textContent;
     const base = parseInt(card.dataset.base);
-
-    // compute extras
     let extras = 0;
     card.querySelectorAll('select').forEach(s => extras += parseInt(s.value) || 0);
     card.querySelectorAll('[id^="addon-' + selectedPlanId + '"]').forEach(el => extras += parseInt(el.dataset.active || 0));
-    const subtotal = base + extras;
-    const iva = Math.round(subtotal * 0.19);
-    const total = subtotal + iva;
+    const monthly = base + extras;
 
     document.getElementById('s2-plan-name').textContent = planName;
-    document.getElementById('s2-plan-desc').textContent = planTarget + ' · Facturación mensual';
+    document.getElementById('s2-plan-desc').textContent = planTarget;
     document.getElementById('order-plan-name').textContent = planName;
-    document.getElementById('order-plan-sub').textContent = 'Facturación mensual';
     document.getElementById('order-base').textContent = '$' + fmt(base);
-    document.getElementById('order-iva').textContent  = '$' + fmt(iva);
-    document.getElementById('order-total').textContent = '$' + fmt(total);
 
     const extrasRow = document.getElementById('order-extras-row');
     if (extras > 0) {
@@ -1243,45 +1501,189 @@
       extrasRow.style.display = 'none';
     }
 
-    // Build options summary
-    let lines = [];
+    renderOrderTotals(monthly);
+
+    // Build options summary — strip emoji icons, each item in its own div
+    let html = '';
     card.querySelectorAll('.feat-config').forEach(fc => {
-      const lbl = fc.querySelector('.feat-config-label').textContent.trim();
+      const iconText = fc.querySelector('.feat-config-icon') ? fc.querySelector('.feat-config-icon').textContent : '';
+      const fullText = fc.querySelector('.feat-config-label').textContent.trim();
+      const lbl = fullText.replace(iconText, '').trim();
       const sel = fc.querySelector('select');
       const opt = sel.options[sel.selectedIndex].text.split(' +')[0];
-      lines.push(`<b>${lbl}:</b> ${opt}`);
+      html += `<div><b>${lbl}:</b> ${opt}</div>`;
     });
     card.querySelectorAll('[id^="addon-' + selectedPlanId + '"]').forEach(el => {
       if (parseInt(el.dataset.active || 0) > 0) {
-        const lbl = el.querySelector('.feat-addon-label').textContent.trim();
-        lines.push(`<b>Add-on:</b> ${lbl}`);
+        const spans = el.querySelectorAll('.feat-addon-label span');
+        let lbl = el.querySelector('.feat-addon-label').textContent.trim();
+        spans.forEach(s => { lbl = lbl.replace(s.textContent, '').trim(); });
+        html += `<div style="grid-column:1/-1"><b>Add-on:</b> ${lbl}</div>`;
       }
     });
-    document.getElementById('s2-options-summary').innerHTML = lines.join(' &nbsp;·&nbsp; ') || 'Solo plan base';
+    document.getElementById('s2-options-summary').innerHTML = html || '<div style="grid-column:1/-1">Solo plan base</div>';
   }
 
   function populateStep3() {
     if (!selectedPlanId) return;
     const card = document.getElementById('card-' + selectedPlanId);
     const planName = card.querySelector('.plan-card-name').textContent;
-    const priceText = document.getElementById('price-' + selectedPlanId).textContent;
     const base = parseInt(card.dataset.base);
     let extras = 0;
     card.querySelectorAll('select').forEach(s => extras += parseInt(s.value) || 0);
     card.querySelectorAll('[id^="addon-' + selectedPlanId + '"]').forEach(el => extras += parseInt(el.dataset.active || 0));
-    const subtotal = base + extras;
-    const iva = Math.round(subtotal * 0.19);
-    const total = subtotal + iva;
+    const monthly = base + extras;
+    const total   = billingPeriod === 'trim' ? monthly * 3 : Math.round(monthly * 12 * 0.8);
+    const period  = billingPeriod === 'trim' ? 'trimestral' : 'anual';
+    const priceLabel = billingPeriod === 'trim' ? 'Precio trimestral' : 'Precio anual';
 
-    // Next billing date
-    const d = new Date(); d.setMonth(d.getMonth() + 1);
+    const d = new Date();
+    d.setMonth(billingPeriod === 'trim' ? d.getMonth() + 3 : d.getMonth() + 12);
     const nextDate = d.toLocaleDateString('es-CO', { day:'numeric', month:'long', year:'numeric' });
 
+    // Recover email from form
+    const emailInput = document.querySelector('#screen-2 input[type="email"]:not(#pse-email-input)');
+    const emailVal = (emailInput && emailInput.value) ? emailInput.value : 'tucorreo@negocio.com';
+
     document.getElementById('confirm-plan-name').textContent = planName;
-    document.getElementById('c-plan').textContent = planName;
-    document.getElementById('c-price').textContent = '$' + fmt(total) + '/mes';
-    document.getElementById('c-next').textContent = nextDate;
+    document.getElementById('c-plan').textContent       = planName;
+    document.getElementById('c-price-label').textContent = priceLabel;
+    document.getElementById('c-price').textContent      = '$' + fmt(total) + '/' + period;
+    document.getElementById('c-next').textContent       = nextDate;
+    document.getElementById('c-email').textContent      = emailVal;
+
+    // Help FAB is always visible
+
+    // Start resend countdown
+    startResendTimer();
+
+    // Build date chips
+    buildDateChips();
   }
+
+  // ── RESEND TIMER ──
+  function startResendTimer() {
+    clearInterval(resendInterval);
+    const btn = document.getElementById('resend-btn');
+    const timerEl = document.getElementById('resend-timer');
+    btn.disabled = true;
+    let secs = 120;
+    timerEl.textContent = '2:00';
+    resendInterval = setInterval(() => {
+      secs--;
+      const m = Math.floor(secs / 60);
+      const s = secs % 60;
+      timerEl.textContent = m + ':' + String(s).padStart(2, '0');
+      if (secs <= 0) {
+        clearInterval(resendInterval);
+        btn.disabled = false;
+        timerEl.textContent = '';
+      }
+    }, 1000);
+  }
+
+  function resendEmail() {
+    document.getElementById('resend-btn').disabled = true;
+    startResendTimer();
+  }
+
+  // ── SCHEDULE CALENDAR ──
+  function buildDateChips() {
+    const container = document.getElementById('date-chips');
+    container.innerHTML = '';
+    selectedDateEl = null;
+    selectedTimeEl = null;
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+    document.getElementById('btn-schedule').disabled = true;
+
+    const daysShort  = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    const daysFull   = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    const monthsShort = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    const monthsFull  = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    const today = new Date();
+    let added = 0, offset = 1;
+    while (added < 8) {
+      const d = new Date(today);
+      d.setDate(today.getDate() + offset);
+      offset++;
+      if (d.getDay() === 0 || d.getDay() === 6) continue;
+      const chip = document.createElement('button');
+      chip.className = 'date-chip';
+      chip.innerHTML = `<div class="date-chip-day">${daysFull[d.getDay()]}</div><div class="date-chip-date">${d.getDate()} ${monthsShort[d.getMonth()]}</div>`;
+      chip.dataset.full = daysFull[d.getDay()] + ', ' + d.getDate() + ' de ' + monthsFull[d.getMonth()] + ' de ' + d.getFullYear();
+      chip.onclick = () => selectDate(chip);
+      container.appendChild(chip);
+      added++;
+    }
+  }
+
+  function selectDate(el) {
+    if (selectedDateEl) selectedDateEl.classList.remove('selected');
+    selectedDateEl = el;
+    el.classList.add('selected');
+    checkScheduleReady();
+  }
+
+  function selectTime(el) {
+    if (selectedTimeEl) selectedTimeEl.classList.remove('selected');
+    selectedTimeEl = el;
+    el.classList.add('selected');
+    checkScheduleReady();
+  }
+
+  function checkScheduleReady() {
+    document.getElementById('btn-schedule').disabled = !(selectedDateEl && selectedTimeEl);
+  }
+
+  function confirmSchedule() {
+    const dateStr = selectedDateEl ? selectedDateEl.dataset.full : '—';
+    const timeStr = selectedTimeEl ? selectedTimeEl.textContent : '—';
+    document.getElementById('scheduled-date-text').textContent = dateStr;
+    document.getElementById('scheduled-time-text').textContent = timeStr + ' · Con un experto Bold';
+    document.getElementById('schedule-picker').style.display = 'none';
+    document.getElementById('schedule-done').style.display   = 'block';
+  }
+
+  function skipSchedule() {
+    document.getElementById('schedule-picker').style.display = 'none';
+    document.getElementById('schedule-skipped').style.display = 'block';
+  }
+
+  // ── EDIT EMAIL INLINE ──
+  function showEditEmail() {
+    const row = document.getElementById('edit-email-row');
+    row.style.display = 'block';
+    document.getElementById('edit-email-input').focus();
+  }
+
+  function confirmNewEmail() {
+    const input = document.getElementById('edit-email-input');
+    const val = input.value.trim();
+    if (!val) return;
+    document.getElementById('c-email').textContent = val;
+    document.getElementById('edit-email-row').style.display = 'none';
+    input.value = '';
+    // restart resend timer for new address
+    startResendTimer();
+  }
+
+  // ── SCHEDULE: SHOW PICKER AGAIN ──
+  function showSchedulePicker() {
+    document.getElementById('schedule-skipped').style.display = 'none';
+    document.getElementById('schedule-done').style.display    = 'none';
+    document.getElementById('schedule-picker').style.display  = 'block';
+    buildDateChips();
+  }
+
+  function cancelSchedule() {
+    document.getElementById('schedule-done').style.display   = 'none';
+    document.getElementById('schedule-picker').style.display = 'block';
+    buildDateChips();
+  }
+
+  // ── HELP MODAL ──
+  function openHelpModal()  { document.getElementById('help-modal').classList.add('open'); }
+  function closeHelpModal() { document.getElementById('help-modal').classList.remove('open'); }
 
   function fmt(n) {
     return Math.round(n).toLocaleString('es-CO');
@@ -1292,27 +1694,24 @@
     document.querySelector('#step-' + i + ' .step-num').textContent = i;
   }
 
+
+  // init billing tab styles
+  document.getElementById('tab-trim').style.cssText  += ';background:var(--navy);color:#fff';
+  document.getElementById('tab-anual').style.cssText += ';background:var(--white);color:var(--gray-text)';
+
   // ── PRE-SELECT FROM RECOMMENDATION ──
   window.addEventListener('load', () => {
-    const planId = sessionStorage.getItem('boldpos_selected_plan');
+    const planId   = sessionStorage.getItem('boldpos_selected_plan');
     const gotoStep = sessionStorage.getItem('boldpos_goto_step');
     if (planId) {
-      // Switch to correct product tab
       const prefix = planId.startsWith('rest') ? 'restaurantes'
                    : planId.startsWith('fact') ? 'facturacion'
                    : 'boldpos';
-      const tabBtns = document.querySelectorAll('.product-tab');
-      tabBtns.forEach(b => {
-        const onclick = b.getAttribute('onclick') || '';
-        if (onclick.includes("'" + prefix + "'")) {
-          switchProduct(prefix, b);
-        }
+      document.querySelectorAll('.product-tab').forEach(b => {
+        if ((b.getAttribute('onclick') || '').includes("'" + prefix + "'")) switchProduct(prefix, b);
       });
-      // Select the plan card
       selectPlan(planId);
-      // Clear storage
       sessionStorage.removeItem('boldpos_selected_plan');
-      // Jump to step 2 if requested
       if (gotoStep === '2') {
         sessionStorage.removeItem('boldpos_goto_step');
         goStep(2);
