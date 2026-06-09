@@ -85,6 +85,11 @@ Proyecto de referencia: `/Users/andres.lizarazo/and_claude/saas-renewals/index.h
 - **Botones outline**: `border: 1.5px solid var(--gray-line)`, fondo blanco
 - **Chips de estado**: `border-radius: 20px`, con dot de color antes del texto
 - **Tarjetas**: `border-radius: 10–16px`, `border: 1px solid var(--gray-line)`
+- **Tarjeta plan destacado (featured)**: fondo `var(--white)`, borde `var(--red)`, sombra roja suave — **nunca fondo oscuro/navy**
+- **Visual panels** (`.visual-panel`): fondo `var(--white)`, borde `var(--gray-line)`, sombra suave — **nunca fondo navy**
+- **Stats band**: fondo `var(--gray-bg)`, borde top/bottom `var(--gray-line)`, números en `var(--navy)` — **nunca fondo navy**
+- **Hero sections**: fondo `var(--navy)` en `index.html` (intencional, se mantiene oscuro); fondo `var(--gray-bg)` en `restaurantes.html` (convertido a light)
+- **Sección final CTA / footer**: fondo `var(--navy)` en ambas landings — se mantiene oscuro por decisión de diseño
 - **Botón fixed verde superior**: `position:fixed; top:60px; left:50%; border-radius: 0 0 50px 50px` — emerge del navbar (solo en `recomendar.html` y `planes.html` pasos 1–2)
 - **FAB "Necesito ayuda"**: `position:fixed; bottom:28px; right:28px`, fondo `var(--red)`, abre modal que simula redirección a WhatsApp. Presente en `planes.html` (pasos 1–2) y `onboarding.html`
 
@@ -103,15 +108,15 @@ Reutilizado en `planes.html`, `prueba-gratis.html` y `onboarding.html`:
 
 ### Secciones (en orden)
 1. **Navbar** fijo — logo Bold + 3 nav links + Iniciar sesión (→ `onboarding.html`) + Quiero mi POS
-2. **Modal** — se abre automáticamente a los 0.8s. Anuncia "POS Restaurantes y Bares". Botones: Cerrar / Conocer más → `restaurantes.html`
+2. **Modal** — se abre automáticamente a los 0.8s. Anuncia "POS Restaurantes y Bares". Sin botón cerrar (X) ni footer. Estructura: eyebrow → título una línea → grid 3×2 con 6 funcionalidades (solo título, sin descripción) → botón "Conocer más" → mockup light de mesas
 3. **Botón fijo** "Quiero mi POS" — esquina inferior derecha, animación de pulso
-4. **Hero** — fondo navy, mockups CSS de celular y tablet
+4. **Hero** — fondo navy (intencional, se mantiene oscuro), mockups light de celular + tablet
 5. **Logos band** — "50.000 negocios ya usan Bold POS"
-6. **Features × 3** — layout 2 columnas alternadas
-7. **Stats band** — fondo navy
+6. **Features × 3** — layout 2 columnas alternadas, visual panels en light
+7. **Stats band** — fondo `gray-bg` (light)
 8. **Cómo funciona** — 4 pasos con stepper horizontal
-9. **Precios** — tabs de producto + toggle trimestral/anual
-10. **Testimonios**, **FAQ**, **CTA final**, **Footer**
+9. **Precios** — tabs de producto + toggle trimestral/anual; plan Avanzado (featured) en light
+10. **Testimonios**, **FAQ**, **CTA final** (navy), **Footer** (navy)
 
 ### Sección de precios
 - **Tabs**: Bold POS | POS Restaurantes | POS Facturación Lite — JS `switchPlanTab()`
@@ -123,6 +128,13 @@ Reutilizado en `planes.html`, `prueba-gratis.html` y `onboarding.html`:
 ## restaurantes.html — Landing Restaurantes y Bares
 
 Mismo layout que `index.html` con contenido especializado en restaurantes. Botón "Iniciar sesión" apunta a `onboarding.html`.
+
+- **Hero**: fondo `gray-bg` (light) — diferente a `index.html` que es navy. El big-mockup de pantalla del restaurante se mantiene oscuro (#1A1A36) como elemento de UI dentro del hero claro.
+- **Visual panels**: light (igual que `index.html`)
+- **Stats band**: light (igual que `index.html`)
+- **Plan featured**: light, borde rojo (igual que `index.html`)
+- **CTA final**: fondo navy (igual que `index.html`)
+- **Footer**: idéntico al de `index.html` (navy, mismos links)
 
 ---
 
@@ -138,7 +150,7 @@ Layout dividido 50/50:
 
 ### Panel izquierdo (navy) — Quiz guiado
 - Q1: texto libre del negocio → Q2–Q5 selección con auto-avance
-- Al finalizar: algoritmo recomienda plan → tarjeta navy + CTA → `planes.html`
+- Al finalizar: algoritmo recomienda plan → **tarjeta light** (fondo blanco, borde rojo) + CTA → `planes.html`
 
 ### Panel derecho (gris) — Self-serve
 - 3 botones de vertical → todos a `planes.html`
@@ -246,7 +258,7 @@ Usuario simulado: **Restaurante Josefina** (POS1235456). Acceso vía "Iniciar se
 - **Toggle trimestral/anual en landings**: CSS puro con clase `period-anual`. Sin opción mensual.
 - **Precios en `planes.html`**: en `/mes` porque es el flujo de compra real.
 - **Período de facturación en `planes.html` paso 2 y `onboarding.html` paso 3**: tabs JS Trimestral/Anual dentro del order summary. Anual aplica −20%. Sin IVA en ambos flujos.
-- **Modal de restaurantes** en `index.html`: se abre a los 0.8s, se cierra al hacer clic en el backdrop.
+- **Modal de restaurantes** en `index.html`: se abre a los 0.8s, se cierra al hacer clic en el backdrop. Sin botón X ni footer. Título en una sola línea (`white-space: nowrap`). Las 6 funcionalidades muestran solo el título, sin descripción.
 - **`facturacion.html`** es intencionalmente minimalista — pantalla de espera.
 - **`recomendar.html`** es el entry point de todos los CTAs principales.
 - **Sesión simulada en `prueba-gratis.html`**: modal "email ya existe" en 1er click, procede en 2do. Formulario sin validación para demos.
@@ -262,12 +274,12 @@ Usuario simulado: **Restaurante Josefina** (POS1235456). Acceso vía "Iniciar se
 
 | Página              | Estado       | Notas                                                                 |
 |---------------------|-------------|------------------------------------------------------------------------|
-| `index.html`        | ✅ Completo  | Landing + modal restaurantes + pricing con tabs                        |
-| `restaurantes.html` | ✅ Completo  | Landing especializada + pricing con tabs                               |
-| `facturacion.html`  | ✅ Completo  | Pantalla "en diseño"                                                   |
-| `recomendar.html`   | ✅ Completo  | Split 50/50: quiz guiado + self-serve                                  |
-| `planes.html`       | ✅ Completo  | 3 pasos · planes configurables · pago sin IVA · agenda · FAB ayuda    |
+| `index.html`        | ✅ Completo  | Landing light · modal restaurantes simplificado · planes featured light |
+| `restaurantes.html` | ✅ Completo  | Landing light (hero gray-bg) · big-mockup oscuro · planes featured light |
+| `facturacion.html`  | ✅ Completo  | Pantalla "en diseño"                                                    |
+| `recomendar.html`   | ✅ Completo  | Split 50/50 · tarjeta recomendación light                              |
+| `planes.html`       | ✅ Completo  | 3 pasos · planes featured light · pago sin IVA · agenda · FAB ayuda   |
 | `prueba-gratis.html`| ✅ Completo  | 2 pantallas · sidebar con agenda demo · confirmación 2 columnas        |
-| `onboarding.html`   | ✅ Completo  | Mi cuenta 4 pasos · modal renovar · planes configurables · agenda      |
+| `onboarding.html`   | ✅ Completo  | Mi cuenta 4 pasos · planes featured light · modal renovar · agenda     |
 
 **Próximo paso pendiente**: diseñar el contenido completo de `POS Facturación electrónica Lite` para reemplazar la pantalla de espera en `facturacion.html`.

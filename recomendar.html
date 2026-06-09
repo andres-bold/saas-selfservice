@@ -296,11 +296,12 @@
 
     /* Plan card */
     .result-card {
-      background: var(--navy);
+      background: var(--white);
+      border: 2px solid var(--red);
       border-radius: 20px;
       padding: 32px 28px 28px;
       position: relative;
-      box-shadow: 0 16px 56px rgba(18,18,42,0.2);
+      box-shadow: 0 12px 48px rgba(232,0,61,0.15);
       margin-bottom: 16px;
     }
     .result-top-badge {
@@ -311,24 +312,24 @@
     }
     .r-vertical {
       font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 6px;
+      text-transform: uppercase; color: var(--gray-text); margin-bottom: 6px;
     }
-    .r-name  { font-size: 26px; font-weight: 900; color: var(--white); letter-spacing: -0.8px; margin-bottom: 3px; }
-    .r-target { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
-    .r-price { font-size: 38px; font-weight: 900; color: var(--white); letter-spacing: -2px; margin-bottom: 2px; }
-    .r-period { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
-    .r-divider { height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 18px; }
+    .r-name  { font-size: 26px; font-weight: 900; color: var(--navy); letter-spacing: -0.8px; margin-bottom: 3px; }
+    .r-target { font-size: 13px; color: var(--gray-text); margin-bottom: 18px; }
+    .r-price { font-size: 38px; font-weight: 900; color: var(--navy); letter-spacing: -2px; margin-bottom: 2px; }
+    .r-period { font-size: 13px; color: var(--gray-text); margin-bottom: 20px; }
+    .r-divider { height: 1px; background: var(--gray-line); margin-bottom: 18px; }
     .r-feats { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
-    .r-feat { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.75); }
+    .r-feat { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text); }
     .r-check {
       width: 18px; height: 18px; border-radius: 50%;
-      background: rgba(0,196,140,0.2); color: var(--green);
+      background: rgba(0,196,140,0.15); color: var(--green);
       display: flex; align-items: center; justify-content: center;
       font-size: 9px; flex-shrink: 0;
     }
     .r-reasoning {
-      font-size: 12px; color: rgba(255,255,255,0.32); line-height: 1.65;
-      padding: 10px 14px; background: rgba(255,255,255,0.05);
+      font-size: 12px; color: var(--gray-text); line-height: 1.65;
+      padding: 10px 14px; background: var(--gray-bg);
       border-radius: 8px; font-style: italic;
     }
 

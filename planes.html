@@ -158,15 +158,16 @@
     .plan-card:hover { border-color: #b3bcf5; box-shadow: 0 6px 24px rgba(18,30,108,0.08); }
     .plan-card.selected { border-color: var(--red); box-shadow: 0 6px 28px rgba(232,0,61,0.14); }
     .plan-card.featured {
-      border-color: var(--blue);
-      background: var(--navy);
+      border-color: var(--red);
+      background: var(--white);
+      box-shadow: 0 12px 48px rgba(232,0,61,0.15);
     }
-    .plan-card.featured:hover { border-color: #4a6cf7; box-shadow: 0 8px 32px rgba(18,30,108,0.25); }
+    .plan-card.featured:hover { box-shadow: 0 16px 56px rgba(232,0,61,0.25); }
     .plan-card.featured.selected { border-color: var(--red); box-shadow: 0 8px 32px rgba(232,0,61,0.2); }
 
     .plan-badge-top {
       position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-      background: var(--blue); color: #fff;
+      background: var(--red); color: #fff;
       font-size: 10px; font-weight: 800; letter-spacing: 0.06em;
       text-transform: uppercase; padding: 3px 14px; border-radius: 20px;
       white-space: nowrap;
@@ -176,23 +177,23 @@
     .plan-card-name {
       font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 2px;
     }
-    .plan-card.featured .plan-card-name { color: var(--white); }
+    .plan-card.featured .plan-card-name { color: var(--navy); }
 
     .plan-card-target {
       font-size: 12px; color: var(--gray-text); margin-bottom: 16px;
     }
-    .plan-card.featured .plan-card-target { color: rgba(255,255,255,0.55); }
+    .plan-card.featured .plan-card-target { color: var(--gray-text); }
     .plan-sucursales {
       font-size: 13px; font-weight: 600; color: var(--gray-text);
       margin-bottom: 12px; display: flex; align-items: center; gap: 5px;
     }
-    .plan-card.featured .plan-sucursales { color: rgba(255,255,255,0.45); }
+    .plan-card.featured .plan-sucursales { color: var(--gray-text); }
     .plan-sucursales::before {
       content: ''; display: inline-block;
       width: 6px; height: 6px; border-radius: 50%;
       background: var(--gray-text); flex-shrink: 0;
     }
-    .plan-card.featured .plan-sucursales::before { background: rgba(255,255,255,0.35); }
+    .plan-card.featured .plan-sucursales::before { background: var(--gray-text); }
 
     .plan-price-row {
       display: flex; align-items: baseline; gap: 4px;
@@ -202,21 +203,21 @@
       font-size: 28px; font-weight: 900; color: var(--navy);
       letter-spacing: -1.2px; transition: all 0.2s;
     }
-    .plan-card.featured .plan-price-amount { color: var(--white); }
+    .plan-card.featured .plan-price-amount { color: var(--navy); }
     .plan-price-period {
       font-size: 12px; color: var(--gray-text);
     }
-    .plan-card.featured .plan-price-period { color: rgba(255,255,255,0.5); }
+    .plan-card.featured .plan-price-period { color: var(--gray-text); }
 
     .plan-price-note {
       font-size: 11px; color: var(--gray-text); margin-bottom: 18px; min-height: 16px;
     }
-    .plan-card.featured .plan-price-note { color: rgba(255,255,255,0.4); }
+    .plan-card.featured .plan-price-note { color: var(--gray-text); }
 
     .plan-divider {
       height: 1px; background: var(--gray-line); margin-bottom: 16px;
     }
-    .plan-card.featured .plan-divider { background: rgba(255,255,255,0.12); }
+    .plan-card.featured .plan-divider { background: var(--gray-line); }
 
     /* Feature rows */
     .features-section { display: flex; flex-direction: column; gap: 0; margin-bottom: 20px; }
@@ -228,14 +229,14 @@
       font-size: 12px; color: var(--gray-text);
       border-bottom: 1px solid transparent;
     }
-    .plan-card.featured .feat-fixed { color: rgba(255,255,255,0.5); }
+    .plan-card.featured .feat-fixed { color: var(--gray-text); }
     .feat-fixed .fcheck {
       width: 16px; height: 16px; border-radius: 50%;
       background: var(--gray-bg); color: var(--gray-text);
       display: flex; align-items: center; justify-content: center;
       font-size: 9px; flex-shrink: 0;
     }
-    .plan-card.featured .feat-fixed .fcheck { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+    .plan-card.featured .feat-fixed .fcheck { background: var(--gray-bg); color: var(--gray-text); }
 
     /* Configurable feature (quantity select) */
     .feat-config {
@@ -244,13 +245,13 @@
       background: #EEF0FF; border-radius: 8px;
       border: 1px solid #d0d7fc;
     }
-    .plan-card.featured .feat-config { background: rgba(100,120,255,0.15); border-color: rgba(100,120,255,0.3); }
+    .plan-card.featured .feat-config { background: #EEF0FF; border-color: #d0d7fc; }
     .feat-config-label {
       display: flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 600; color: var(--blue);
       flex: 1;
     }
-    .plan-card.featured .feat-config-label { color: #9bb4ff; }
+    .plan-card.featured .feat-config-label { color: var(--blue); }
     .feat-config-icon { font-size: 13px; flex-shrink: 0; }
     .feat-config select {
       padding: 4px 24px 4px 8px;
@@ -267,7 +268,7 @@
       transition: border-color 0.15s;
     }
     .feat-config select:hover { border-color: var(--blue); }
-    .plan-card.featured .feat-config select { background-color: rgba(255,255,255,0.12); border-color: rgba(100,120,255,0.5); color: #9bb4ff; }
+    .plan-card.featured .feat-config select { background-color: var(--white); border-color: #b3bcf5; color: var(--blue); }
 
     /* Add-on feature (checkbox) */
     .feat-addon {
@@ -277,23 +278,23 @@
       border: 1px solid #a8e8d4;
     }
     .feat-addon.off { background: var(--gray-bg); border-color: var(--gray-line); }
-    .plan-card.featured .feat-addon { background: rgba(0,196,140,0.12); border-color: rgba(0,196,140,0.25); }
-    .plan-card.featured .feat-addon.off { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+    .plan-card.featured .feat-addon { background: rgba(0,196,140,0.1); border-color: rgba(0,196,140,0.25); }
+    .plan-card.featured .feat-addon.off { background: var(--gray-bg); border-color: var(--gray-line); }
     .feat-addon-label {
       display: flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 600; color: #00875A;
       flex: 1; cursor: pointer;
     }
     .feat-addon.off .feat-addon-label { color: var(--gray-text); }
-    .plan-card.featured .feat-addon-label { color: #5de0c0; }
-    .plan-card.featured .feat-addon.off .feat-addon-label { color: rgba(255,255,255,0.35); }
+    .plan-card.featured .feat-addon-label { color: #00875A; }
+    .plan-card.featured .feat-addon.off .feat-addon-label { color: var(--gray-text); }
     .addon-price-tag {
       font-size: 10px; font-weight: 700; color: #00875A;
       background: rgba(0,196,140,0.15); padding: 2px 7px; border-radius: 10px;
       white-space: nowrap; flex-shrink: 0;
     }
     .feat-addon.off .addon-price-tag { color: var(--gray-text); background: var(--gray-line); }
-    .plan-card.featured .feat-addon .addon-price-tag { color: #5de0c0; background: rgba(0,196,140,0.2); }
+    .plan-card.featured .feat-addon .addon-price-tag { color: #00875A; background: rgba(0,196,140,0.15); }
     .addon-toggle {
       width: 32px; height: 18px; border-radius: 9px;
       background: var(--gray-line); border: none; cursor: pointer;
@@ -316,7 +317,7 @@
       text-transform: uppercase; color: var(--gray-text);
       padding: 10px 0 4px; display: block;
     }
-    .plan-card.featured .feat-section-label { color: rgba(255,255,255,0.3); }
+    .plan-card.featured .feat-section-label { color: var(--gray-text); }
 
     /* CTA */
     .plan-cta-btn {
@@ -329,9 +330,9 @@
     }
     .plan-cta-btn:hover { border-color: var(--red); color: var(--red); }
     .plan-card.selected .plan-cta-btn { background: var(--red); border-color: var(--red); color: #fff; }
-    .plan-card.featured .plan-cta-btn { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); color: var(--white); }
+    .plan-card.featured .plan-cta-btn { background: var(--red); border-color: var(--red); color: var(--white); }
     .plan-card.featured.selected .plan-cta-btn { background: var(--red); border-color: var(--red); color: var(--white); }
-    .plan-card.featured .plan-cta-btn:hover { background: var(--red); border-color: var(--red); }
+    .plan-card.featured .plan-cta-btn:hover { background: var(--red-dark); border-color: var(--red-dark); }
 
     /* ── STEP 2: SUMMARY ── */
     .summary-layout {

@@ -163,7 +163,7 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--navy);
+      background: var(--white);
       padding: 88px 48px 0;
       display: flex;
       align-items: flex-end;
@@ -179,9 +179,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(232,0,61,0.15);
-      border: 1px solid rgba(232,0,61,0.3);
-      color: #FF6B8A;
+      background: var(--red-light);
+      border: 1px solid rgba(232,0,61,0.2);
+      color: var(--red);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -200,7 +200,7 @@
     .hero-title {
       font-size: clamp(36px, 5vw, 56px);
       font-weight: 900;
-      color: var(--white);
+      color: var(--navy);
       line-height: 1.08;
       letter-spacing: -2px;
       margin-bottom: 20px;
@@ -208,7 +208,7 @@
     .hero-title .highlight { color: var(--red); }
     .hero-subtitle {
       font-size: 18px;
-      color: rgba(255,255,255,0.65);
+      color: var(--gray-text);
       line-height: 1.65;
       max-width: 520px;
       margin-bottom: 36px;
@@ -243,17 +243,17 @@
       gap: 9px;
       padding: 13px 26px;
       background: transparent;
-      color: var(--white);
+      color: var(--navy);
       font-size: 15px;
       font-weight: 600;
       font-family: inherit;
-      border: 1.5px solid rgba(255,255,255,0.3);
+      border: 1.5px solid var(--gray-line);
       border-radius: 50px;
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
       text-decoration: none;
     }
-    .btn-hero-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); }
+    .btn-hero-outline:hover { border-color: var(--navy); background: var(--gray-bg); }
     .hero-trust {
       display: flex;
       align-items: center;
@@ -266,7 +266,7 @@
       align-items: center;
       gap: 7px;
       font-size: 13px;
-      color: rgba(255,255,255,0.5);
+      color: var(--gray-text);
     }
     .hero-trust-item .dot { color: var(--green); font-size: 16px; }
 
@@ -282,37 +282,38 @@
     .device-phone {
       width: 160px;
       height: 300px;
-      background: #1E1E3A;
+      background: var(--white);
       border-radius: 24px;
-      border: 3px solid rgba(255,255,255,0.12);
+      border: 2px solid var(--gray-line);
       overflow: hidden;
       flex-shrink: 0;
       margin-bottom: 24px;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 16px 48px rgba(18,18,42,0.12);
     }
     .device-tablet {
       width: 240px;
       height: 360px;
-      background: #1E1E3A;
+      background: var(--white);
       border-radius: 18px;
-      border: 3px solid rgba(255,255,255,0.12);
+      border: 2px solid var(--gray-line);
       overflow: hidden;
       flex-shrink: 0;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 16px 48px rgba(18,18,42,0.12);
     }
     .device-screen {
       width: 100%;
       height: 100%;
-      background: linear-gradient(145deg, #12122A 0%, #1C1C42 100%);
+      background: var(--gray-bg);
       display: flex;
       flex-direction: column;
       padding: 14px;
       gap: 8px;
     }
     .mock-stat {
-      background: rgba(255,255,255,0.06);
+      background: var(--white);
+      border: 1px solid var(--gray-line);
       border-radius: 8px;
       padding: 10px;
       display: flex;
@@ -322,12 +323,12 @@
     .mock-stat .num {
       font-size: 18px;
       font-weight: 800;
-      color: var(--white);
+      color: var(--navy);
       font-family: inherit;
     }
     .mock-stat .lbl {
       font-size: 9px;
-      color: rgba(255,255,255,0.4);
+      color: var(--gray-text);
       font-family: inherit;
     }
     .mock-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
@@ -352,7 +353,7 @@
     .vp-bar {
       flex: 1;
       border-radius: 3px 3px 0 0;
-      background: rgba(255,255,255,0.1);
+      background: var(--gray-line);
     }
     .vp-bar.a { background: var(--red); height: 100%; }
     .vp-bar.b { height: 70%; }
@@ -362,7 +363,8 @@
     .vp-bar.f { height: 40%; }
     .vp-bar.g { height: 75%; }
     .vp-card {
-      background: rgba(255,255,255,0.07);
+      background: var(--gray-bg);
+      border: 1px solid var(--gray-line);
       border-radius: 8px;
       padding: 10px 12px;
     }
@@ -371,8 +373,8 @@
       justify-content: space-between;
       align-items: center;
     }
-    .vp-card-row .name { font-size: 11px; color: rgba(255,255,255,0.6); font-family: inherit; }
-    .vp-card-row .val  { font-size: 11px; font-weight: 700; color: var(--white); font-family: inherit; }
+    .vp-card-row .name { font-size: 11px; color: var(--gray-text); font-family: inherit; }
+    .vp-card-row .val  { font-size: 11px; font-weight: 700; color: var(--navy); font-family: inherit; }
     .vp-card-row .val.green { color: var(--green); }
 
     /* ── LOGOS BAND ── */
@@ -479,7 +481,8 @@
 
     /* Visual panels */
     .visual-panel {
-      background: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--gray-line);
       border-radius: 20px;
       overflow: hidden;
       aspect-ratio: 4/3;
@@ -487,7 +490,7 @@
       flex-direction: column;
       padding: 28px;
       gap: 16px;
-      box-shadow: 0 24px 72px rgba(18,18,42,0.2);
+      box-shadow: 0 8px 32px rgba(18,18,42,0.08);
       position: relative;
     }
     .visual-panel::before {
@@ -496,32 +499,32 @@
       top: -60px; right: -60px;
       width: 240px; height: 240px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(232,0,61,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(232,0,61,0.04) 0%, transparent 70%);
     }
     .vp-label {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: var(--gray-text);
     }
     .vp-title {
       font-size: 14px;
       font-weight: 700;
-      color: var(--white);
+      color: var(--navy);
     }
     .vp-row { display: flex; gap: 10px; }
     .vp-mini {
       flex: 1;
-      background: rgba(255,255,255,0.07);
+      background: var(--gray-bg);
       border-radius: 10px;
       padding: 12px;
     }
-    .vp-mini .lbl { font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
-    .vp-mini .num { font-size: 20px; font-weight: 800; color: var(--white); }
-    .vp-mini .num.red   { color: #FF6B8A; }
+    .vp-mini .lbl { font-size: 10px; color: var(--gray-text); margin-bottom: 4px; }
+    .vp-mini .num { font-size: 20px; font-weight: 800; color: var(--navy); }
+    .vp-mini .num.red   { color: var(--red); }
     .vp-mini .num.green { color: var(--green); }
-    .vp-progress { height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; margin-top: 4px; }
+    .vp-progress { height: 5px; background: var(--gray-line); border-radius: 3px; margin-top: 4px; }
     .vp-progress-fill { height: 100%; border-radius: 3px; background: var(--red); }
 
     /* ── HOW IT WORKS ── */
@@ -595,9 +598,9 @@
     }
     .plan-card.featured {
       border-color: var(--red);
-      background: var(--navy);
+      background: var(--white);
       transform: translateY(-6px);
-      box-shadow: 0 12px 48px rgba(232,0,61,0.2);
+      box-shadow: 0 12px 48px rgba(232,0,61,0.15);
     }
     .plan-card.featured:hover {
       transform: translateY(-10px);
@@ -618,19 +621,19 @@
       white-space: nowrap;
     }
     .plan-name { font-size: 18px; font-weight: 800; color: var(--navy); }
-    .plan-card.featured .plan-name { color: var(--white); }
+    .plan-card.featured .plan-name { color: var(--navy); }
     .plan-desc { font-size: 13px; color: var(--gray-text); line-height: 1.5; margin-top: -12px; }
-    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.55); }
+    .plan-card.featured .plan-desc { color: var(--gray-text); }
     .plan-price { display: flex; align-items: baseline; gap: 4px; }
     .plan-price .amount { font-size: 36px; font-weight: 900; color: var(--navy); letter-spacing: -1.5px; }
-    .plan-card.featured .plan-price .amount { color: var(--white); }
+    .plan-card.featured .plan-price .amount { color: var(--navy); }
     .plan-price .period { font-size: 13px; color: var(--gray-text); }
-    .plan-card.featured .plan-price .period { color: rgba(255,255,255,0.5); }
+    .plan-card.featured .plan-price .period { color: var(--gray-text); }
     .plan-divider { height: 1px; background: var(--gray-line); }
-    .plan-card.featured .plan-divider { background: rgba(255,255,255,0.1); }
+    .plan-card.featured .plan-divider { background: var(--gray-line); }
     .plan-features-list { display: flex; flex-direction: column; gap: 10px; }
     .plan-feat { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text); }
-    .plan-card.featured .plan-feat { color: rgba(255,255,255,0.8); }
+    .plan-card.featured .plan-feat { color: var(--text); }
     .plan-feat .check {
       width: 18px; height: 18px; border-radius: 50%;
       background: rgba(0,196,140,0.15); color: var(--green);
@@ -648,12 +651,14 @@
     .plan-card.featured .plan-cta { background: var(--red); border-color: var(--red); color: var(--white); }
     .plan-card.featured .plan-cta:hover { background: var(--red-dark); }
     .plan-note { font-size: 11px; color: var(--gray-text); text-align: center; margin-top: -12px; }
-    .plan-card.featured .plan-note { color: rgba(255,255,255,0.35); }
+    .plan-card.featured .plan-note { color: var(--gray-text); }
 
     /* ── STATS BAND ── */
     .stats-band {
-      background: var(--navy);
+      background: var(--gray-bg);
       padding: 64px 48px;
+      border-top: 1px solid var(--gray-line);
+      border-bottom: 1px solid var(--gray-line);
     }
     .stats-grid {
       display: grid;
@@ -665,12 +670,12 @@
       display: flex; flex-direction: column;
       align-items: center; text-align: center;
       padding: 0 20px;
-      border-right: 1px solid rgba(255,255,255,0.08);
+      border-right: 1px solid var(--gray-line);
     }
     .stat-item:last-child { border-right: none; }
-    .stat-num { font-size: 48px; font-weight: 900; color: var(--white); letter-spacing: -2px; line-height: 1; margin-bottom: 8px; }
+    .stat-num { font-size: 48px; font-weight: 900; color: var(--navy); letter-spacing: -2px; line-height: 1; margin-bottom: 8px; }
     .stat-num span { color: var(--red); }
-    .stat-label { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+    .stat-label { font-size: 14px; color: var(--gray-text); line-height: 1.4; }
 
     /* ── TESTIMONIALS ── */
     .testimonials-grid {
@@ -724,7 +729,7 @@
 
     /* ── FINAL CTA ── */
     .final-cta {
-      background: var(--red);
+      background: var(--navy);
       padding: 88px 48px;
       text-align: center;
       position: relative;
@@ -732,29 +737,29 @@
     }
     .final-cta::before, .final-cta::after {
       content: ''; position: absolute; border-radius: 50%;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04);
     }
     .final-cta::before { width: 500px; height: 500px; top: -200px; left: -100px; }
     .final-cta::after  { width: 400px; height: 400px; bottom: -150px; right: -50px; }
     .final-cta-title { font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: var(--white); letter-spacing: -2px; margin-bottom: 14px; position: relative; z-index: 1; }
-    .final-cta-subtitle { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 36px; position: relative; z-index: 1; }
+    .final-cta-subtitle { font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 36px; position: relative; z-index: 1; }
     .final-cta-actions { display: flex; align-items: center; justify-content: center; gap: 14px; position: relative; z-index: 1; flex-wrap: wrap; }
     .btn-final-white {
       display: inline-flex; align-items: center; gap: 9px;
-      padding: 14px 30px; background: var(--white); color: var(--red);
+      padding: 14px 30px; background: var(--red); color: var(--white);
       font-size: 15px; font-weight: 800; font-family: inherit;
       border: none; border-radius: 50px; cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s; text-decoration: none;
     }
-    .btn-final-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .btn-final-white:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,0,61,0.4); }
     .btn-final-outline {
       display: inline-flex; align-items: center; gap: 9px;
       padding: 13px 28px; background: transparent; color: var(--white);
       font-size: 15px; font-weight: 600; font-family: inherit;
-      border: 2px solid rgba(255,255,255,0.5); border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.3); border-radius: 50px;
       cursor: pointer; transition: border-color 0.15s; text-decoration: none;
     }
-    .btn-final-outline:hover { border-color: var(--white); }
+    .btn-final-outline:hover { border-color: rgba(255,255,255,0.7); }
 
     /* ── FOOTER ── */
     footer { background: var(--navy); padding: 64px 48px 32px; }
@@ -867,7 +872,7 @@
     .modal-backdrop.open .modal { transform: translateY(0) scale(1); }
 
     .modal-header {
-      padding: 28px 32px 0;
+      padding: 28px 32px 20px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -884,7 +889,7 @@
     .modal-title {
       font-size: 22px; font-weight: 900;
       color: var(--navy); letter-spacing: -0.8px;
-      line-height: 1.15; max-width: 440px;
+      line-height: 1.15; white-space: nowrap;
     }
     .modal-close {
       width: 36px; height: 36px; border-radius: 50%;
@@ -896,13 +901,18 @@
     .modal-close:hover { background: var(--gray-line); color: var(--text); }
 
     .modal-body {
-      padding: 24px 32px 28px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: start;
+      padding: 0 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
+    .modal-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .modal-cta-row { display: flex; justify-content: center; }
     .modal-features { display: flex; flex-direction: column; gap: 14px; }
     .modal-feat {
       display: flex; align-items: flex-start; gap: 12px;
@@ -921,7 +931,8 @@
 
     /* Mockup mesas */
     .modal-mockup {
-      background: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--gray-line);
       border-radius: 16px;
       padding: 18px;
       display: flex;
@@ -931,9 +942,9 @@
     .mockup-topbar {
       display: flex; align-items: center; justify-content: space-between;
     }
-    .mockup-title { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.9); font-family: inherit; }
+    .mockup-title { font-size: 12px; font-weight: 700; color: var(--navy); font-family: inherit; }
     .mockup-legend { display: flex; align-items: center; gap: 10px; }
-    .mockup-dot { display: flex; align-items: center; gap: 4px; font-size: 10px; color: rgba(255,255,255,0.45); font-family: inherit; }
+    .mockup-dot { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--gray-text); font-family: inherit; }
     .mockup-dot::before { content:''; width:7px; height:7px; border-radius:50%; flex-shrink:0; }
     .mockup-dot.libre::before   { background: var(--green); }
     .mockup-dot.ocup::before    { background: var(--red); }
@@ -945,7 +956,8 @@
       gap: 10px;
     }
     .mockup-floor {
-      background: rgba(255,255,255,0.05);
+      background: var(--gray-bg);
+      border: 1px solid var(--gray-line);
       border-radius: 10px;
       padding: 12px;
       display: grid;
@@ -965,38 +977,39 @@
       border: 2px solid transparent;
     }
     .mesa:hover { transform: scale(1.06); }
-    .mesa.libre   { background: rgba(0,196,140,0.15); border-color: rgba(0,196,140,0.3); }
-    .mesa.ocup    { background: rgba(232,0,61,0.18);  border-color: rgba(232,0,61,0.35); }
-    .mesa.cobrar  { background: rgba(255,149,0,0.18); border-color: rgba(255,149,0,0.35); }
-    .mesa.selected{ border-color: var(--white) !important; }
-    .mesa-num { font-size: 11px; font-weight: 800; color: var(--white); font-family: inherit; }
-    .mesa-status { font-size: 8px; color: rgba(255,255,255,0.5); font-family: inherit; }
-    .mesa-time   { font-size: 8px; color: rgba(255,255,255,0.35); font-family: inherit; }
+    .mesa.libre   { background: rgba(0,196,140,0.12); border-color: rgba(0,196,140,0.35); }
+    .mesa.ocup    { background: rgba(232,0,61,0.08);  border-color: rgba(232,0,61,0.3); }
+    .mesa.cobrar  { background: rgba(255,149,0,0.1);  border-color: rgba(255,149,0,0.3); }
+    .mesa.selected{ border-color: var(--navy) !important; }
+    .mesa-num { font-size: 11px; font-weight: 800; color: var(--navy); font-family: inherit; }
+    .mesa-status { font-size: 8px; color: var(--gray-text); font-family: inherit; }
+    .mesa-time   { font-size: 8px; color: var(--gray-text); font-family: inherit; }
 
     .mockup-order {
-      background: rgba(255,255,255,0.07);
+      background: var(--white);
+      border: 1px solid var(--gray-line);
       border-radius: 10px;
       padding: 12px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    .order-header { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.9); font-family: inherit; }
-    .order-sub    { font-size: 10px; color: rgba(255,255,255,0.4); font-family: inherit; margin-top: -4px; }
+    .order-header { font-size: 11px; font-weight: 700; color: var(--navy); font-family: inherit; }
+    .order-sub    { font-size: 10px; color: var(--gray-text); font-family: inherit; margin-top: -4px; }
     .order-items  { display: flex; flex-direction: column; gap: 5px; }
     .order-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: 5px 7px;
-      background: rgba(255,255,255,0.06); border-radius: 6px;
+      background: var(--gray-bg); border-radius: 6px;
     }
-    .order-item .n  { font-size: 10px; color: rgba(255,255,255,0.7); font-family: inherit; }
-    .order-item .qty { font-size: 10px; color: rgba(255,255,255,0.4); font-family: inherit; }
-    .order-item .p  { font-size: 10px; font-weight: 700; color: var(--white); font-family: inherit; }
-    .order-divider { height: 1px; background: rgba(255,255,255,0.08); }
+    .order-item .n  { font-size: 10px; color: var(--gray-text); font-family: inherit; }
+    .order-item .qty { font-size: 10px; color: var(--gray-text); font-family: inherit; }
+    .order-item .p  { font-size: 10px; font-weight: 700; color: var(--navy); font-family: inherit; }
+    .order-divider { height: 1px; background: var(--gray-line); }
     .order-total {
       display: flex; justify-content: space-between; align-items: center;
     }
-    .order-total .lbl { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.9); font-family: inherit; }
+    .order-total .lbl { font-size: 11px; font-weight: 700; color: var(--navy); font-family: inherit; }
     .order-total .val { font-size: 13px; font-weight: 800; color: var(--green); font-family: inherit; }
     .order-btn {
       width: 100%; padding: 7px 0;
@@ -1008,11 +1021,12 @@
       display: grid; grid-template-columns: repeat(3,1fr); gap: 8px;
     }
     .m-stat {
-      background: rgba(255,255,255,0.07);
+      background: var(--gray-bg);
+      border: 1px solid var(--gray-line);
       border-radius: 8px; padding: 8px 10px;
     }
-    .m-stat .lbl { font-size: 9px; color: rgba(255,255,255,0.4); font-family: inherit; margin-bottom: 3px; }
-    .m-stat .val { font-size: 14px; font-weight: 800; color: var(--white); font-family: inherit; }
+    .m-stat .lbl { font-size: 9px; color: var(--gray-text); font-family: inherit; margin-bottom: 3px; }
+    .m-stat .val { font-size: 14px; font-weight: 800; color: var(--navy); font-family: inherit; }
     .m-stat .val.green { color: var(--green); }
     .m-stat .val.orange { color: #FF9500; }
 
@@ -1040,6 +1054,7 @@
       transition: background 0.15s;
     }
     .btn-modal-primary:hover { background: var(--red-dark); }
+
   </style>
 </head>
 <body>
@@ -1053,60 +1068,49 @@
     <div class="modal-header">
       <div>
         <div class="modal-eyebrow">Nuevo · Restaurantes y Bares</div>
-        <h2 class="modal-title">Conoce nuestra nueva versión especializada en Restaurantes y Bares</h2>
+        <h2 class="modal-title">POS especializado para Restaurantes y Bares</h2>
       </div>
-      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
     </div>
 
     <div class="modal-body">
 
-      <!-- Features -->
-      <div class="modal-features">
+      <!-- Features 3×2 grid -->
+      <div class="modal-features-grid">
         <div class="modal-feat">
           <div class="modal-feat-icon">🍽️</div>
-          <div>
-            <div class="modal-feat-name">Control de mesas en tiempo real</div>
-            <div class="modal-feat-desc">Visualiza el estado de cada mesa — libre, ocupada o por cobrar — desde una sola pantalla.</div>
-          </div>
+          <div><div class="modal-feat-name">Control de mesas en tiempo real</div></div>
         </div>
         <div class="modal-feat">
           <div class="modal-feat-icon blue">📋</div>
-          <div>
-            <div class="modal-feat-name">Gestión de comandas</div>
-            <div class="modal-feat-desc">Toma pedidos por mesa y envíalos directamente a cocina sin papel y sin errores.</div>
-          </div>
+          <div><div class="modal-feat-name">Gestión de comandas</div></div>
         </div>
         <div class="modal-feat">
           <div class="modal-feat-icon green">🔀</div>
-          <div>
-            <div class="modal-feat-name">División y fusión de cuentas</div>
-            <div class="modal-feat-desc">Divide la cuenta entre comensales o fusiona mesas con un solo toque.</div>
-          </div>
+          <div><div class="modal-feat-name">División y fusión de cuentas</div></div>
         </div>
         <div class="modal-feat">
           <div class="modal-feat-icon orange">👨‍🍳</div>
-          <div>
-            <div class="modal-feat-name">Pantalla de cocina (KDS)</div>
-            <div class="modal-feat-desc">Los pedidos llegan al instante a la pantalla de cocina. Sin tickets en papel.</div>
-          </div>
+          <div><div class="modal-feat-name">Pantalla de cocina (KDS)</div></div>
         </div>
         <div class="modal-feat">
           <div class="modal-feat-icon">📊</div>
-          <div>
-            <div class="modal-feat-name">Reportes por turno</div>
-            <div class="modal-feat-desc">Cierre automático con detalle de ventas, propinas y métodos de pago por cada turno.</div>
-          </div>
+          <div><div class="modal-feat-name">Reportes por turno</div></div>
         </div>
         <div class="modal-feat">
           <div class="modal-feat-icon blue">🛵</div>
-          <div>
-            <div class="modal-feat-name">Integración con domicilios</div>
-            <div class="modal-feat-desc">Gestiona pedidos de plataformas de delivery dentro del mismo sistema.</div>
-          </div>
+          <div><div class="modal-feat-name">Integración con domicilios</div></div>
         </div>
       </div>
 
-      <!-- Mockup mesas -->
+      <!-- CTA -->
+      <div class="modal-cta-row">
+        <a href="restaurantes.html" class="btn-modal-primary">
+          Conocer más
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+        </a>
+      </div>
+
+      <!-- Mockup mesas (light) -->
       <div class="modal-mockup">
         <div class="mockup-topbar">
           <span class="mockup-title">Plano del salón</span>
@@ -1118,7 +1122,6 @@
         </div>
 
         <div class="mockup-layout">
-          <!-- Floor plan -->
           <div class="mockup-floor">
             <div class="mesa libre"><span class="mesa-num">M1</span><span class="mesa-status">Libre</span></div>
             <div class="mesa ocup"><span class="mesa-num">M2</span><span class="mesa-status">Ocupada</span><span class="mesa-time">32 min</span></div>
@@ -1131,7 +1134,6 @@
             <div class="mesa cobrar"><span class="mesa-num">M9</span><span class="mesa-status">Por cobrar</span><span class="mesa-time">67 min</span></div>
           </div>
 
-          <!-- Order panel for M4 -->
           <div class="mockup-order">
             <div class="order-header">Mesa 4 · 4 personas</div>
             <div class="order-sub">Turno noche · 55 min</div>
@@ -1150,7 +1152,6 @@
           </div>
         </div>
 
-        <!-- Stats row -->
         <div class="mockup-stats">
           <div class="m-stat"><div class="lbl">Mesas activas</div><div class="val orange">5 / 9</div></div>
           <div class="m-stat"><div class="lbl">Ventas turno</div><div class="val green">$847k</div></div>
@@ -1159,14 +1160,6 @@
       </div>
 
     </div><!-- /modal-body -->
-
-    <div class="modal-footer">
-      <button class="btn-modal-close" onclick="closeModal()">Cerrar</button>
-      <a href="restaurantes.html" class="btn-modal-primary">
-        Conocer más
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-      </a>
-    </div>
 
   </div>
 </div>
@@ -1233,9 +1226,9 @@
   <div class="hero-visual">
     <div class="device-phone">
       <div class="device-screen">
-        <div style="height:28px;background:rgba(255,255,255,0.05);border-radius:8px;display:flex;align-items:center;padding:0 10px;gap:6px;margin-bottom:4px">
+        <div style="height:28px;background:var(--white);border:1px solid var(--gray-line);border-radius:8px;display:flex;align-items:center;padding:0 10px;gap:6px;margin-bottom:4px">
           <div style="width:6px;height:6px;border-radius:50%;background:var(--red)"></div>
-          <div style="flex:1;height:5px;background:rgba(255,255,255,0.08);border-radius:3px"></div>
+          <div style="flex:1;height:5px;background:var(--gray-line);border-radius:3px"></div>
         </div>
         <div class="mock-stat">
           <div class="lbl">Ventas hoy</div>
@@ -1247,19 +1240,19 @@
           <div class="vp-bar d"></div><div class="vp-bar a"></div>
           <div class="vp-bar e"></div><div class="vp-bar f"></div><div class="vp-bar g"></div>
         </div>
-        <div style="height:1px;background:rgba(255,255,255,0.06);margin:2px 0"></div>
+        <div style="height:1px;background:var(--gray-line);margin:2px 0"></div>
         <div style="display:flex;flex-direction:column;gap:5px">
-          <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:7px 8px;display:flex;justify-content:space-between">
-            <span style="font-size:10px;color:rgba(255,255,255,0.5);font-family:inherit">Hamburguesa</span>
-            <span style="font-size:10px;font-weight:700;color:var(--white);font-family:inherit">$28k</span>
+          <div style="background:var(--white);border:1px solid var(--gray-line);border-radius:6px;padding:7px 8px;display:flex;justify-content:space-between">
+            <span style="font-size:10px;color:var(--gray-text);font-family:inherit">Hamburguesa</span>
+            <span style="font-size:10px;font-weight:700;color:var(--navy);font-family:inherit">$28k</span>
           </div>
-          <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:7px 8px;display:flex;justify-content:space-between">
-            <span style="font-size:10px;color:rgba(255,255,255,0.5);font-family:inherit">Limonada</span>
-            <span style="font-size:10px;font-weight:700;color:var(--white);font-family:inherit">$12k</span>
+          <div style="background:var(--white);border:1px solid var(--gray-line);border-radius:6px;padding:7px 8px;display:flex;justify-content:space-between">
+            <span style="font-size:10px;color:var(--gray-text);font-family:inherit">Limonada</span>
+            <span style="font-size:10px;font-weight:700;color:var(--navy);font-family:inherit">$12k</span>
           </div>
-          <div style="background:rgba(232,0,61,0.15);border-radius:6px;padding:7px 8px;display:flex;justify-content:space-between">
-            <span style="font-size:10px;color:rgba(255,107,138,0.8);font-family:inherit">Factura #1042</span>
-            <span style="font-size:10px;font-weight:700;color:#FF6B8A;font-family:inherit">Enviada ✓</span>
+          <div style="background:var(--red-light);border:1px solid rgba(232,0,61,0.2);border-radius:6px;padding:7px 8px;display:flex;justify-content:space-between">
+            <span style="font-size:10px;color:var(--red);font-family:inherit">Factura #1042</span>
+            <span style="font-size:10px;font-weight:700;color:var(--red);font-family:inherit">Enviada ✓</span>
           </div>
         </div>
       </div>
@@ -1267,10 +1260,10 @@
 
     <div class="device-tablet">
       <div class="device-screen">
-        <div style="height:32px;background:rgba(255,255,255,0.05);border-radius:10px;display:flex;align-items:center;padding:0 12px;gap:8px;margin-bottom:6px">
+        <div style="height:32px;background:var(--white);border:1px solid var(--gray-line);border-radius:10px;display:flex;align-items:center;padding:0 12px;gap:8px;margin-bottom:6px">
           <div style="width:8px;height:8px;border-radius:50%;background:var(--red)"></div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);font-family:inherit;font-weight:600">Bold POS</div>
-          <div style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.3);font-family:inherit">Jun 4, 2026</div>
+          <div style="font-size:11px;color:var(--navy);font-family:inherit;font-weight:600">Bold POS</div>
+          <div style="margin-left:auto;font-size:10px;color:var(--gray-text);font-family:inherit">Jun 4, 2026</div>
         </div>
         <div class="vp-row" style="gap:8px">
           <div class="vp-mini" style="padding:10px"><div class="lbl">Facturas</div><div class="num green">318</div></div>
@@ -1278,19 +1271,19 @@
         </div>
         <div class="vp-card" style="padding:12px">
           <div class="vp-card-row"><span class="name">Hamburguesa clásica</span><span class="val">$28.000</span></div>
-          <div style="height:1px;background:rgba(255,255,255,0.06);margin:5px 0"></div>
+          <div style="height:1px;background:var(--gray-line);margin:5px 0"></div>
           <div class="vp-card-row"><span class="name">Papas medianas</span><span class="val">$9.000</span></div>
-          <div style="height:1px;background:rgba(255,255,255,0.06);margin:5px 0"></div>
+          <div style="height:1px;background:var(--gray-line);margin:5px 0"></div>
           <div class="vp-card-row"><span class="name">Jugo natural</span><span class="val">$7.000</span></div>
-          <div style="height:1px;background:rgba(255,255,255,0.1);margin:8px 0"></div>
-          <div class="vp-card-row"><span class="name" style="font-weight:700;color:rgba(255,255,255,0.9)">Total</span><span class="val green" style="font-size:14px">$44.000</span></div>
+          <div style="height:1px;background:var(--gray-line);margin:8px 0"></div>
+          <div class="vp-card-row"><span class="name" style="font-weight:700;color:var(--navy)">Total</span><span class="val green" style="font-size:14px">$44.000</span></div>
         </div>
         <div style="background:var(--red);border-radius:8px;padding:10px;text-align:center;font-size:12px;font-weight:700;color:var(--white);font-family:inherit">
           Cobrar · $44.000
         </div>
         <div style="display:flex;gap:6px;margin-top:6px">
-          <div style="flex:1;background:rgba(255,255,255,0.07);border-radius:7px;padding:7px;text-align:center;font-size:10px;color:rgba(255,255,255,0.5);font-family:inherit">Factura electrónica</div>
-          <div style="flex:1;background:rgba(255,255,255,0.07);border-radius:7px;padding:7px;text-align:center;font-size:10px;color:rgba(255,255,255,0.5);font-family:inherit">Ver inventario</div>
+          <div style="flex:1;background:var(--white);border:1px solid var(--gray-line);border-radius:7px;padding:7px;text-align:center;font-size:10px;color:var(--gray-text);font-family:inherit">Factura electrónica</div>
+          <div style="flex:1;background:var(--white);border:1px solid var(--gray-line);border-radius:7px;padding:7px;text-align:center;font-size:10px;color:var(--gray-text);font-family:inherit">Ver inventario</div>
         </div>
       </div>
     </div>
@@ -1341,12 +1334,12 @@
       <div class="vp-badge" style="font-size:11px;padding:4px 10px">Sistema activo DIAN</div>
       <div class="vp-card">
         <div class="vp-card-row"><span class="name">Factura #1042</span><span class="val green">Enviada ✓</span></div>
-        <div style="height:1px;background:rgba(255,255,255,0.06);margin:6px 0"></div>
+        <div style="height:1px;background:var(--gray-line);margin:6px 0"></div>
         <div class="vp-card-row"><span class="name">Restaurante Josefina</span><span class="val" style="font-size:14px">$44.000</span></div>
       </div>
       <div class="vp-card">
         <div class="vp-card-row"><span class="name">Factura #1041</span><span class="val green">Enviada ✓</span></div>
-        <div style="height:1px;background:rgba(255,255,255,0.06);margin:6px 0"></div>
+        <div style="height:1px;background:var(--gray-line);margin:6px 0"></div>
         <div class="vp-card-row"><span class="name">Cafetería Central</span><span class="val" style="font-size:14px">$87.500</span></div>
       </div>
       <div class="vp-row">
@@ -1438,9 +1431,9 @@
       </div>
       <div class="vp-card">
         <div class="vp-card-row"><span class="name">Efectivo</span><span class="val">$4.800.000</span></div>
-        <div style="height:1px;background:rgba(255,255,255,0.06);margin:5px 0"></div>
+        <div style="height:1px;background:var(--gray-line);margin:5px 0"></div>
         <div class="vp-card-row"><span class="name">Tarjeta débito</span><span class="val">$6.200.000</span></div>
-        <div style="height:1px;background:rgba(255,255,255,0.06);margin:5px 0"></div>
+        <div style="height:1px;background:var(--gray-line);margin:5px 0"></div>
         <div class="vp-card-row"><span class="name">Tarjeta crédito</span><span class="val">$3.200.000</span></div>
       </div>
       <div class="vp-chart-bars" style="height:55px">
